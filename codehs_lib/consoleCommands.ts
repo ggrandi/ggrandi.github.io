@@ -25,7 +25,7 @@ export const println = (...args: Array<any>): void => {
           output.append(createColoredSpan(`${args[i].toString()} => browser console`, "blue"));
         } break;
         case "boolean": {
-          output.append(createColoredSpan(args[i] ? 'true' : 'false', "red"));
+          output.append(createColoredSpan(String(args[i]), "red"));
         } break;
         case "undefined": {
           output.append(createColoredSpan('undefined', "deeppink"));
@@ -39,7 +39,7 @@ export const println = (...args: Array<any>): void => {
       output.append(new Text(`, `));
     }
   }
-  output.append(new Text(`\n---------------------------------------\n`));
+  output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
   output.scrollTop = output.scrollHeight;
 };
 
@@ -108,19 +108,22 @@ export const readBoolean = (p: string, y: string = "y", n: string = "n"): boolea
   return false;
 };
 
-const consoleInput = async<T>(message: string, keydownHandler: (e: KeyboardEvent, input: HTMLInputElement) => { done: boolean, value?: any }) => {
+const consoleInput = async<T>(message: string, keydownHandler: (e: KeyboardEvent, input: HTMLInputElement) => { done: boolean, value?: any, color?: string }) => {
   output.append(new Text(`${message}: `));
 
   let i = document.createElement('input');
+  i.className = 'consoleInput';
   output.append(i);
 
-  output.append(new Text(`\n---------------------------------------\n`));
+  output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
 
-  let p = new Promise<T>((resolve, reject) => {
+  let p = new Promise<null | T>((resolve, reject) => {
     i.addEventListener("keydown", function (e) {
       if (!(e.metaKey || e.ctrlKey)) {
-        const { value, done } = keydownHandler(e, i);
-        if (done) {
+        const { value, done, color } = keydownHandler(e, i);
+        if (done && !isNaN(value)) {
+          i.before(createColoredSpan(value, String(color)));
+          output.removeChild(i);
           resolve(value)
         }
       }
@@ -140,11 +143,10 @@ const consoleInput = async<T>(message: string, keydownHandler: (e: KeyboardEvent
 export const readLineConsole = async (message: string) => {
   return await consoleInput<string>(message, function (e, input) {
     if (e.key === "Enter") {
-      input.before(new Text(input.value));
-      output.removeChild(input);
       return {
         done: true,
         value: input.value,
+        color: "black",
       }
     }
     return { done: false };
@@ -159,11 +161,10 @@ export const readLineConsole = async (message: string) => {
 export const readIntConsole = async (message: string) => {
   return await consoleInput<number>(message, function (e, input) {
     if (e.key === "Enter") {
-      input.before(new Text(input.value));
-      output.removeChild(input);
       return {
         done: true,
         value: parseInt(input.value),
+        color: "purple",
       }
     }
 
@@ -187,11 +188,10 @@ export const readIntConsole = async (message: string) => {
 export const readFloatConsole = async (message: string) => {
   return await consoleInput<number>(message, function (e, input) {
     if (e.key === "Enter") {
-      input.before(new Text(input.value));
-      output.removeChild(input);
       return {
         done: true,
         value: parseFloat(input.value),
+        color: "purple",
       }
     }
 
@@ -224,15 +224,14 @@ export const readBooleanConsole = async (message: string, y = "y", n = "n") => {
 
   return await consoleInput<boolean>(`${message} (${y}|${n})`, function (e, input) {
     if (e.key === "Enter") {
-      input.before(new Text(input.value));
-      output.removeChild(input);
       return {
         done: true,
         value: y === input.value,
+        color: 'red',
       }
     }
 
-    if (e.key.length <= 1 && e.key !== y && e.key !== n) {
+    if (e.key.length <= 1 && (!(e.key === y || e.key === n) || input.value.length !== 0)) {
       e.preventDefault()
     }
 

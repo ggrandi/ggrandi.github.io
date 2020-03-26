@@ -38,7 +38,7 @@ export const println = (...args) => {
                     break;
                 case "boolean":
                     {
-                        output.append(createColoredSpan(args[i] ? 'true' : 'false', "red"));
+                        output.append(createColoredSpan(String(args[i]), "red"));
                     }
                     break;
                 case "undefined":
@@ -54,7 +54,7 @@ export const println = (...args) => {
             output.append(new Text(`, `));
         }
     }
-    output.append(new Text(`\n---------------------------------------\n`));
+    output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
     output.scrollTop = output.scrollHeight;
 };
 /**
@@ -121,13 +121,16 @@ export const readBoolean = (p, y = "y", n = "n") => {
 const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void 0, function* () {
     output.append(new Text(`${message}: `));
     let i = document.createElement('input');
+    i.className = 'consoleInput';
     output.append(i);
-    output.append(new Text(`\n---------------------------------------\n`));
+    output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
     let p = new Promise((resolve, reject) => {
         i.addEventListener("keydown", function (e) {
             if (!(e.metaKey || e.ctrlKey)) {
-                const { value, done } = keydownHandler(e, i);
-                if (done) {
+                const { value, done, color } = keydownHandler(e, i);
+                if (done && !isNaN(value)) {
+                    i.before(createColoredSpan(value, String(color)));
+                    output.removeChild(i);
                     resolve(value);
                 }
             }
@@ -144,11 +147,10 @@ const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void
 export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: input.value,
+                color: "black",
             };
         }
         return { done: false };
@@ -162,11 +164,10 @@ export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, fu
 export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: parseInt(input.value),
+                color: "purple",
             };
         }
         if (e.key === "-" && input.value.length > 0) {
@@ -186,11 +187,10 @@ export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, fun
 export const readFloatConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: parseFloat(input.value),
+                color: "purple",
             };
         }
         if (e.key === "." && input.value.split('.').length <= 1) {
@@ -217,14 +217,13 @@ export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 
     n = n[0];
     return yield consoleInput(`${message} (${y}|${n})`, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: y === input.value,
+                color: 'red',
             };
         }
-        if (e.key.length <= 1 && e.key !== y && e.key !== n) {
+        if (e.key.length <= 1 && (!(e.key === y || e.key === n) || input.value.length !== 0)) {
             e.preventDefault();
         }
         return { done: false };
