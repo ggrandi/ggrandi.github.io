@@ -224,7 +224,6 @@ export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 
                 value: y === input.value,
             };
         }
-        println(input.value.length);
         if (e.key.length <= 1 && e.key !== y && e.key !== n) {
             e.preventDefault();
         }
