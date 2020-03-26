@@ -55,3 +55,5 @@ export {
   lineDistance,
   rotatePoint,
 };
+
+console.log('CodeHS_lib loaded - Documentation: https://pythonkiwi123.github.io/documentation/');
