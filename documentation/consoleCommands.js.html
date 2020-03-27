@@ -42,11 +42,24 @@ const createColoredSpan = (inner, color) => {
     s.style.color = color;
     return s;
 };
+const addSeparator = (pre) => {
+    if (pre.innerText) {
+        let d = document.createElement('div');
+        d.style.height = '1px';
+        d.style.width = '100%';
+        d.style.backgroundColor = 'black';
+        d.style.marginTop = '5px';
+        d.style.marginBottom = '5px';
+        d.className = 'separator';
+        pre.append(d);
+    }
+};
 /**
  * logs any argument passed to the console
  * @param args {any[]} arguments to print
  */
 export const println = (...args) => {
+    addSeparator(output);
     for (let i = 0; i &lt; args.length; i++) {
         if (args[i] === null) {
             output.append(createColoredSpan('null', "deeppink"));
@@ -66,7 +79,7 @@ export const println = (...args) => {
                     break;
                 case "boolean":
                     {
-                        output.append(createColoredSpan(args[i] ? 'true' : 'false', "red"));
+                        output.append(createColoredSpan(String(args[i]), "red"));
                     }
                     break;
                 case "undefined":
@@ -82,7 +95,6 @@ export const println = (...args) => {
             output.append(new Text(`, `));
         }
     }
-    output.append(new Text(`\n---------------------------------------\n`));
     output.scrollTop = output.scrollHeight;
 };
 /**
@@ -147,21 +159,25 @@ export const readBoolean = (p, y = "y", n = "n") => {
     return false;
 };
 const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void 0, function* () {
+    addSeparator(output);
     output.append(new Text(`${message}: `));
     let i = document.createElement('input');
+    i.className = 'consoleInput';
     output.append(i);
-    output.append(new Text(`\n---------------------------------------\n`));
     let p = new Promise((resolve, reject) => {
         i.addEventListener("keydown", function (e) {
             if (!(e.metaKey || e.ctrlKey)) {
-                const { value, done } = keydownHandler(e, i);
-                if (done) {
+                const { value, done, color } = keydownHandler(e, i);
+                if (done &amp;&amp; !isNaN(value)) {
+                    i.before(createColoredSpan(value, String(color)));
+                    output.removeChild(i);
                     resolve(value);
                 }
             }
         }, false);
     });
     i.focus();
+    output.scrollTop = output.scrollHeight;
     return yield p;
 });
 /**
@@ -172,11 +188,10 @@ const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void
 export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: input.value,
+                color: "black",
             };
         }
         return { done: false };
@@ -190,11 +205,10 @@ export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, fu
 export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: parseInt(input.value),
+                color: "purple",
             };
         }
         if (e.key === "-" &amp;&amp; input.value.length > 0) {
@@ -214,11 +228,10 @@ export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, fun
 export const readFloatConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: parseFloat(input.value),
+                color: "purple",
             };
         }
         if (e.key === "." &amp;&amp; input.value.split('.').length &lt;= 1) {
@@ -245,21 +258,19 @@ export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 
     n = n[0];
     return yield consoleInput(`${message} (${y}|${n})`, function (e, input) {
         if (e.key === "Enter") {
-            input.before(new Text(input.value));
-            output.removeChild(input);
             return {
                 done: true,
                 value: y === input.value,
+                color: 'red',
             };
         }
-        println(input.value.length);
-        if (e.key.length &lt;= 1 &amp;&amp; e.key !== y &amp;&amp; e.key !== n) {
+        if (e.key.length &lt;= 1 &amp;&amp; (!(e.key === y || e.key === n) || input.value.length !== 0)) {
             e.preventDefault();
         }
         return { done: false };
     });
 });
-</code></pre>
+//# sourceMappingURL=consoleCommands.js.map</code></pre>
         </article>
     </section>
 
@@ -269,13 +280,13 @@ export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Arc.html">Arc</a></li><li><a href="baseObj.html">baseObj</a></li><li><a href="Circle.html">Circle</a></li><li><a href="Line.html">Line</a></li><li><a href="Oval.html">Oval</a></li><li><a href="Randomizer.html">Randomizer</a></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Text.html">Text</a></li><li><a href="WebImage.html">WebImage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#gcf">gcf</a></li><li><a href="global.html#getElementAt">getElementAt</a></li><li><a href="global.html#getElementsAt">getElementsAt</a></li><li><a href="global.html#getHeight">getHeight</a></li><li><a href="global.html#getPosition">getPosition</a></li><li><a href="global.html#getWidth">getWidth</a></li><li><a href="global.html#keyDownMethod">keyDownMethod</a></li><li><a href="global.html#keyUpMethod">keyUpMethod</a></li><li><a href="global.html#lineDistance">lineDistance</a></li><li><a href="global.html#mouseClickMethod">mouseClickMethod</a></li><li><a href="global.html#mouseMoveMethod">mouseMoveMethod</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#println">println</a></li><li><a href="global.html#readBoolean">readBoolean</a></li><li><a href="global.html#readBooleanConsole">readBooleanConsole</a></li><li><a href="global.html#readFloat">readFloat</a></li><li><a href="global.html#readFloatConsole">readFloatConsole</a></li><li><a href="global.html#readInt">readInt</a></li><li><a href="global.html#readIntConsole">readIntConsole</a></li><li><a href="global.html#readLine">readLine</a></li><li><a href="global.html#readLineConsole">readLineConsole</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#rotatePoint">rotatePoint</a></li><li><a href="global.html#setTimer">setTimer</a></li><li><a href="global.html#setUpdate">setUpdate</a></li><li><a href="global.html#shapes">shapes</a></li><li><a href="global.html#stopTimer">stopTimer</a></li><li><a href="global.html#timers">timers</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Arc.html">Arc</a></li><li><a href="baseObj.html">baseObj</a></li><li><a href="Circle.html">Circle</a></li><li><a href="Line.html">Line</a></li><li><a href="Oval.html">Oval</a></li><li><a href="Randomizer.html">Randomizer</a></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Text.html">Text</a></li><li><a href="WebImage.html">WebImage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#gcf">gcf</a></li><li><a href="global.html#getElementAt">getElementAt</a></li><li><a href="global.html#getElementsAt">getElementsAt</a></li><li><a href="global.html#getHeight">getHeight</a></li><li><a href="global.html#getPosition">getPosition</a></li><li><a href="global.html#getWidth">getWidth</a></li><li><a href="global.html#hideCursor">hideCursor</a></li><li><a href="global.html#keyDownMethod">keyDownMethod</a></li><li><a href="global.html#keyUpMethod">keyUpMethod</a></li><li><a href="global.html#lineDistance">lineDistance</a></li><li><a href="global.html#mouseClickMethod">mouseClickMethod</a></li><li><a href="global.html#mouseMoveMethod">mouseMoveMethod</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#println">println</a></li><li><a href="global.html#readBoolean">readBoolean</a></li><li><a href="global.html#readBooleanConsole">readBooleanConsole</a></li><li><a href="global.html#readFloat">readFloat</a></li><li><a href="global.html#readFloatConsole">readFloatConsole</a></li><li><a href="global.html#readInt">readInt</a></li><li><a href="global.html#readIntConsole">readIntConsole</a></li><li><a href="global.html#readLine">readLine</a></li><li><a href="global.html#readLineConsole">readLineConsole</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#rotatePoint">rotatePoint</a></li><li><a href="global.html#setBackgroundColor">setBackgroundColor</a></li><li><a href="global.html#setSize">setSize</a></li><li><a href="global.html#setTimer">setTimer</a></li><li><a href="global.html#setUpdate">setUpdate</a></li><li><a href="global.html#shapes">shapes</a></li><li><a href="global.html#showCursor">showCursor</a></li><li><a href="global.html#stopAllTimers">stopAllTimers</a></li><li><a href="global.html#stopTimer">stopTimer</a></li><li><a href="global.html#timers">timers</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 26 2020 13:37:19 GMT+0400 (Gulf Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 22:13:22 GMT+0400 (Gulf Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
