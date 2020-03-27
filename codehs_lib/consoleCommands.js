@@ -14,11 +14,24 @@ const createColoredSpan = (inner, color) => {
     s.style.color = color;
     return s;
 };
+const addSeparator = (pre) => {
+    if (pre.innerText) {
+        let d = document.createElement('div');
+        d.style.height = '1px';
+        d.style.width = '100%';
+        d.style.backgroundColor = 'black';
+        d.style.marginTop = '5px';
+        d.style.marginBottom = '5px';
+        d.className = 'separator';
+        pre.append(d);
+    }
+};
 /**
  * logs any argument passed to the console
  * @param args {any[]} arguments to print
  */
 export const println = (...args) => {
+    addSeparator(output);
     for (let i = 0; i < args.length; i++) {
         if (args[i] === null) {
             output.append(createColoredSpan('null', "deeppink"));
@@ -54,7 +67,6 @@ export const println = (...args) => {
             output.append(new Text(`, `));
         }
     }
-    output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
     output.scrollTop = output.scrollHeight;
 };
 /**
@@ -119,11 +131,11 @@ export const readBoolean = (p, y = "y", n = "n") => {
     return false;
 };
 const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void 0, function* () {
+    addSeparator(output);
     output.append(new Text(`${message}: `));
     let i = document.createElement('input');
     i.className = 'consoleInput';
     output.append(i);
-    output.append(new Text(`\n–––––––––––––––––––––––––––––––––––––––––––––\n`));
     let p = new Promise((resolve, reject) => {
         i.addEventListener("keydown", function (e) {
             if (!(e.metaKey || e.ctrlKey)) {
@@ -137,6 +149,7 @@ const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void
         }, false);
     });
     i.focus();
+    output.scrollTop = output.scrollHeight;
     return yield p;
 });
 /**

@@ -17,16 +17,6 @@ export const ctx = canvas.getContext("2d");
 if (!ctx) {
     throw new Error("Error creating canvas context. Check that the canvas is loading correctly.");
 }
-/**
- * Returns the width of the canvas
- * @function
- */
-export const getWidth = () => canvas.width;
-/**
- * Returns the height of the canvas
- * @function
- */
-export const getHeight = () => canvas.height;
 function createCanvas(divId) {
     let div = document.getElementById(divId);
     if (!div) {
@@ -49,4 +39,46 @@ function createConsole(divId) {
     div.append(p);
     return p;
 }
+/**
+ * Returns the width of the canvas
+ * @function
+ */
+export const getWidth = () => canvas.width;
+/**
+ * Returns the height of the canvas
+ * @function
+ */
+export const getHeight = () => canvas.height;
+/**
+ * Set the width and height of the canvas
+ * @param width {number} the canvas's new width
+ * @param height {number} the canvas's new height
+ * @function
+ */
+export const setSize = (width, height) => {
+    canvas.width = width;
+    canvas.height = height;
+};
+/**
+ * Set the background color of the canvas
+ * @param color {string} the new background color
+ */
+export const setBackgroundColor = (color) => {
+    canvas.style.backgroundColor = color;
+};
+/**
+ * Show the mouse over the canvas
+ * @param cursor {string} (optional) the css cursor to show
+ * @function
+ */
+export const showCursor = (cursor) => {
+    canvas.style.cursor = cursor || 'default';
+};
+/**
+ * Hide the mouse over the canvas
+ * @function
+ */
+export const hideCursor = () => {
+    canvas.style.cursor = 'none';
+};
 //# sourceMappingURL=setup.js.map

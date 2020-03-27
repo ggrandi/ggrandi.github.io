@@ -1,0 +1,45 @@
+import { baseObj } from './index.js';
+/**
+ * The Circle shape
+ */
+export declare class Circle extends baseObj {
+    private _radius;
+    constructor(radius: number);
+    constructor(radius: number, x: number, y: number);
+    constructor(radius: number, x: number, y: number, color: string);
+    constructor(radius: number, x: number, y: number, color: string, outline: boolean);
+    constructor(radius: number, x: number, y: number, color: string, outline: boolean, outlineColor: string);
+    /**
+     * The circle's radius
+     * @type {number}
+     */
+    set radius(v: number);
+    get radius(): number;
+    /**
+     * The circle's diameter
+     * @type {number}
+     */
+    set diameter(v: number);
+    get diameter(): number;
+    /**
+     * Returns the Circle's diameter
+     */
+    getDiameter(): number;
+    /**
+     * Sets the Circle's diameter to `diameter`
+     * @param diameter {number} the new diameter
+     */
+    setDiameter(diameter: number): this;
+    /**
+     * Returns the Circle's radius
+     */
+    getRadius(): number;
+    /**
+     * Sets the Circle's radius to `radius`
+     * @param radius {number} the new radius
+     */
+    setRadius(r: number): this;
+    draw(): void;
+    containsPoint(x: number, y: number): boolean;
+}
+//# sourceMappingURL=Circle.d.ts.map
