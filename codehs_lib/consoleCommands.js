@@ -169,17 +169,12 @@ export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, fu
         return { done: false };
     });
 });
-/**
- * Ask a question in the console and return an integer
- * @param message {string} question to ask
- * @function
- */
-export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
+const readNumberConsole = (message, validation, checks) => __awaiter(void 0, void 0, void 0, function* () {
     return yield consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
             return {
                 done: true,
-                value: parseInt(input.value),
+                value: validation(input.value),
                 color: "purple",
             };
         }
@@ -189,8 +184,17 @@ export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, fun
         if ((isNaN(+e.key) && e.key.length < 2 || e.key == " ") && !(e.key == "-")) {
             e.preventDefault();
         }
+        checks && checks(e, input.value);
         return { done: false };
     });
+});
+/**
+ * Ask a question in the console and return an integer
+ * @param message {string} question to ask
+ * @function
+ */
+export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield readNumberConsole(message, (str) => parseInt(str));
 });
 /**
  * Ask a question in the console and return a float
@@ -198,24 +202,10 @@ export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, fun
  * @function
  */
 export const readFloatConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield consoleInput(message, function (e, input) {
-        if (e.key === "Enter") {
-            return {
-                done: true,
-                value: parseFloat(input.value),
-                color: "purple",
-            };
-        }
-        if (e.key === "." && input.value.split('.').length <= 1) {
+    return yield readNumberConsole(message, (str) => parseFloat(str), (e, value) => {
+        if (e.key === "." && value.split('.').length <= 1) {
             return { done: false };
         }
-        if (e.key === "-" && input.value.length > 0) {
-            e.preventDefault();
-        }
-        if ((isNaN(+e.key) && e.key.length < 2 || e.key == " ") && !(e.key == "-")) {
-            e.preventDefault();
-        }
-        return { done: false };
     });
 });
 /**
