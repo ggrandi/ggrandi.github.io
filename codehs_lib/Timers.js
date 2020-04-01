@@ -1,14 +1,12 @@
-/**
- * The Array that stores all of the timers
- * (Has to be imported from 'src/debug.js')*/
-export const timers = new Array();
+const timers = new Array();
 /**
  * Sets a timer with the callback `callback`
- * @param callback {function} function for the timer to call
- * @param delay {number} delay between the calls
- * @param params {array} the array of parameters to pass to the callback
- * @param name {string} name of the timer
+ * @param {function} callback function for the timer to call
+ * @param {number} delay delay between the calls
+ * @param {any[]} params the array of parameters to pass to the callback
+ * @param {string} name name of the timer
  * @function
+ * @returns {void}
  */
 export const setTimer = (callback, delay, params = [], name) => {
     delay = delay >= 50 / 3 ? delay : 50 / 3;
@@ -24,8 +22,9 @@ export const setTimer = (callback, delay, params = [], name) => {
 };
 /**
  * Stops a previously set timer
- * @param stopId {string | function} the timer's name or the callback the timer was set with
+ * @param {string | function} stopId the timer's name or the callback the timer was set with
  * @function
+ * @returns {void}
  */
 export const stopTimer = (stopId) => {
     timers.forEach(t => {
@@ -38,6 +37,7 @@ export const stopTimer = (stopId) => {
 /**
  * Stops all timers
  * @function
+ * @returns {void}
  */
 export const stopAllTimers = () => {
     timers.forEach(t => clearInterval(t.id));

@@ -5,12 +5,12 @@ import { baseObj, ctx, lineDistance } from './index.js';
 export class Circle extends baseObj {
     /**
      * @constructor
-     * @param radius {number} The radius of the circle
-     * @param x {number | undefined} The x-position of the Circle
-     * @param y {number | undefined} The y-position of the Circle
-     * @param color {string | undefined} The color of the circle
-     * @param outline {boolean | undefined} whether to draw the outline
-     * @param outlineColor {string | undefined} The color of the outline
+     * @param {number} radius The radius of the circle
+     * @param {number | undefined} x The x-position of the Circle
+     * @param {number | undefined} y The y-position of the Circle
+     * @param {string | undefined} color The color of the circle
+     * @param {boolean | undefined} outline whether to draw the outline
+     * @param {string | undefined} outlineColor The color of the outline
      */
     constructor(radius, x, y, color, outline, outlineColor) {
         super();
@@ -44,13 +44,15 @@ export class Circle extends baseObj {
     }
     /**
      * Returns the Circle's diameter
+     * @returns {number}
      */
     getDiameter() {
         return 2 * this._radius;
     }
     /**
      * Sets the Circle's diameter to `diameter`
-     * @param diameter {number} the new diameter
+     * @param {number} diameter the new diameter
+     * @returns {this}
      */
     setDiameter(diameter) {
         this._radius = Math.abs(2 * diameter);
@@ -58,13 +60,15 @@ export class Circle extends baseObj {
     }
     /**
      * Returns the Circle's radius
+     * @returns {number}
      */
     getRadius() {
         return this._radius;
     }
     /**
      * Sets the Circle's radius to `radius`
-     * @param radius {number} the new radius
+     * @param {number} radius the new radius
+     * @returns {this}
      */
     setRadius(r) {
         this._radius = Math.abs(r);

@@ -1,5 +1,19 @@
 import { baseObj } from "./index.js";
 /**
+ * The enum for arcmode to set (DEGREES | RADIANS)
+ * @enum {number}
+ * @readonly
+ */
+export declare enum ArcMode {
+    DEGREES = 0,
+    RADIANS = 1
+}
+/**
+ * @typedef {Object} Angle
+ * @property {number} startingAngle - The starting angle in radians
+ * @property {number} endingAngle - The ending angle in radians
+ */
+/**
  * The Arc shape
  */
 export declare class Arc extends baseObj {
@@ -7,9 +21,9 @@ export declare class Arc extends baseObj {
     private _sa;
     private _ea;
     private _cc;
-    constructor(radius: number, starting: number, ending: number, mode: 0 | 1);
-    constructor(radius: number, starting: number, ending: number, mode: 0 | 1, x: number, y: number);
-    constructor(radius: number, starting: number, ending: number, mode: 0 | 1, x: number, y: number, counterClockwise: boolean);
+    constructor(radius: number, starting: number, ending: number, mode: ArcMode);
+    constructor(radius: number, starting: number, ending: number, mode: ArcMode, x: number, y: number);
+    constructor(radius: number, starting: number, ending: number, mode: ArcMode, x: number, y: number, counterClockwise: boolean);
     /**
      * The radius of the arc
      * @type {number}
@@ -24,7 +38,8 @@ export declare class Arc extends baseObj {
     get startingAngle(): number;
     /**
      * Set the new startingAngle
-     * @param angle {number} the new starting angle
+     * @param {number} angle the new starting angle
+     * @returns {this}
      */
     setStartingAngle(angle: number): this;
     /**
@@ -41,17 +56,20 @@ export declare class Arc extends baseObj {
     get counterClockwise(): boolean;
     /**
      * Set the ending angle of the arc
-     * @param angle {number} The new ending angle
+     * @param {number} angle The new ending angle
+     * @returns {this}
      */
     setEndingAngle(angle: number): this;
     /**
      * Set the starting and ending angle of the arc
-     * @param startingAngle {number} the new starting angle
-     * @param endingAngle {number} the new ending angle
+     * @param {number} startingAngle the new starting angle
+     * @param {number} endingAngle the new ending angle
+     * @returns {this}
      */
     setAngle(startingAngle: number, endingAngle: number): this;
     /**
      * Returns the angle of the arc
+     * @returns {Angle}
      */
     getAngle(): {
         startingAngle: number;

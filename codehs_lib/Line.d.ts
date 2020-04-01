@@ -14,7 +14,8 @@ export declare class Line extends baseObj {
     toString(): string;
     /**
      * Set the width of the line
-     * @param w {number} the new width
+     * @param {number} w the new width
+   * @returns {this}
      */
     setLineWidth(w: number): this;
     /**
@@ -43,14 +44,16 @@ export declare class Line extends baseObj {
     get y2(): number;
     /**
      * Set the starting point
-     * @param x {number} the x-coordinate for the starting point
-     * @param y {number} the y-coordinate for the starting point
+     * @param {number} x the x-coordinate for the starting point
+     * @param {number} y the y-coordinate for the starting point
+   * @returns {this}
      */
     setStartpoint(x: number, y: number): this;
     /**
      * Set the ending point
-     * @param x {number} the x-coordinate for the ending point
-     * @param y {number} the y-coordinate for the ending point
+     * @param {number} x the x-coordinate for the ending point
+     * @param {number} y the y-coordinate for the ending point
+   * @returns {this}
      */
     setEndpoint(x: number, y: number): this;
     draw(): void;

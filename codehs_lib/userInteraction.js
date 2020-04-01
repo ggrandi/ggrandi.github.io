@@ -2,6 +2,7 @@ import { canvas } from "./index.js";
 /**
  * Set the canvas onclick method
  * @function
+ * @returns {void}
  */
 export const mouseClickMethod = (func) => {
     canvas.onclick = func;
@@ -9,6 +10,7 @@ export const mouseClickMethod = (func) => {
 /**
  * Set the canvas mousemove method
  * @function
+ * @returns {void}
  */
 export const mouseMoveMethod = (func) => {
     canvas.onmousemove = func;
@@ -16,6 +18,7 @@ export const mouseMoveMethod = (func) => {
 /**
  * Set the document's keydown method
  * @function
+ * @returns {void}
  */
 export const keyDownMethod = (func) => {
     window.onkeydown = func;
@@ -23,6 +26,7 @@ export const keyDownMethod = (func) => {
 /**
  * Set the document's keyup method
  * @function
+ * @returns {void}
  */
 export const keyUpMethod = (func) => {
     window.onkeyup = func;

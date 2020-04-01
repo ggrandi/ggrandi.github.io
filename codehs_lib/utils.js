@@ -1,32 +1,41 @@
 /**
- * Returns point (`x`, `y`) if it where rotated around (0, 0) by `radians` radians
- * @param x {number} A numeric expression for the x coordinate.
- * @param y {number} A numeric expression for the y coordinate.
- * @param radians {number} A numeric expression for the number of radians it is rotated.
+ * @typedef Point
+ * @property {number} x the x-coordinate
+ * @property {number} y the y-coordinate
  */
-export function rotatePoint(x, y, radians) {
+/**
+ * Returns point (`x`, `y`) if it where rotated around (0, 0) by `radians` radians
+ * @param {number} x A numeric expression for the x coordinate.
+ * @param {number} y A numeric expression for the y coordinate.
+ * @param {number} radians A numeric expression for the number of radians it is rotated.
+ * @returns {Point}
+ * @function
+ */
+export const rotatePoint = (x, y, radians) => {
     return {
         x: Math.cos(radians) * x + Math.sin(radians) * y,
         y: -(Math.sin(radians) * x) + Math.cos(radians) * y,
     };
-}
+};
 /**
  * Returns the distance of a line segment starting at (`x1`, `y1`)
  * and ending at (`x2`, `y2`)
- * @param x1 {number} x-coordinate for the starting point
- * @param y1 {number} y-coordinate for the starting point
- * @param x2 {number} x-coordinate for the ending point
- * @param y2 {number} y-coordinate for the ending point
+ * @param {number} x1 x-coordinate for the starting point
+ * @param {number} y1 y-coordinate for the starting point
+ * @param {number} x2 x-coordinate for the ending point
+ * @param {number} y2 y-coordinate for the ending point
  * @function
+ * @returns {number}
  */
 export const lineDistance = (x1, y1, x2, y2) => {
-    return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
 };
 /**
  * Returns the greatest common factor between `a` and `b`
- * @param a {number} numerical expression
- * @param b {number} numerical expression
+ * @param {number} a numerical expression
+ * @param {number} b numerical expression
  * @function
+ * @returns {number}
  */
 export const gcf = (a, b) => {
     a = Math.max(Math.abs(a), Math.abs(b));
@@ -42,8 +51,9 @@ export const gcf = (a, b) => {
 };
 /**
  * Returns the mouse's position on the canvas
- * @param e {MouseEvent} the event to get the position from
+ * @param {MouseEvent} e the event to get the position from
  * @function
+ * @returns {Point}
  */
 export const getPosition = (e) => {
     let p = e.target;
@@ -58,5 +68,23 @@ export const getPosition = (e) => {
         x: e.pageX - offsetLeft,
         y: e.pageY - offsetTop
     };
+};
+/**
+ * Convert a number of degrees to radians
+ * @param {number} degrees the degrees to convert
+ * @function
+ * @returns {number}
+ */
+export const toRadians = (degrees) => {
+    return degrees * Math.PI / 2;
+};
+/**
+ * Convert a number of radians to degrees
+ * @param {number} radians the radians to convert
+ * @function
+ * @returns {number}
+ */
+export const toDegrees = (radians) => {
+    return radians * 2 / Math.PI;
 };
 //# sourceMappingURL=utils.js.map

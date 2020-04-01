@@ -5,10 +5,10 @@ import { baseObj, ctx, rotatePoint } from './index.js';
 export class Text extends baseObj {
     /**
      * @constructor
-     * @param txt {string} the text to display
-     * @param font {string} the font to use as `(size)px (fontname)`
-     * @param x {number | undefined} the x position of the text
-     * @param y {number | undefined} the y position of the text
+     * @param {string} txt the text to display
+     * @param {string} font the font to use as \`${size}px ${fontname}\`
+     * @param {number | undefined} x the x position of the text
+     * @param {number | undefined} y the y position of the text
      */
     constructor(txt, font, x, y) {
         super();
@@ -25,7 +25,7 @@ export class Text extends baseObj {
         this.type = 'Text';
     }
     /**
-     * A string that follows the pattern `"${Size}px ${Fontname}"`
+     * A string that follows the pattern \`${size}px ${fontname}\`
      * @type {string}
      */
     set font(v) {
@@ -53,7 +53,8 @@ export class Text extends baseObj {
     }
     /**
      * Sets the text to display to `txt`
-     * @param txt {string} the string to display
+     * @param {string} txt the string to display
+     * @returns {this}
      */
     setTxt(txt) {
         this._txt = txt;
@@ -65,17 +66,22 @@ export class Text extends baseObj {
     /**
      * The width of the Text
      * @readonly
+     * @type {number}
      */
     get width() {
         return this._w;
     }
     /**
      * Returns the Text's width
+     * @returns {number}
      */
     getWidth() {
         return this._w;
     }
-    /**The Text's height */
+    /**
+     * The Text's height
+     * @type {number}
+     */
     set height(v) {
         this.font = `${v}px ${this._font.split('px ')[1]}`;
     }
@@ -85,6 +91,7 @@ export class Text extends baseObj {
     /**
      * Set the Height for the Text
      * @param height {number} the new height
+     * @returns {this}
      */
     setHeight(height) {
         this.font = `${height}px ${this._font.split('px ')[1]}`;

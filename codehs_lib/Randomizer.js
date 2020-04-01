@@ -9,6 +9,7 @@ export class Randomizer {
      * Returns a random integer between `min` and `max`
      * @param min {number} minimum value of the integer
      * @param max {number} maximum value of the integer
+   * @returns {number}
      */
     static nextInt(min, max) {
         min = Math.ceil(min);
@@ -17,7 +18,8 @@ export class Randomizer {
     }
     /**
      * Returns true with a probability of 50% or `probability`%
-     * @param probability The probability of returning true
+     * @param {number | undefined} probability The probability of returning true from 0 (never) to 1 (always)
+   * @returns {boolean}
      */
     static nextBoolean(probability = 0.5) {
         return Math.random() < probability;
@@ -26,20 +28,28 @@ export class Randomizer {
      * Returns a random float between `min` and `max`
      * @param min {number} minimum value of the float
      * @param max {number} maximum value of the float
+   * @returns {float}
      */
     static nextFloat(min, max) {
         return Math.random() * (max - min) + min;
     }
     /**
      * Returns a random hexadecimal color
+   * @returns {string}
      */
     static nextColor() {
-        let c = "#";
-        let a = "0123456789abcdef";
-        for (let i = 0; i < 6; i++) {
-            c = c.concat(a[this.nextInt(0, a.length - 1)]);
-        }
-        return c;
+        return `#${this.randomHex(0, 255)}${this.randomHex(0, 255)}${this.randomHex(0, 255)}`;
+    }
+    /**
+     * Returns a random hex string between min and max
+     * @param min {number} minimum value
+     * @param max {number} maximum value
+     * @returns {string}
+     */
+    static randomHex(min, max) {
+        const c = this.nextInt(min, max).toString(16);
+        const length = max.toString(16).length;
+        return c.length > length ? c : c.padStart(length, '0');
     }
 }
 ;

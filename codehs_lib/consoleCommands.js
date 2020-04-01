@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import { output } from './index.js';
 const createColoredSpan = (inner, color) => {
     let s = document.createElement("span");
@@ -28,7 +19,9 @@ const addSeparator = (pre) => {
 };
 /**
  * logs any argument passed to the console
- * @param args {any[]} arguments to print
+ * @param {any[]} args arguments to print
+ * @returns {void}
+ * @function
  */
 export const println = (...args) => {
     addSeparator(output);
@@ -71,16 +64,18 @@ export const println = (...args) => {
 };
 /**
  * Returns the user's answer to the prompt as a string
- * @param prompt {string} prompt
+ * @param {string} prompt the prompt to ask the user
  * @function
+ * @returns {string}
  */
 export const readLine = (p) => {
     return String(prompt(p));
 };
 /**
  * Returns the user's answer to the prompt as an integer
- * @param prompt {string} prompt
+ * @param {string} prompt the prompt to ask the user
  * @function
+ * @returns {number}
  */
 export const readInt = (p) => {
     let ans;
@@ -96,8 +91,9 @@ export const readInt = (p) => {
 };
 /**
  * Returns the user's answer to the prompt as a float
- * @param prompt {string} prompt
+ * @param {string} prompt the prompt to ask the user
  * @function
+ * @returns {number}
  */
 export const readFloat = (p) => {
     let ans;
@@ -113,10 +109,11 @@ export const readFloat = (p) => {
 };
 /**
  * Returns the user's answer to the prompt as a boolean
- * @param prompt {string} prompt
- * @param y {string} the yes string
- * @param n {string} the no string
+ * @param {string} prompt the prompt to ask the user
+ * @param {string} y the yes string
+ * @param {string} n the no string
  * @function
+ * @returns {boolean}
  */
 export const readBoolean = (p, y = "y", n = "n") => {
     let ans;
@@ -130,7 +127,7 @@ export const readBoolean = (p, y = "y", n = "n") => {
     }
     return false;
 };
-const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void 0, function* () {
+const consoleInput = async (message, keydownHandler) => {
     addSeparator(output);
     output.append(new Text(`${message}: `));
     let i = document.createElement('input');
@@ -150,15 +147,16 @@ const consoleInput = (message, keydownHandler) => __awaiter(void 0, void 0, void
     });
     i.focus();
     output.scrollTop = output.scrollHeight;
-    return yield p;
-});
+    return await p;
+};
 /**
  * Ask a question in the console and return a string
- * @param message {string} question to ask
+ * @param {string} message question to ask
  * @function
+ * @returns {Promise<string>}
  */
-export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield consoleInput(message, function (e, input) {
+export const readLineConsole = async (message) => {
+    return await consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
             return {
                 done: true,
@@ -168,9 +166,9 @@ export const readLineConsole = (message) => __awaiter(void 0, void 0, void 0, fu
         }
         return { done: false };
     });
-});
-const readNumberConsole = (message, validation, checks) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield consoleInput(message, function (e, input) {
+};
+const readNumberConsole = async (message, validation, checks) => {
+    return await consoleInput(message, function (e, input) {
         if (e.key === "Enter") {
             return {
                 done: true,
@@ -187,38 +185,41 @@ const readNumberConsole = (message, validation, checks) => __awaiter(void 0, voi
         checks && checks(e, input.value);
         return { done: false };
     });
-});
+};
 /**
  * Ask a question in the console and return an integer
- * @param message {string} question to ask
+ * @param {string} message question to ask
  * @function
+ * @returns {Promise<number>}
  */
-export const readIntConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield readNumberConsole(message, (str) => parseInt(str));
-});
+export const readIntConsole = async (message) => {
+    return await readNumberConsole(message, (str) => parseInt(str));
+};
 /**
  * Ask a question in the console and return a float
- * @param message {string} question to ask
+ * @param {string} message question to ask
  * @function
+ * @returns {Promise<number>}
  */
-export const readFloatConsole = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield readNumberConsole(message, (str) => parseFloat(str), (e, value) => {
+export const readFloatConsole = async (message) => {
+    return await readNumberConsole(message, (str) => parseFloat(str), (e, value) => {
         if (e.key === "." && value.split('.').length <= 1) {
             return { done: false };
         }
     });
-});
+};
 /**
  * Ask a question in the console and return a boolean value
- * @param message {string} question to ask
+ * @param {string} message question to ask
  * @param y the yes value
  * @param n the no value
+ * @returns {Promise<boolean>}
  * @function
  */
-export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 0, void 0, void 0, function* () {
+export const readBooleanConsole = async (message, y = "y", n = "n") => {
     y = y[0];
     n = n[0];
-    return yield consoleInput(`${message} (${y}|${n})`, function (e, input) {
+    return await consoleInput(`${message} (${y}|${n})`, function (e, input) {
         if (e.key === "Enter") {
             return {
                 done: true,
@@ -231,5 +232,5 @@ export const readBooleanConsole = (message, y = "y", n = "n") => __awaiter(void 
         }
         return { done: false };
     });
-});
+};
 //# sourceMappingURL=consoleCommands.js.map

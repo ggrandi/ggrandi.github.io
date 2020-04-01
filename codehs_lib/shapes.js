@@ -1,23 +1,23 @@
 import { canvas, ctx } from './index.js';
-/**
- * The Array that stores all of the shapes added to the screen
- * (Has to be imported from 'src/debug.js')*/
-export const shapes = [];
+const shapes = [];
 let update = true;
 /**
  * Set whether the canvas should update every frame
  * @function
+ * @returns {void}
  */
 export const setUpdate = (v) => { update = v; };
 /**
  * Removes all objects from the canvas
  * @function
+ * @returns {void}
  */
 export const removeAll = () => { shapes.splice(0, shapes.length); };
 /**
  * Adds all shapes that are passed to the screen
  * @param args {baseObj[]} any number of shapes to add
  * @function
+ * @returns {void}
  */
 export const add = (...args) => {
     args.forEach(e => {
@@ -34,6 +34,7 @@ export const add = (...args) => {
  * Removes all shapes that are passed from the screen
  * @param args {baseObj[]} shapes to remove
  * @function
+ * @returns {void}
  */
 export const remove = (...args) => {
     args.forEach(e => {
@@ -47,6 +48,7 @@ export const remove = (...args) => {
  * @param x {number} x-coordinate to check
  * @param y {number} y-coordinate to check
  * @function
+ * @returns {baseObj | undefined}
  */
 export const getElementAt = (x, y) => {
     let elem = undefined;
@@ -62,6 +64,7 @@ export const getElementAt = (x, y) => {
  * @param x {number} x-coordinate to check
  * @param y {number} y-coordinate to check
  * @function
+ * @returns {baseObj[]}
  */
 export const getElementsAt = (x, y) => {
     let elems = [];

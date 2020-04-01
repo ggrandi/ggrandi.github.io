@@ -31,14 +31,16 @@ export class baseObj {
     }
     /**
      * Returns the type of the Shape
+   * @returns {string}
      */
     getType() {
         return this._type;
     }
     /**
      * Sets the shape to the position (`x`, `y`)
-     * @param x {number} new x-coordinate of the shape
-     * @param y {number} new y-coordinate of the shape
+     * @param {number} x new x-coordinate of the shape
+     * @param {number} y new y-coordinate of the shape
+   * @returns {this}
      */
     setPosition(x, y) {
         this._x = x;
@@ -47,7 +49,8 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape to `color`
-     * @param color {string} css color, hexadecimal string, or rgba() string
+     * @param {string} color css color, hexadecimal string, or rgba() string
+   * @returns {this}
      */
     setColor(color) {
         this._color = color;
@@ -67,7 +70,8 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape's outline to `color`
-     * @param color {string} css color, hexadecimal string, or rgba() string
+     * @param {string} color css color, hexadecimal string, or rgba() string
+   * @returns {this}
      */
     setOutlineColor(color) {
         this._outlineColor = color;
@@ -75,7 +79,8 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape's outline to `color` (same as setOutlineColor)
-     * @param color {string} css color, hexadecimal string, or rgba() string
+     * @param {string} color css color, hexadecimal string, or rgba() string
+   * @returns {this}
      */
     setBorderColor(color) {
         this._outlineColor = color;
@@ -83,7 +88,8 @@ export class baseObj {
     }
     /**
  * Sets the width of the shape's outline to `width`
- * @param width {number} the new widthoo of the outline
+ * @param {number} width the new widthoo of the outline
+* @returns {this}
  */
     setOutlineWidth(width) {
         this._outlineWidth = width;
@@ -91,7 +97,8 @@ export class baseObj {
     }
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
-     * @param width {number} the new widthoo of the outline
+     * @param {number} width the new widthoo of the outline
+   * @returns {this}
      */
     setBorderWidth(width) {
         this._outlineWidth = width;
@@ -169,6 +176,7 @@ export class baseObj {
     }
     /**
      * method to return the shapes x-position
+   * @returns {number}
      */
     getX() {
         return this._x;
@@ -185,14 +193,16 @@ export class baseObj {
     }
     /**
      * method to return the shapes y-position
+   * @returns {number}
      */
     getY() {
         return this._y;
     }
     /**
      * Move a shape `dx` pixels right and `dy` pixels left
-     * @param dx {number} pixels to move along the x-axis
-     * @param dy {number} pixels to move along the y-axis
+     * @param {number} dx pixels to move along the x-axis
+     * @param {number} dy pixels to move along the y-axis
+   * @returns {this}
      */
     move(dx, dy) {
         this.x += dx;
@@ -211,7 +221,8 @@ export class baseObj {
     }
     /**
      * Rotate the shape by `degrees` degrees
-     * @param degrees {number} number of degrees to rotate it by
+     * @param {number} degrees number of degrees to rotate it by
+   * @returns {this}
      */
     rotateDegrees(degrees) {
         this._rot += degrees * Math.PI / 180;
@@ -229,7 +240,8 @@ export class baseObj {
     }
     /**
      * Rotate the shape by `radians` radians
-     * @param radians {number} number of degrees to rotate it by
+     * @param {number} radians number of degrees to rotate it by
+   * @returns {this}
      */
     rotate(radians) {
         this._rot += radians;
@@ -237,12 +249,14 @@ export class baseObj {
     }
     /**
      * Returns the shapes rotation in radians
+   * @returns {number}
      */
     getRotation() {
         return this._rot;
     }
     /**
      * Returns the shapes rotation in degrees
+   * @returns {number}
      */
     getRotationDegrees() {
         return this._rot * 180 / Math.PI;
@@ -259,12 +273,14 @@ export class baseObj {
     }
     /**
      * Returns the shape's color
+   * @returns {string}
      */
     getColor() {
         return this._color;
     }
     /**
      * adds the shape to the canvas
+   * @returns {this}
      */
     add() {
         add(this);
@@ -272,6 +288,7 @@ export class baseObj {
     }
     /**
      * removes the shape from the canvas
+   * @returns {this}
      */
     remove() {
         remove(this);
@@ -279,16 +296,17 @@ export class baseObj {
     }
     /**
      * Returns a boolean to check if the shape contains the point (`x`, `y`)
-     * @param x {number} x-position of point
-     * @param y {number} y-position of point
+     * @param {number} x x-position of point
+     * @param {number} y y-position of point
+   * @returns {boolean}
      */
     containsPoint(x, y) {
         return false;
     }
     /**
      * Method called to draw the shape on the screen
+   * @returns {void}
      */
-    draw() {
-    }
+    draw() { }
 }
 //# sourceMappingURL=baseObj.js.map

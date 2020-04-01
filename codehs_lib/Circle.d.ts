@@ -23,20 +23,24 @@ export declare class Circle extends baseObj {
     get diameter(): number;
     /**
      * Returns the Circle's diameter
+     * @returns {number}
      */
     getDiameter(): number;
     /**
      * Sets the Circle's diameter to `diameter`
-     * @param diameter {number} the new diameter
+     * @param {number} diameter the new diameter
+     * @returns {this}
      */
     setDiameter(diameter: number): this;
     /**
      * Returns the Circle's radius
+     * @returns {number}
      */
     getRadius(): number;
     /**
      * Sets the Circle's radius to `radius`
-     * @param radius {number} the new radius
+     * @param {number} radius the new radius
+     * @returns {this}
      */
     setRadius(r: number): this;
     draw(): void;

@@ -46,22 +46,73 @@
         <article><h1>Introduction</h1>
 <p>This project is trying to create a lightweight version of the <a href="https://codehs.com/">CodeHS</a> javascript graphics library.</p>
 <h2>Installation</h2>
-<pre class="prettyprint source lang-bash"><code>git clone https://gitlab.com/pythonKiwi123/codehs_lib.git
-cd codehs_lib/
+<p>import in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type"><code>&lt;script type=&quot;module&quot;&gt;</code></a> html file</p>
+<p>for a sample html file download sampleFile.html from the <a href="https://github.com/pythonKiwi123/codehs_lib.git">repository</a></p>
+<pre class="prettyprint source lang-javascript"><code>import { /* imports */ } from &quot;pythonkiwi123.github.io/codehs_lib/index.js&quot;;
 
-# install dependencies
-yarn
+/* code */
+</code></pre>
+<p>Or install it as a node module</p>
+<pre class="prettyprint source lang-bash"><code># install dependencies
+yarn add https://github.com/pythonKiwi123/codehs_lib.git
 # or
-npm install
+npm install https://github.com/pythonKiwi123/codehs_lib.git
+</code></pre>
+<h2>Use in code</h2>
+<p>This module requires you to have a <code>&lt;div id=&quot;output&quot;&gt;</code> in your HTML</p>
+<p>The hello world looks like this:</p>
+<pre class="prettyprint source lang-javascript"><code>import { println } from &quot;codehs_lib&quot;;
 
-# compile the typescript
-yarn build
-# or
-npm run build
+println(&quot;Hello World!&quot;);
 </code></pre>
 <blockquote>
 <p>(the HTML script.module does not work from file:// so you have to open the file in localhost)</p>
-</blockquote></article>
+</blockquote>
+<h2>Differences between this and the library on CodeHS</h2>
+<ul>
+<li><strong>removed MouseEvent.getX() and MouseEvent.getY() in favor of getPosition(MouseEvent)</strong> to avoid extending already existing javascript types
+<ul>
+<li>getPosition(MouseEvent) returns the object {x: number, y: number}</li>
+</ul>
+</li>
+<li>Better getElementAt()
+<ul>
+<li>I've rebuilt all of the shape.containsPoint methods to ensure they work when the shape is rotated</li>
+<li>I have also added a getElementsAt(x, y) which returns all of the elements on a given point</li>
+</ul>
+</li>
+<li>Better println()
+<ul>
+<li>I've added color to all of the different types so you can know the type of what you print</li>
+<li>I've changed it so that when you println objects, they also print to the browser console</li>
+<li>I've added separators to make it look nicer</li>
+<li>I've changed println to take as many arguments as you want and print all of them</li>
+</ul>
+</li>
+<li>Better read<code>Type</code>()
+<ul>
+<li>only asks the user the prompt and not the whole console
+<ul>
+<li>this makes it easier to read what you are asking</li>
+</ul>
+</li>
+<li>I've added asynchronous read<code>Type</code>Console() methods that ask the user the prompt inside of the console and return a promise</li>
+</ul>
+</li>
+<li>Changed the third argument in setTimer to ask for an array instead of an object
+<ul>
+<li>makes it easier to understand passing parameters to timers wihtout destructuring</li>
+</ul>
+</li>
+<li>Added functions for common Math expressions like getting a line distance and converting degrees to radians</li>
+<li>Changed the arc mode to an enum in order to make it easier to tell what the value is</li>
+<li>Changed every operation that asks for degrees or radians to default to radians
+<ul>
+<li>using getters and setters you can set the degrees (<a href="https://pythonkiwi123.github.io/documentation/">read the docs</a>)</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://pythonkiwi123.github.io/documentation/">read the docs</a></p></article>
     </section>
 
 
@@ -72,13 +123,13 @@ npm run build
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Arc.html">Arc</a></li><li><a href="baseObj.html">baseObj</a></li><li><a href="Circle.html">Circle</a></li><li><a href="Line.html">Line</a></li><li><a href="Oval.html">Oval</a></li><li><a href="Randomizer.html">Randomizer</a></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Text.html">Text</a></li><li><a href="WebImage.html">WebImage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#gcf">gcf</a></li><li><a href="global.html#getElementAt">getElementAt</a></li><li><a href="global.html#getElementsAt">getElementsAt</a></li><li><a href="global.html#getHeight">getHeight</a></li><li><a href="global.html#getPosition">getPosition</a></li><li><a href="global.html#getWidth">getWidth</a></li><li><a href="global.html#hideCursor">hideCursor</a></li><li><a href="global.html#keyDownMethod">keyDownMethod</a></li><li><a href="global.html#keyUpMethod">keyUpMethod</a></li><li><a href="global.html#lineDistance">lineDistance</a></li><li><a href="global.html#mouseClickMethod">mouseClickMethod</a></li><li><a href="global.html#mouseMoveMethod">mouseMoveMethod</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#println">println</a></li><li><a href="global.html#readBoolean">readBoolean</a></li><li><a href="global.html#readBooleanConsole">readBooleanConsole</a></li><li><a href="global.html#readFloat">readFloat</a></li><li><a href="global.html#readFloatConsole">readFloatConsole</a></li><li><a href="global.html#readInt">readInt</a></li><li><a href="global.html#readIntConsole">readIntConsole</a></li><li><a href="global.html#readLine">readLine</a></li><li><a href="global.html#readLineConsole">readLineConsole</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#rotatePoint">rotatePoint</a></li><li><a href="global.html#setBackgroundColor">setBackgroundColor</a></li><li><a href="global.html#setSize">setSize</a></li><li><a href="global.html#setTimer">setTimer</a></li><li><a href="global.html#setUpdate">setUpdate</a></li><li><a href="global.html#shapes">shapes</a></li><li><a href="global.html#showCursor">showCursor</a></li><li><a href="global.html#stopAllTimers">stopAllTimers</a></li><li><a href="global.html#stopTimer">stopTimer</a></li><li><a href="global.html#timers">timers</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Arc.html">Arc</a></li><li><a href="baseObj.html">baseObj</a></li><li><a href="Circle.html">Circle</a></li><li><a href="Color.html">Color</a></li><li><a href="Line.html">Line</a></li><li><a href="Oval.html">Oval</a></li><li><a href="Randomizer.html">Randomizer</a></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Text.html">Text</a></li><li><a href="WebImage.html">WebImage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#ArcMode">ArcMode</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#gcf">gcf</a></li><li><a href="global.html#getElementAt">getElementAt</a></li><li><a href="global.html#getElementsAt">getElementsAt</a></li><li><a href="global.html#getHeight">getHeight</a></li><li><a href="global.html#getPosition">getPosition</a></li><li><a href="global.html#getWidth">getWidth</a></li><li><a href="global.html#hideCursor">hideCursor</a></li><li><a href="global.html#keyDownMethod">keyDownMethod</a></li><li><a href="global.html#keyUpMethod">keyUpMethod</a></li><li><a href="global.html#lineDistance">lineDistance</a></li><li><a href="global.html#mouseClickMethod">mouseClickMethod</a></li><li><a href="global.html#mouseMoveMethod">mouseMoveMethod</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#println">println</a></li><li><a href="global.html#readBoolean">readBoolean</a></li><li><a href="global.html#readBooleanConsole">readBooleanConsole</a></li><li><a href="global.html#readFloat">readFloat</a></li><li><a href="global.html#readFloatConsole">readFloatConsole</a></li><li><a href="global.html#readInt">readInt</a></li><li><a href="global.html#readIntConsole">readIntConsole</a></li><li><a href="global.html#readLine">readLine</a></li><li><a href="global.html#readLineConsole">readLineConsole</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#rotatePoint">rotatePoint</a></li><li><a href="global.html#setBackgroundColor">setBackgroundColor</a></li><li><a href="global.html#setSize">setSize</a></li><li><a href="global.html#setTimer">setTimer</a></li><li><a href="global.html#setUpdate">setUpdate</a></li><li><a href="global.html#showCursor">showCursor</a></li><li><a href="global.html#stopAllTimers">stopAllTimers</a></li><li><a href="global.html#stopTimer">stopTimer</a></li><li><a href="global.html#toDegrees">toDegrees</a></li><li><a href="global.html#toRadians">toRadians</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 22:13:22 GMT+0400 (Gulf Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Apr 01 2020 17:34:47 GMT+0400 (Gulf Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

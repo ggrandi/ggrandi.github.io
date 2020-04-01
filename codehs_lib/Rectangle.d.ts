@@ -19,6 +19,7 @@ export declare class Rectangle extends baseObj {
     get width(): number;
     /**
      * Returns the width of the rectangle
+   * @returns {number}
      */
     getWidth(): number;
     /**
@@ -29,8 +30,9 @@ export declare class Rectangle extends baseObj {
     get height(): number;
     /**
      * Set the width and height of the rectangle
-     * @param width {number} the rectangle's new width
-     * @param height {number} the rectangle's new height
+     * @param {number} width the rectangle's new width
+     * @param {number} height the rectangle's new height
+   * @returns {this}
      */
     setSize(width: number, height: number): this;
     draw(): void;

@@ -16,11 +16,13 @@ export declare const ctx: CanvasRenderingContext2D;
 /**
  * Returns the width of the canvas
  * @function
+ * @returns {number}
  */
 export declare const getWidth: () => number;
 /**
  * Returns the height of the canvas
  * @function
+ * @returns {number}
  */
 export declare const getHeight: () => number;
 /**
@@ -28,11 +30,13 @@ export declare const getHeight: () => number;
  * @param width {number} the canvas's new width
  * @param height {number} the canvas's new height
  * @function
+ * @returns {void}
  */
 export declare const setSize: (width: number, height: number) => void;
 /**
  * Set the background color of the canvas
  * @param color {string} the new background color
+ * @function
  */
 export declare const setBackgroundColor: (color: string) => void;
 /**

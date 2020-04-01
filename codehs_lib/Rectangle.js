@@ -5,14 +5,14 @@ import { baseObj, ctx, rotatePoint } from './index.js';
 export class Rectangle extends baseObj {
     /**
      * @constructor
-     * @param width {number} the rectangle's width
-     * @param height {number} the rectangle's height
-     * @param x {number} the rectangle's x-position
-     * @param y {number} the rectangle's y-position
-     * @param color {string} the rectangle's color
-     * @param rotation {number} the rectangle's rotation in radians
-     * @param outline {boolean} whether to outline the rectangle
-     * @param outlineColor {string} the outline's color
+     * @param {number} width the rectangle's width
+     * @param {number} height the rectangle's height
+     * @param {number | undefined} x the rectangle's x-position
+     * @param {number | undefined} y the rectangle's y-position
+     * @param {string | undefined} color the rectangle's color
+     * @param {number | undefined} rotation the rectangle's rotation in radians
+     * @param {boolean | undefined} outline whether to outline the rectangle
+     * @param {string | undefined} outlineColor the outline's color
      */
     constructor(width, height, x, y, color, rotation, outline, outlineColor) {
         super();
@@ -38,6 +38,7 @@ export class Rectangle extends baseObj {
     }
     /**
      * Returns the width of the rectangle
+   * @returns {number}
      */
     getWidth() {
         return this._width;
@@ -54,8 +55,9 @@ export class Rectangle extends baseObj {
     }
     /**
      * Set the width and height of the rectangle
-     * @param width {number} the rectangle's new width
-     * @param height {number} the rectangle's new height
+     * @param {number} width the rectangle's new width
+     * @param {number} height the rectangle's new height
+   * @returns {this}
      */
     setSize(width, height) {
         this._width = width;

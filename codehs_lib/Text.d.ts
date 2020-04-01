@@ -10,7 +10,7 @@ export declare class Text extends baseObj {
     constructor(txt: string, font: string);
     constructor(txt: string, font: string, x: number, y: number);
     /**
-     * A string that follows the pattern `"${Size}px ${Fontname}"`
+     * A string that follows the pattern \`${size}px ${fontname}\`
      * @type {string}
      */
     set font(v: string);
@@ -23,24 +23,31 @@ export declare class Text extends baseObj {
     get txt(): string;
     /**
      * Sets the text to display to `txt`
-     * @param txt {string} the string to display
+     * @param {string} txt the string to display
+     * @returns {this}
      */
     setTxt(txt: string): this;
     /**
      * The width of the Text
      * @readonly
+     * @type {number}
      */
     get width(): number;
     /**
      * Returns the Text's width
+     * @returns {number}
      */
     getWidth(): number;
-    /**The Text's height */
+    /**
+     * The Text's height
+     * @type {number}
+     */
     set height(v: number);
     get height(): number;
     /**
      * Set the Height for the Text
      * @param height {number} the new height
+     * @returns {this}
      */
     setHeight(height: number): this;
     draw(): void;

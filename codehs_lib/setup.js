@@ -42,11 +42,13 @@ function createConsole(divId) {
 /**
  * Returns the width of the canvas
  * @function
+ * @returns {number}
  */
 export const getWidth = () => canvas.width;
 /**
  * Returns the height of the canvas
  * @function
+ * @returns {number}
  */
 export const getHeight = () => canvas.height;
 /**
@@ -54,6 +56,7 @@ export const getHeight = () => canvas.height;
  * @param width {number} the canvas's new width
  * @param height {number} the canvas's new height
  * @function
+ * @returns {void}
  */
 export const setSize = (width, height) => {
     canvas.width = width;
@@ -62,6 +65,7 @@ export const setSize = (width, height) => {
 /**
  * Set the background color of the canvas
  * @param color {string} the new background color
+ * @function
  */
 export const setBackgroundColor = (color) => {
     canvas.style.backgroundColor = color;

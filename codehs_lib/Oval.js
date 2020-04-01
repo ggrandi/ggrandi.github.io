@@ -5,11 +5,11 @@ import { baseObj, ctx, rotatePoint } from "./index.js";
 export class Oval extends baseObj {
     /**
      * @constructor
-     * @param width {number} the width of the oval
-     * @param height {number} the height of the oval
-     * @param x {number | undefined} the x-position
-     * @param y {number | undefined} the y-position
-     * @param color {string | undefined} the color of the oval
+     * @param {number} width the width of the oval
+     * @param {number} height the height of the oval
+     * @param {number | undefined} x the x-position
+     * @param {number | undefined} y the y-position
+     * @param {string | undefined} color the color of the oval
      */
     constructor(width, height, x, y, color) {
         super();
@@ -31,7 +31,8 @@ export class Oval extends baseObj {
     }
     /**
      * Set the width of the oval
-     * @param width {number} the new width
+     * @param {number} width the new width
+     * @returns {this}
      */
     setWidth(width) {
         this._width = width;
@@ -49,7 +50,8 @@ export class Oval extends baseObj {
     }
     /**
      * Set the height of the oval
-     * @param height {number} the new height
+     * @param {number} height the new height
+     * @returns {this}
      */
     setHeight(v) {
         this._height = v;
@@ -57,8 +59,9 @@ export class Oval extends baseObj {
     }
     /**
      * Set the width and height of the oval
-     * @param width {number} the new width of the oval
-     * @param height {number} the new height of the oval
+     * @param {number} width the new width of the oval
+     * @param {number} height the new height of the oval
+     * @returns {this}
      */
     setSize(width, height) {
         this._width = width;
@@ -85,7 +88,7 @@ export class Oval extends baseObj {
             y = point.y;
         }
         const oW = this.outline ? this.outlineWidth / 2 : 0;
-        return (Math.pow(x, 2)) / Math.pow((this._width / 2 + oW), 2) + (Math.pow(y, 2)) / Math.pow((this._height / 2 + oW), 2) <= 1;
+        return (x ** 2) / (this._width / 2 + oW) ** 2 + (y ** 2) / (this._height / 2 + oW) ** 2 <= 1;
     }
 }
 //# sourceMappingURL=Oval.js.map

@@ -16,7 +16,8 @@ export declare class Oval extends baseObj {
     get width(): number;
     /**
      * Set the width of the oval
-     * @param width {number} the new width
+     * @param {number} width the new width
+     * @returns {this}
      */
     setWidth(width: number): this;
     /**
@@ -27,13 +28,15 @@ export declare class Oval extends baseObj {
     get height(): number;
     /**
      * Set the height of the oval
-     * @param height {number} the new height
+     * @param {number} height the new height
+     * @returns {this}
      */
     setHeight(v: number): this;
     /**
      * Set the width and height of the oval
-     * @param width {number} the new width of the oval
-     * @param height {number} the new height of the oval
+     * @param {number} width the new width of the oval
+     * @param {number} height the new height of the oval
+     * @returns {this}
      */
     setSize(width: number, height: number): this;
     draw(): void;

@@ -5,12 +5,12 @@ import { baseObj, ctx, rotatePoint, lineDistance } from './index.js';
 export class Line extends baseObj {
     /**
      * @constructor
-     * @param x1 {number} x-coordinate for the starting point
-     * @param y1 {number} y-coordinate for the starting point
-     * @param x2 {number} x-coordinate for the ending point
-     * @param y2 {number} y-coordinate for the ending point
-     * @param width {number | undefined} the width of the line
-     * @param color {string | undefined} the color of the line
+     * @param {number} x1 x-coordinate for the starting point
+     * @param {number} y1 y-coordinate for the starting point
+     * @param {number} x2 x-coordinate for the ending point
+     * @param {number} y2 y-coordinate for the ending point
+     * @param {number | undefined} width the width of the line
+     * @param {string | undefined} color the color of the line
      */
     constructor(x1, y1, x2, y2, width, color) {
         super();
@@ -27,7 +27,8 @@ export class Line extends baseObj {
     }
     /**
      * Set the width of the line
-     * @param w {number} the new width
+     * @param {number} w the new width
+   * @returns {this}
      */
     setLineWidth(w) {
         this._width = w;
@@ -75,8 +76,9 @@ export class Line extends baseObj {
     }
     /**
      * Set the starting point
-     * @param x {number} the x-coordinate for the starting point
-     * @param y {number} the y-coordinate for the starting point
+     * @param {number} x the x-coordinate for the starting point
+     * @param {number} y the y-coordinate for the starting point
+   * @returns {this}
      */
     setStartpoint(x, y) {
         this._x1 = x;
@@ -85,8 +87,9 @@ export class Line extends baseObj {
     }
     /**
      * Set the ending point
-     * @param x {number} the x-coordinate for the ending point
-     * @param y {number} the y-coordinate for the ending point
+     * @param {number} x the x-coordinate for the ending point
+     * @param {number} y the y-coordinate for the ending point
+   * @returns {this}
      */
     setEndpoint(x, y) {
         this._x2 = x;
