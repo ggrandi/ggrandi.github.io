@@ -16,7 +16,7 @@ export class Text extends baseObj {
         this.y = y === 0 ? 0 : y || -1000;
         this._txt = txt;
         if (!/(\d)+px (\w)+/g.test(font)) {
-            console.warn(`Please pass a valid font to Text`);
+            console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
         }
         this._font = /(\d)+px (\w)+/g.test(font) ? font : '20px Arial';
         ctx.font = this._font;
@@ -31,12 +31,30 @@ export class Text extends baseObj {
     set font(v) {
         this._font = v;
         this._font = /(\d)+px (\w)+/g.test(v) ? v : '20px Arial';
+        if (!/(\d)+px (\w)+/g.test(v)) {
+            console.warn(`Please pass a valid font to Text. Your font \`${v}\` should match \`\${size}px \${fontname}\``);
+        }
         ctx.font = this._font;
         this._w = ctx.measureText(this._txt).width;
         this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
     }
     get font() {
         return this._font;
+    }
+    /**
+     * Allows you to set the text's font
+     * @param {string} font the new font of the Text
+     * @returns {this}
+     */
+    setFont(font) {
+        this._font = /(\d)+px (\w)+/g.test(font) ? font : '20px Arial';
+        if (!/(\d)+px (\w)+/g.test(font)) {
+            console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
+        }
+        ctx.font = this._font;
+        this._w = ctx.measureText(this._txt).width;
+        this._h = Number((/(\d)+/g.exec(this._font) || [20])[0]);
+        return this;
     }
     /**
      * The text to display

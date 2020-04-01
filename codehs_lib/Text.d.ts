@@ -16,6 +16,12 @@ export declare class Text extends baseObj {
     set font(v: string);
     get font(): string;
     /**
+     * Allows you to set the text's font
+     * @param {string} font the new font of the Text
+     * @returns {this}
+     */
+    setFont(font: string): this;
+    /**
      * The text to display
      * @type {string}
      */

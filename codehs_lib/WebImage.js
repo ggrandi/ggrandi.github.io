@@ -46,8 +46,8 @@ export class WebImage extends Rectangle {
         this.type = 'Image';
         this._sx = sx || 0;
         this._sy = sy || 0;
-        this._sw = swidth || width || 1;
-        this._sh = sheight || height || 1;
+        this._sw = swidth || 1;
+        this._sh = sheight || 1;
     }
     /**
      * The image to display
