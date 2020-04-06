@@ -4,6 +4,7 @@ import { baseObj } from './baseObj.js';
 import { println, readBoolean, readFloat, readInt, readLine, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole } from './consoleCommands.js';
 import { Randomizer } from './Randomizer.js';
 import { Color } from './Color.js';
+import { Keyboard } from './Keyboard.js';
 import { Circle } from "./Circle.js";
 import { Rectangle } from "./Rectangle.js";
 import { Line } from './Line.js';
@@ -42,6 +43,7 @@ export {
   readBooleanConsole,
   Randomizer,
   Color,
+  Keyboard,
   baseObj,
   Circle,
   Rectangle,

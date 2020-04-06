@@ -60,21 +60,28 @@ export class Text extends baseObj {
      * The text to display
      * @type {string}
      */
-    set txt(v) {
+    set text(v) {
         this._txt = v;
         ctx.font = this._font;
         this._w = ctx.measureText(this._txt).width;
         this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
     }
-    get txt() {
+    get text() {
         return this._txt;
+    }
+    /**
+     * Returns the Text's text
+     * @returns {string}
+     */
+    getText() {
+        return this.text;
     }
     /**
      * Sets the text to display to `txt`
      * @param {string} txt the string to display
      * @returns {this}
      */
-    setTxt(txt) {
+    setText(txt) {
         this._txt = txt;
         ctx.font = this._font;
         this._w = ctx.measureText(this._txt).width;
@@ -105,6 +112,13 @@ export class Text extends baseObj {
     }
     get height() {
         return this._h;
+    }
+    /**
+     * Returns the height of the Text
+     * @returns {number}
+     */
+    getHeight() {
+        return this.height;
     }
     /**
      * Set the Height for the Text

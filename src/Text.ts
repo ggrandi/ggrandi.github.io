@@ -79,7 +79,7 @@ export class Text extends baseObj {
    * The text to display
    * @type {string}
    */
-  set txt(v: string) {
+  set text(v: string) {
     this._txt = v;
 
     ctx.font = this._font;
@@ -87,8 +87,16 @@ export class Text extends baseObj {
     this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
   }
 
-  get txt(): string {
+  get text(): string {
     return this._txt;
+  }
+
+  /**
+   * Returns the Text's text
+   * @returns {string}
+   */
+  getText(): string {
+    return this.text;
   }
 
   /**
@@ -96,7 +104,7 @@ export class Text extends baseObj {
    * @param {string} txt the string to display
    * @returns {this}
    */
-  setTxt(txt: string): this {
+  setText(txt: string): this {
     this._txt = txt;
 
     ctx.font = this._font;
@@ -133,6 +141,14 @@ export class Text extends baseObj {
 
   get height(): number {
     return this._h;
+  }
+
+  /**
+   * Returns the height of the Text
+   * @returns {number}
+   */
+  getHeight(): number {
+    return this.height;
   }
 
   /**

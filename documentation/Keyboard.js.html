@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Randomizer.js</title>
+    <title>JSDoc: Source: Keyboard.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Randomizer.js</h1>
+    <h1 class="page-title">Source: Keyboard.js</h1>
 
     
 
@@ -27,61 +27,140 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * The object that returns random values
+ * CodeHS's Keyboard object. If possible use the built-in javascript
+ * KeyboardEvent.key or KeyboardEvent.code in your handler
+ * (Included for compatibilty with CodeHS)
+ * @deprecated
  */
-export class Randomizer {
-    constructor() {
-        console.warn('Creating a new Randomizer creates a new blank object');
+export class Keyboard {
+    /**
+     * Returns a letter to compare to e.keyCode
+     * @param {string} key the letter you want to get
+     */
+    static letter(key) {
+        return key;
     }
     /**
-     * Returns a random integer between `min` and `max`
-     * @param min {number} minimum value of the integer
-     * @param max {number} maximum value of the integer
-   * @returns {number}
+     * The key for ALT
+     * @type {string}
      */
-    static nextInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+    static get ALT() {
+        return "Alt";
     }
     /**
-     * Returns true with a probability of 50% or `probability`%
-     * @param {number | undefined} probability The probability of returning true from 0 (never) to 1 (always)
-   * @returns {boolean}
+     * The key for BACKSPACE
+     * @type {string}
      */
-    static nextBoolean(probability = 0.5) {
-        return Math.random() &lt; probability;
+    static get BACKSPACE() {
+        return "Backspace";
     }
     /**
-     * Returns a random float between `min` and `max`
-     * @param min {number} minimum value of the float
-     * @param max {number} maximum value of the float
-   * @returns {float}
+     * The key for CAPS LOCK
+     * @type {string}
      */
-    static nextFloat(min, max) {
-        return Math.random() * (max - min) + min;
+    static get CAPS_LOCK() {
+        return "";
     }
     /**
-     * Returns a random hexadecimal color
-   * @returns {string}
+     * The key for CTRL
+     * @type {string}
      */
-    static nextColor() {
-        return `#${this.randomHex(0, 255)}${this.randomHex(0, 255)}${this.randomHex(0, 255)}`;
+    static get CTRL() {
+        return "Control";
     }
     /**
-     * Returns a random hex string between min and max
-     * @param min {number} minimum value
-     * @param max {number} maximum value
-     * @returns {string}
+     * The key for DOWN
+     * @type {string}
      */
-    static randomHex(min, max) {
-        const c = this.nextInt(min, max).toString(16);
-        const length = max.toString(16).length;
-        return c.length > length ? c : c.padStart(length, '0');
+    static get DOWN() {
+        return "ArrowDown";
+    }
+    /**
+     * The key for ENTER
+     * @type {string}
+     */
+    static get ENTER() {
+        return "Enter";
+    }
+    /**
+     * The key for LEFT
+     * @type {string}
+     */
+    static get LEFT() {
+        return "ArrowLeft";
+    }
+    /**
+     * The key for LEFT COMMAND
+     * @type {string}
+     */
+    static get LEFT_COMMAND() {
+        return "Meta";
+    }
+    /**
+     * The key for LEFT WINDOW
+     * @type {string}
+     */
+    static get LEFT_WINDOW() {
+        return "Meta";
+    }
+    /**
+     * The key for RIGHT
+     * @type {string}
+     */
+    static get RIGHT() {
+        return "ArrowRight";
+    }
+    /**
+     * The key for RIGHT COMMAND
+     * @type {string}
+     */
+    static get RIGHT_COMMAND() {
+        return "Meta";
+    }
+    /**
+     * The key for RIGHT WINDOW
+     * @type {string}
+     */
+    static get RIGHT_WINDOW() {
+        return "Meta";
+    }
+    /**
+     * The key for SELECT
+     * @type {string}
+     */
+    static get SELECT() {
+        return "Meta";
+    }
+    /**
+     * The key for SHIFT
+     * @type {string}
+     */
+    static get SHIFT() {
+        return "Shift";
+    }
+    /**
+     * The key for SPACE
+     * @type {string}
+     */
+    static get SPACE() {
+        return " ";
+    }
+    /**
+     * The key for TAB
+     * @type {string}
+     */
+    static get TAB() {
+        return "Tab";
+    }
+    /**
+     * The key for UP
+     * @type {string}
+     */
+    static get UP() {
+        return "ArrowUp";
     }
 }
-;
-//# sourceMappingURL=Randomizer.js.map</code></pre>
+//# sourceMappingURL=Keyboard.js.map</code></pre>
         </article>
     </section>
 

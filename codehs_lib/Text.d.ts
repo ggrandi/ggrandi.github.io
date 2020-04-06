@@ -25,14 +25,19 @@ export declare class Text extends baseObj {
      * The text to display
      * @type {string}
      */
-    set txt(v: string);
-    get txt(): string;
+    set text(v: string);
+    get text(): string;
+    /**
+     * Returns the Text's text
+     * @returns {string}
+     */
+    getText(): string;
     /**
      * Sets the text to display to `txt`
      * @param {string} txt the string to display
      * @returns {this}
      */
-    setTxt(txt: string): this;
+    setText(txt: string): this;
     /**
      * The width of the Text
      * @readonly
@@ -50,6 +55,11 @@ export declare class Text extends baseObj {
      */
     set height(v: number);
     get height(): number;
+    /**
+     * Returns the height of the Text
+     * @returns {number}
+     */
+    getHeight(): number;
     /**
      * Set the Height for the Text
      * @param height {number} the new height
