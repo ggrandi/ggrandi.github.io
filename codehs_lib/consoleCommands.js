@@ -79,11 +79,11 @@ export const readLine = (p) => {
  */
 export const readInt = (p) => {
     let ans;
-    if (ans = parseInt(prompt(p) || "")) {
+    if (ans = parseInt(prompt(p) || "", 10)) {
         return ans;
     }
     for (let i = 0; i < 100; i++) {
-        if (ans = parseInt(prompt("Please enter an Integer. " + p) || "")) {
+        if (ans = parseInt(prompt("Please enter an Integer. " + p) || ""), 10) {
             return ans;
         }
     }
@@ -137,8 +137,8 @@ const consoleInput = async (message, keydownHandler) => {
         i.addEventListener("keydown", function (e) {
             if (!(e.metaKey || e.ctrlKey)) {
                 const { value, done, color } = keydownHandler(e, i);
-                if (done && !isNaN(value)) {
-                    i.before(createColoredSpan(value, String(color)));
+                if (done) {
+                    i.before(createColoredSpan(String(value), String(color)));
                     output.removeChild(i);
                     resolve(value);
                 }
@@ -169,7 +169,7 @@ export const readLineConsole = async (message) => {
 };
 const readNumberConsole = async (message, validation, checks) => {
     return await consoleInput(message, function (e, input) {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && !isNaN(validation(input.value))) {
             return {
                 done: true,
                 value: validation(input.value),
@@ -179,10 +179,12 @@ const readNumberConsole = async (message, validation, checks) => {
         if (e.key === "-" && input.value.length > 0) {
             e.preventDefault();
         }
+        if (checks && !checks(e, input.value)) {
+            return { done: false };
+        }
         if ((isNaN(+e.key) && e.key.length < 2 || e.key == " ") && !(e.key == "-")) {
             e.preventDefault();
         }
-        checks && checks(e, input.value);
         return { done: false };
     });
 };
@@ -193,7 +195,7 @@ const readNumberConsole = async (message, validation, checks) => {
  * @returns {Promise<number>}
  */
 export const readIntConsole = async (message) => {
-    return await readNumberConsole(message, (str) => parseInt(str));
+    return await readNumberConsole(message, (str) => parseInt(str, 10));
 };
 /**
  * Ask a question in the console and return a float
@@ -202,11 +204,7 @@ export const readIntConsole = async (message) => {
  * @returns {Promise<number>}
  */
 export const readFloatConsole = async (message) => {
-    return await readNumberConsole(message, (str) => parseFloat(str), (e, value) => {
-        if (e.key === "." && value.split('.').length <= 1) {
-            return { done: false };
-        }
-    });
+    return await readNumberConsole(message, (str) => parseFloat(str), (e, value) => !(e.key === "." && value.split('.').length <= 1));
 };
 /**
  * Ask a question in the console and return a boolean value

@@ -78,11 +78,11 @@ export const readLine = (p: string): string => {
  */
 export const readInt = (p: string): number => {
   let ans: number;
-  if (ans = parseInt(prompt(p) || "")) {
+  if (ans = parseInt(prompt(p) || "", 10)) {
     return ans;
   }
   for (let i = 0; i < 100; i++) {
-    if (ans = parseInt(prompt("Please enter an Integer. " + p) || "")) {
+    if (ans = parseInt(prompt("Please enter an Integer. " + p) || ""), 10) {
       return ans;
     }
   }
@@ -129,9 +129,9 @@ export const readBoolean = (p: string, y: string = "y", n: string = "n"): boolea
   return false;
 };
 
-const consoleInput = async<PromiseType>(message: string, keydownHandler: (e: KeyboardEvent, input: HTMLInputElement) => { done: boolean, value?: any, color?: string }): Promise<PromiseType> => {
+const consoleInput = async<PromiseType>(message: string, keydownHandler: (e: KeyboardEvent, input: HTMLInputElement) => { done: boolean, value?: PromiseType, color?: string }): Promise<PromiseType> => {
   addSeparator(output);
-  
+
   output.append(new Text(`${message}: `));
 
   let i = document.createElement('input');
@@ -142,10 +142,10 @@ const consoleInput = async<PromiseType>(message: string, keydownHandler: (e: Key
     i.addEventListener("keydown", function (e) {
       if (!(e.metaKey || e.ctrlKey)) {
         const { value, done, color } = keydownHandler(e, i);
-        if (done && !isNaN(value)) {
-          i.before(createColoredSpan(value, String(color)));
+        if (done) {
+          i.before(createColoredSpan(String(value), String(color)));
           output.removeChild(i);
-          resolve(value)
+          resolve(value);
         }
       }
     }, false);
@@ -177,9 +177,9 @@ export const readLineConsole = async (message: string): Promise<string> => {
   });
 }
 
-const readNumberConsole = async (message: string, validation: (str: string) => number, checks?: (e: KeyboardEvent, value: string) => void): Promise<number> => {
+const readNumberConsole = async (message: string, validation: (str: string) => number, checks?: (e: KeyboardEvent, value: string) => boolean): Promise<number> => {
   return await consoleInput<number>(message, function (e, input) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !isNaN(validation(input.value))) {
       return {
         done: true,
         value: validation(input.value),
@@ -191,11 +191,13 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
       e.preventDefault();
     }
 
+    if (checks && !checks(e, input.value)) {
+      return { done: false };
+    }
+
     if ((isNaN(+e.key) && e.key.length < 2 || e.key == " ") && !(e.key == "-")) {
       e.preventDefault();
     }
-
-    checks && checks(e, input.value);
 
     return { done: false };
   });
@@ -208,7 +210,10 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
  * @returns {Promise<number>}
  */
 export const readIntConsole = async (message: string): Promise<number> => {
-  return await readNumberConsole(message, (str) => parseInt(str));
+  return await readNumberConsole(
+    message, 
+    (str) => parseInt(str, 10)
+  );
 }
 
 /**
@@ -218,11 +223,11 @@ export const readIntConsole = async (message: string): Promise<number> => {
  * @returns {Promise<number>}
  */
 export const readFloatConsole = async (message: string): Promise<number> => {
-  return await readNumberConsole(message, (str) => parseFloat(str), (e, value) => {
-    if (e.key === "." && value.split('.').length <= 1) {
-      return { done: false };
-    }
-  })
+  return await readNumberConsole(
+    message,
+    (str) => parseFloat(str),
+    (e, value) => !(e.key === "." && value.split('.').length <= 1)
+  );
 }
 
 /**
