@@ -1,4 +1,4 @@
-import { add, remove } from './index.js';
+import { add, remove, checkColor } from './index.js';
 /**
  * The base shape that all other shapes inherit from
  */
@@ -53,19 +53,35 @@ export class baseObj {
    * @returns {this}
      */
     setColor(color) {
-        this._color = color;
+        if (!checkColor(color)) {
+            console.warn(`Your color of ${color} is not a valid color`);
+        }
+        this.color = checkColor(color) ? color : "black";
         return this;
     }
+    /**
+     * Set whether to draw outline and the outline color and width
+     * @param {boolean} show boolean to show/hide the outline
+     * @param {string} color the new outline color
+     * @param {number} width the new outline width
+     * @returns {this}
+     */
     setOutline(show, color, width) {
-        this._outline = show;
-        this._outlineColor = color || this._outlineColor;
-        this._outlineWidth = width || this._outlineWidth;
+        this.outline = show;
+        this.outlineColor = color || this.outlineColor;
+        this.outlineWidth = width || this.outlineWidth;
         return this;
     }
+    /**
+     * Set whether to draw outline and the outline color and width (same as setOutline)
+     * @param {boolean} show boolean to show/hide the outline
+     * @param {string} color the new outline color
+     * @param {number} width the new outline width
+     */
     setBorder(show, color, width) {
-        this._outline = show;
-        this._outlineColor = color || this._outlineColor;
-        this._outlineWidth = width || this._outlineWidth;
+        this.outline = show;
+        this.outlineColor = color || this.outlineColor;
+        this.outlineWidth = width || this.outlineWidth;
         return this;
     }
     /**
@@ -74,7 +90,7 @@ export class baseObj {
    * @returns {this}
      */
     setOutlineColor(color) {
-        this._outlineColor = color;
+        this.outlineColor = color;
         return this;
     }
     /**
@@ -83,21 +99,21 @@ export class baseObj {
    * @returns {this}
      */
     setBorderColor(color) {
-        this._outlineColor = color;
+        this.outlineColor = color;
         return this;
     }
     /**
- * Sets the width of the shape's outline to `width`
- * @param {number} width the new widthoo of the outline
-* @returns {this}
- */
+     * Sets the width of the shape's outline to `width`
+     * @param {number} width the new widthoo of the outline
+     * @returns {this}
+     */
     setOutlineWidth(width) {
         this._outlineWidth = width;
         return this;
     }
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
-     * @param {number} width the new widthoo of the outline
+     * @param {number} width the new width of the outline
    * @returns {this}
      */
     setBorderWidth(width) {
@@ -149,7 +165,10 @@ export class baseObj {
      * @type {string}
      */
     set outlineColor(v) {
-        this._outlineColor = v;
+        if (!checkColor(v)) {
+            console.warn(`Your color of ${v} is not a valid color`);
+        }
+        this._outlineColor = checkColor(v) ? v : "black";
     }
     get outlineColor() {
         return this._outlineColor;
@@ -159,7 +178,7 @@ export class baseObj {
      * @type {string}
      */
     set borderColor(v) {
-        this._outlineColor = v;
+        this.outlineColor = v;
     }
     get borderColor() {
         return this._outlineColor;
@@ -266,7 +285,10 @@ export class baseObj {
      * @type {string}
      */
     set color(v) {
-        this._color = v;
+        if (!checkColor(v)) {
+            console.warn(`Your color of ${v} is not a valid color`);
+        }
+        this._color = checkColor(v) ? v : "black";
     }
     get color() {
         return this._color;

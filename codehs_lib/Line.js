@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint, lineDistance } from './index.js';
+import { baseObj, ctx, rotatePoint, lineDistance, checkColor } from './index.js';
 /**
  * The Line shape
  */
@@ -19,6 +19,10 @@ export class Line extends baseObj {
         this._x2 = x2;
         this._y2 = y2;
         this.color = color || "black";
+        if (color && !checkColor(color)) {
+            console.warn(`Your color of ${color} is not a valid color`);
+            this.color = "black";
+        }
         this._width = width || 2;
         this.type = 'Line';
     }
@@ -96,6 +100,15 @@ export class Line extends baseObj {
         this._y2 = y;
         return this;
     }
+    /**
+     * Sets the Line's to the start position (`x1`, `y1`)
+     * @param {number} x1 new x-coordinate of the shape
+     * @param {number} y1 new y-coordinate of the shape
+   * @returns {this}
+     */
+    setPosition(x1, y1) {
+        return this.setStartpoint(x1, y1);
+    }
     draw() {
         if (this.outline) {
             ctx.save();
@@ -127,5 +140,4 @@ export class Line extends baseObj {
         return -this._width / 2 - oW < x && x < this._width / 2 + oW && -oW < y && y < length + oW;
     }
 }
-;
 //# sourceMappingURL=Line.js.map

@@ -22,10 +22,10 @@ export class Color extends String {
     if (blue < 0 || blue > 255) {
       console.warn('The blue should be between 0 and 255')
     }
-    if (alpha && ( alpha < 0 || alpha > 1)) {
+    if (alpha && (alpha < 0 || alpha > 1)) {
       console.warn('The alpha should be between 0 and 1')
     }
-    super(`rgb${alpha ? 'a': ''}(${red}, ${green}, ${blue}${alpha ? `, ${alpha}`:''})`);
+    super(`rgb${alpha ? 'a' : ''}(${red}, ${green}, ${blue}${alpha ? `, ${alpha}` : ''})`);
   }
 
   /**
@@ -1235,4 +1235,18 @@ export class Color extends String {
   static randomBlue(): string {
     return `#1010${Randomizer.randomHex(32, 255)}`
   }
+}
+
+/**
+ * Checks if a string is a color
+ * @param {string} color color to check
+ * @returns {boolean}
+ * @function
+ */
+export const checkColor = (color: string): boolean => {
+  const hexColor = /^#[a-f0-9]{6}([a-f0-9]{2})?$/;
+  const rgbColor = /^rgba?\(([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5]))(,\s?(1|0(.\d+)?))?\)$/;
+  const hslColor = /^hsla?\((3([0-5]\d|60)|[0-2]?(\d)?\d),\s?((100|\d?\d)%),\s?((100|\d?\d)%)(,\s?(1|0(.\d+)?))?\)$/;
+
+  return hexColor.test(color) || rgbColor.test(color) || hslColor.test(color) || Color.hasOwnProperty(color);
 }

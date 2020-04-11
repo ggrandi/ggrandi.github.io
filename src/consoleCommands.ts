@@ -21,8 +21,18 @@ const addSeparator = (pre: HTMLPreElement): void => {
 }
 
 /**
+ * Clears the output console
+ * @returns {void}
+ */
+export const clearConsole = (): void => {
+  while (output.lastChild) {
+    output.removeChild(output.lastChild);
+  }
+};
+
+/**
  * logs any argument passed to the console
- * @param {any[]} args arguments to print
+ * @param {...*} args arguments to print
  * @returns {void}
  * @function
  */
@@ -62,27 +72,27 @@ export const println = (...args: Array<any>): void => {
 
 /**
  * Returns the user's answer to the prompt as a string
- * @param {string} prompt the prompt to ask the user
+ * @param {string} message the prompt to ask the user
  * @function
  * @returns {string}
  */
-export const readLine = (p: string): string => {
-  return String(prompt(p));
+export const readLine = (message: string): string => {
+  return String(prompt(message));
 }
 
 /**
  * Returns the user's answer to the prompt as an integer
- * @param {string} prompt the prompt to ask the user
+ * @param {string} message the prompt to ask the user
  * @function
  * @returns {number}
  */
-export const readInt = (p: string): number => {
+export const readInt = (message: string): number => {
   let ans: number;
-  if (ans = parseInt(prompt(p) || "", 10)) {
+  if (Boolean(ans = parseInt(prompt(message) || "", 10))) {
     return ans;
   }
   for (let i = 0; i < 100; i++) {
-    if (ans = parseInt(prompt("Please enter an Integer. " + p) || ""), 10) {
+    if (Boolean(ans = parseInt(prompt("Please enter an Integer. " + message) || "", 10))) {
       return ans;
     }
   }
@@ -91,17 +101,17 @@ export const readInt = (p: string): number => {
 
 /**
  * Returns the user's answer to the prompt as a float
- * @param {string} prompt the prompt to ask the user
+ * @param {string} message the prompt to ask the user
  * @function
  * @returns {number}
  */
-export const readFloat = (p: string): number => {
+export const readFloat = (message: string): number => {
   let ans: number;
-  if (ans = parseFloat(prompt(p) || "")) {
+  if (Boolean(ans = parseFloat(prompt(message) || ""))) {
     return ans;
   }
   for (let i = 0; i < 100; i++) {
-    if (ans = parseFloat(prompt("Please enter an Integer. " + p) || "")) {
+    if (Boolean(ans = parseFloat(prompt("Please enter an Integer. " + message) || ""))) {
       return ans;
     }
   }
@@ -110,45 +120,84 @@ export const readFloat = (p: string): number => {
 
 /**
  * Returns the user's answer to the prompt as a boolean
- * @param {string} prompt the prompt to ask the user
+ * @param {string} message the prompt to ask the user
  * @param {string} y the yes string
  * @param {string} n the no string
  * @function
  * @returns {boolean}
  */
-export const readBoolean = (p: string, y: string = "y", n: string = "n"): boolean => {
+export const readBoolean = (message: string, y = "y", n = "n"): boolean => {
   let ans: string | null;
-  if ((ans = prompt(`${p} (${y}|${n})`)) === y || ans === n) {
+  if ((ans = prompt(`${message} (${y}|${n})`)) === y || ans === n) {
     return ans === y;
   }
   for (let i = 0; i < 100; i++) {
-    if ((ans = prompt(`Please enter ${p} (${y}|${n})`)) === y || ans === n) {
+    if ((ans = prompt(`Please enter ${message} (${y}|${n})`)) === y || ans === n) {
       return ans === y;
     }
   }
   return false;
 };
 
-const consoleInput = async<PromiseType>(message: string, keydownHandler: (e: KeyboardEvent, input: HTMLInputElement) => { done: boolean, value?: PromiseType, color?: string }): Promise<PromiseType> => {
+/**
+ * Use this function to create your own console inputs if they are not supported by the library
+ * @param {string} message the message to display
+ * @param {function} submitHandler function to handle the submit
+ * @param {string} inputType the type of the input
+ * @param {boolean | undefined} submitButton whether to show a submit button or not
+ * @function
+ * @async
+ */
+export const consoleInput = async<PromiseType>(message: string, submitHandler: (input: HTMLInputElement, e: KeyboardEvent | MouseEvent) => { done: boolean, value?: PromiseType, color?: string }, inputType: string, submitButton?: boolean): Promise<PromiseType> => {
   addSeparator(output);
 
   output.append(new Text(`${message}: `));
 
   let i = document.createElement('input');
   i.className = 'consoleInput';
+  i.type = inputType;
+  i.value = "";
   output.append(i);
 
-  let p = new Promise<PromiseType>((resolve, reject) => {
-    i.addEventListener("keydown", function (e) {
-      if (!(e.metaKey || e.ctrlKey)) {
-        const { value, done, color } = keydownHandler(e, i);
-        if (done) {
-          i.before(createColoredSpan(String(value), String(color)));
-          output.removeChild(i);
-          resolve(value);
+  let submit: HTMLInputElement
+  if (submitButton) {
+    submit = document.createElement('input');
+    submit.style.marginLeft = "10px";
+    submit.className = 'consoleInput';
+    submit.type = "button";
+    submit.value = "Submit";
+    output.append(submit);
+  }
+
+  let p = new Promise<PromiseType>((resolve) => {
+    if (submitButton) {
+      i.addEventListener("change", () => {
+        submit.value = `Submit: ${i.value}`;
+      });
+
+      submit.addEventListener("click", function (e) {
+        if (!(e.metaKey || e.ctrlKey)) {
+          const { value, done, color } = submitHandler(i, e);
+          if (done) {
+            i.before(createColoredSpan(String(value), String(color)));
+            output.removeChild(i);
+            output.removeChild(submit);
+            resolve(value);
+          }
         }
-      }
-    }, false);
+      }, false);
+    } else {
+      i.addEventListener("keydown", function (e) {
+        if (!(e.metaKey || e.ctrlKey)) {
+          const { value, done, color } = submitHandler(i, e);
+          if (done) {
+            i.before(createColoredSpan(String(value), String(color)));
+            output.removeChild(i);
+            resolve(value);
+          }
+        }
+      }, false);
+    }
   });
 
   i.focus();
@@ -163,10 +212,11 @@ const consoleInput = async<PromiseType>(message: string, keydownHandler: (e: Key
  * @param {string} message question to ask
  * @function
  * @returns {Promise<string>}
+ * @async
  */
 export const readLineConsole = async (message: string): Promise<string> => {
-  return await consoleInput<string>(message, function (e, input) {
-    if (e.key === "Enter") {
+  return await consoleInput<string>(message, function (input, e) {
+    if ((e as KeyboardEvent).key === "Enter") {
       return {
         done: true,
         value: input.value,
@@ -174,12 +224,12 @@ export const readLineConsole = async (message: string): Promise<string> => {
       }
     }
     return { done: false };
-  });
+  }, "text");
 }
 
-const readNumberConsole = async (message: string, validation: (str: string) => number, checks?: (e: KeyboardEvent, value: string) => boolean): Promise<number> => {
-  return await consoleInput<number>(message, function (e, input) {
-    if (e.key === "Enter" && !isNaN(validation(input.value))) {
+const readNumberConsole = async (message: string, validation: (str: string) => number, checks?: (value: string, e: KeyboardEvent) => boolean): Promise<number> => {
+  return await consoleInput<number>(message, function (input, e) {
+    if ((e as KeyboardEvent).key === "Enter" && !isNaN(validation(input.value))) {
       return {
         done: true,
         value: validation(input.value),
@@ -187,20 +237,20 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
       }
     }
 
-    if (e.key === "-" && input.value.length > 0) {
+    if ((e as KeyboardEvent).key === "-" && input.value.length > 0) {
       e.preventDefault();
     }
 
-    if (checks && !checks(e, input.value)) {
+    if (checks && !checks(input.value, e as KeyboardEvent)) {
       return { done: false };
     }
 
-    if ((isNaN(+e.key) && e.key.length < 2 || e.key == " ") && !(e.key == "-")) {
+    if ((isNaN(+(e as KeyboardEvent).key) && (e as KeyboardEvent).key.length < 2 || (e as KeyboardEvent).key === " ") && !((e as KeyboardEvent).key === "-")) {
       e.preventDefault();
     }
 
     return { done: false };
-  });
+  }, "number");
 }
 
 /**
@@ -208,10 +258,11 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
  * @param {string} message question to ask
  * @function
  * @returns {Promise<number>}
+ * @async
  */
 export const readIntConsole = async (message: string): Promise<number> => {
   return await readNumberConsole(
-    message, 
+    message,
     (str) => parseInt(str, 10)
   );
 }
@@ -221,40 +272,38 @@ export const readIntConsole = async (message: string): Promise<number> => {
  * @param {string} message question to ask
  * @function
  * @returns {Promise<number>}
+ * @async
  */
 export const readFloatConsole = async (message: string): Promise<number> => {
   return await readNumberConsole(
     message,
     (str) => parseFloat(str),
-    (e, value) => !(e.key === "." && value.split('.').length <= 1)
+    (value, e) => !(e.key === "." && value.split('.').length <= 1)
   );
 }
 
 /**
  * Ask a question in the console and return a boolean value
  * @param {string} message question to ask
- * @param y the yes value
- * @param n the no value
  * @returns {Promise<boolean>}
  * @function
+ * @async
  */
-export const readBooleanConsole = async (message: string, y = "y", n = "n"): Promise<boolean> => {
-  y = y[0];
-  n = n[0];
+export const readBooleanConsole = async (message: string): Promise<boolean> => {
+  return await consoleInput<boolean>(message, function (input) {
+    return { done: true, color: "red", value: input.checked };
+  }, "checkbox", true)
+};
 
-  return await consoleInput<boolean>(`${message} (${y}|${n})`, function (e, input) {
-    if (e.key === "Enter") {
-      return {
-        done: true,
-        value: y === input.value,
-        color: 'red',
-      }
-    }
-
-    if (e.key.length <= 1 && (!(e.key === y || e.key === n) || input.value.length !== 0)) {
-      e.preventDefault()
-    }
-
-    return { done: false };
-  });
+/**
+ * Asks the user to enter a color in the console
+ * @param {string} message the message to ask
+ * @function
+ * @async
+ * @returns {Promise<string>}
+ */
+export const readColorConsole = async (message: string): Promise<string> => {
+  return await consoleInput<string>(message, function (input) {
+    return { done: true, color: input.value, value: input.value };
+  }, "color", true)
 }

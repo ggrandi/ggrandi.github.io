@@ -35,5 +35,11 @@ export declare class Randomizer {
      * @returns {string}
      */
     static randomHex(min: number, max: number): string;
+    /**
+     * Returns a random value from the array
+     * @param {Array<ArrayType>} array The array to extract a value from
+     * @returns {ArrayType}
+     */
+    static randomArrayValue<ArrayType>(array: ArrayType[]): ArrayType;
 }
 //# sourceMappingURL=Randomizer.d.ts.map

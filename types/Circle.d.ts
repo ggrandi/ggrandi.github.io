@@ -42,7 +42,7 @@ export declare class Circle extends baseObj {
      * @param {number} radius the new radius
      * @returns {this}
      */
-    setRadius(r: number): this;
+    setRadius(radius: number): this;
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }

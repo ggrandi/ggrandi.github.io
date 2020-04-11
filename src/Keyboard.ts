@@ -1,7 +1,7 @@
 /**
  * CodeHS's Keyboard object. If possible use the built-in javascript 
  * KeyboardEvent.key or KeyboardEvent.code in your handler
- * (Included for compatibilty with CodeHS)
+ * (Included for compatibility with CodeHS)
  * @deprecated
  */
 export class Keyboard {
@@ -20,7 +20,7 @@ export class Keyboard {
   static get ALT(): string {
     return "Alt";
   }
-  
+
   /**
    * The key for BACKSPACE
    * @type {string}
@@ -28,7 +28,7 @@ export class Keyboard {
   static get BACKSPACE(): string {
     return "Backspace";
   }
-  
+
   /**
    * The key for CAPS LOCK
    * @type {string}
@@ -36,7 +36,7 @@ export class Keyboard {
   static get CAPS_LOCK(): string {
     return "";
   }
-  
+
   /**
    * The key for CTRL
    * @type {string}
@@ -44,7 +44,7 @@ export class Keyboard {
   static get CTRL(): string {
     return "Control";
   }
-  
+
   /**
    * The key for DOWN
    * @type {string}
@@ -52,7 +52,7 @@ export class Keyboard {
   static get DOWN(): string {
     return "ArrowDown";
   }
-  
+
   /**
    * The key for ENTER
    * @type {string}
@@ -60,7 +60,7 @@ export class Keyboard {
   static get ENTER(): string {
     return "Enter";
   }
-  
+
   /**
    * The key for LEFT
    * @type {string}
@@ -68,7 +68,7 @@ export class Keyboard {
   static get LEFT(): string {
     return "ArrowLeft";
   }
-  
+
   /**
    * The key for LEFT COMMAND
    * @type {string}
@@ -76,7 +76,7 @@ export class Keyboard {
   static get LEFT_COMMAND(): string {
     return "Meta";
   }
-  
+
   /**
    * The key for LEFT WINDOW
    * @type {string}
@@ -84,7 +84,7 @@ export class Keyboard {
   static get LEFT_WINDOW(): string {
     return "Meta";
   }
-  
+
   /**
    * The key for RIGHT
    * @type {string}
@@ -92,7 +92,7 @@ export class Keyboard {
   static get RIGHT(): string {
     return "ArrowRight";
   }
-  
+
   /**
    * The key for RIGHT COMMAND
    * @type {string}
@@ -100,7 +100,7 @@ export class Keyboard {
   static get RIGHT_COMMAND(): string {
     return "Meta";
   }
-  
+
   /**
    * The key for RIGHT WINDOW
    * @type {string}
@@ -108,7 +108,7 @@ export class Keyboard {
   static get RIGHT_WINDOW(): string {
     return "Meta";
   }
-  
+
   /**
    * The key for SELECT
    * @type {string}
@@ -116,7 +116,7 @@ export class Keyboard {
   static get SELECT(): string {
     return "Meta";
   }
-  
+
   /**
    * The key for SHIFT
    * @type {string}
@@ -124,7 +124,7 @@ export class Keyboard {
   static get SHIFT(): string {
     return "Shift";
   }
-  
+
   /**
    * The key for SPACE
    * @type {string}
@@ -132,7 +132,7 @@ export class Keyboard {
   static get SPACE(): string {
     return " ";
   }
-  
+
   /**
    * The key for TAB
    * @type {string}
@@ -140,7 +140,7 @@ export class Keyboard {
   static get TAB(): string {
     return "Tab";
   }
-  
+
   /**
    * The key for UP
    * @type {string}
@@ -148,7 +148,7 @@ export class Keyboard {
   static get UP(): string {
     return "ArrowUp";
   }
-  
+
 }
 
 

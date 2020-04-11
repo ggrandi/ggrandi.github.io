@@ -1,5 +1,10 @@
 import { baseObj, ctx, rotatePoint } from './index.js';
 
+export const checkFont = (font: string): boolean => {
+  const fontCheck = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
+  return fontCheck.test(font);
+}
+
 /**
  * The Text shape
  */
@@ -25,10 +30,11 @@ export class Text extends baseObj {
     this.y = y === 0 ? 0 : y || -1000;
 
     this._txt = txt;
-    if (!/(\d)+px (\w)+/g.test(font)) {
+    font = font.replace(/pt/i, "px");
+    if (!checkFont(font)) {
       console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
     }
-    this._font = /(\d)+px (\w)+/g.test(font) ? font : '20px Arial';
+    this._font = checkFont(font) ? font : '20px Arial';
 
     ctx.font = this._font;
     this._w = ctx.measureText(txt).width;
@@ -43,8 +49,9 @@ export class Text extends baseObj {
    */
   set font(v: string) {
     this._font = v;
-    this._font = /(\d)+px (\w)+/g.test(v) ? v : '20px Arial';
-    if (!/(\d)+px (\w)+/g.test(v)) {
+    v = v.replace(/pt/i, "px");
+    this._font = checkFont(v) ? v : '20px Arial';
+    if (!checkFont(v)) {
       console.warn(`Please pass a valid font to Text. Your font \`${v}\` should match \`\${size}px \${fontname}\``);
     }
 
@@ -63,8 +70,9 @@ export class Text extends baseObj {
    * @returns {this}
    */
   setFont(font: string): this {
-    this._font = /(\d)+px (\w)+/g.test(font) ? font : '20px Arial';
-    if (!/(\d)+px (\w)+/g.test(font)) {
+    font = font.replace(/pt/i, "px");
+    this._font = checkFont(font) ? font : '20px Arial';
+    if (!checkFont(font)) {
       console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
     }
 
@@ -83,7 +91,7 @@ export class Text extends baseObj {
     this._txt = v;
 
     ctx.font = this._font;
-    this._w = ctx.measureText(this._txt).width;
+    this._w = ctx.measureText(v).width;
     this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
   }
 
@@ -105,11 +113,7 @@ export class Text extends baseObj {
    * @returns {this}
    */
   setText(txt: string): this {
-    this._txt = txt;
-
-    ctx.font = this._font;
-    this._w = ctx.measureText(this._txt).width;
-    this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
+    this.text = txt;
 
     return this;
   }
@@ -157,7 +161,7 @@ export class Text extends baseObj {
    * @returns {this}
    */
   setHeight(height: number): this {
-    this.font = `${height}px ${this._font.split('px ')[1]}`;
+    this.font = this.font.replace(/\d+/g, String(height));
 
     return this;
   }

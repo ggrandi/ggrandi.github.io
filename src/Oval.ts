@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
 
 /**
  * The oval shape
@@ -6,7 +6,7 @@ import { baseObj, ctx, rotatePoint } from "./index.js";
 export class Oval extends baseObj {
   private _width: number;
   private _height: number;
-  
+
   constructor(width: number, height: number);
   constructor(width: number, height: number, x: number, y: number);
   constructor(width: number, height: number, x: number, y: number, color: string);
@@ -23,11 +23,15 @@ export class Oval extends baseObj {
 
     this._width = width;
     this._height = height;
-    
-    this.x = x === 0 ? 0: x || -1000;
-    this.y = y === 0 ? 0: y || -1000;
+
+    this.x = x === 0 ? 0 : x || -1000;
+    this.y = y === 0 ? 0 : y || -1000;
 
     this.color = color || 'black';
+    if (color && !checkColor(color)) {
+      console.warn(`Your color of ${color} is not a valid color`)
+      this.color = "black";
+    }
   }
 
   /**
@@ -61,7 +65,7 @@ export class Oval extends baseObj {
     this._height = v;
   }
 
-   get height(): number {
+  get height(): number {
     return this._height;
   }
 
@@ -70,9 +74,9 @@ export class Oval extends baseObj {
    * @param {number} height the new height
    * @returns {this}
    */
-  setHeight(v: number): this {
-    this._height = v;
-    
+  setHeight(height: number): this {
+    this._height = height;
+
     return this;
   }
 
@@ -109,9 +113,9 @@ export class Oval extends baseObj {
       x = point.x;
       y = point.y;
     }
-    
-    const oW = this.outline ? this.outlineWidth / 2: 0;
-    
+
+    const oW = this.outline ? this.outlineWidth / 2 : 0;
+
     return (x ** 2) / (this._width / 2 + oW) ** 2 + (y ** 2) / (this._height / 2 + oW) ** 2 <= 1;
   }
 

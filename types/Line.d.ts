@@ -56,6 +56,13 @@ export declare class Line extends baseObj {
    * @returns {this}
      */
     setEndpoint(x: number, y: number): this;
+    /**
+     * Sets the Line's to the start position (`x1`, `y1`)
+     * @param {number} x1 new x-coordinate of the shape
+     * @param {number} y1 new y-coordinate of the shape
+   * @returns {this}
+     */
+    setPosition(x1: number, y1: number): this;
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }

@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint } from './index.js';
+import { baseObj, ctx, rotatePoint, checkColor } from './index.js';
 /**
  * The rectangle shape
  */
@@ -19,11 +19,19 @@ export class Rectangle extends baseObj {
         this.x = x === 0 ? 0 : x || -1000;
         this.y = y === 0 ? 0 : y || -1000;
         this.color = color || "black";
+        if (color && !checkColor(color)) {
+            console.warn(`Your color of ${color} is not a valid color`);
+            this.color = "black";
+        }
         this.rotation = rotation || 0;
         this._width = width;
         this._height = height;
         this.outline = outline || false;
         this.outlineColor = outlineColor || 'black';
+        if (outlineColor && !checkColor(outlineColor)) {
+            console.warn(`Your outline color of ${outlineColor} is not a valid color`);
+            this.outlineColor = "black";
+        }
         this.type = 'Rectangle';
     }
     /**
@@ -91,5 +99,4 @@ export class Rectangle extends baseObj {
         return -this._width / 2 - oW < x && x < this._width / 2 + oW && -this._height / 2 - oW < y && y < this._height / 2 + oW;
     }
 }
-;
 //# sourceMappingURL=Rectangle.js.map

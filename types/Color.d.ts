@@ -766,4 +766,11 @@ export declare class Color extends String {
      */
     static randomBlue(): string;
 }
+/**
+ * Checks if a string is a color
+ * @param {string} color color to check
+ * @returns {boolean}
+ * @function
+ */
+export declare const checkColor: (color: string) => boolean;
 //# sourceMappingURL=Color.d.ts.map

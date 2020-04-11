@@ -39,21 +39,8 @@ export declare class baseObj {
    * @returns {this}
      */
     setColor(color: string): this;
-    /**
-     * Set whether to draw outline and the outline color and width
-     * @param {boolean} show boolean to show/hide the outline
-     * @param {string} color the new outline color
-     * @param {number} width the new outline width
-   * @returns {this}
-     */
     setOutline(show: boolean): this;
     setOutline(show: boolean, color: string, width: number): this;
-    /**
-     * Set whether to draw outline and the outline color and width (same as setOutline)
-     * @param {boolean} show boolean to show/hide the outline
-     * @param {string} color the new outline color
-     * @param {number} width the new outline width
-     */
     setBorder(show: boolean): this;
     setBorder(show: boolean, color: string, width: number): this;
     /**
@@ -69,14 +56,14 @@ export declare class baseObj {
      */
     setBorderColor(color: string): this;
     /**
- * Sets the width of the shape's outline to `width`
- * @param {number} width the new widthoo of the outline
-* @returns {this}
- */
+     * Sets the width of the shape's outline to `width`
+     * @param {number} width the new widthoo of the outline
+     * @returns {this}
+     */
     setOutlineWidth(width: number): this;
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
-     * @param {number} width the new widthoo of the outline
+     * @param {number} width the new width of the outline
    * @returns {this}
      */
     setBorderWidth(width: number): this;

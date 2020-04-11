@@ -1,18 +1,15 @@
 import { baseObj } from "./index.js";
 /**
- * The enum for arcmode to set (DEGREES | RADIANS)
+ * The enum to set the arc's mode
  * @enum {number}
  * @readonly
+ * @property {number<{0}>} DEGREES the value for degrees
+ * @property {number<{1}>} RADIANS the value for radians
  */
 export declare enum ArcMode {
     DEGREES = 0,
     RADIANS = 1
 }
-/**
- * @typedef {Object} Angle
- * @property {number} startingAngle - The starting angle in radians
- * @property {number} endingAngle - The ending angle in radians
- */
 /**
  * The Arc shape
  */
@@ -69,7 +66,7 @@ export declare class Arc extends baseObj {
     setAngle(startingAngle: number, endingAngle: number): this;
     /**
      * Returns the angle of the arc
-     * @returns {Angle}
+     * @returns {Object<{startingAngle: number, endingAngle: number}>}
      */
     getAngle(): {
         startingAngle: number;

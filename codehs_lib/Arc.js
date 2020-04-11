@@ -1,19 +1,16 @@
-import { baseObj, ctx, rotatePoint, lineDistance } from "./index.js";
+import { baseObj, ctx, rotatePoint, lineDistance, } from "./index.js";
 /**
- * The enum for arcmode to set (DEGREES | RADIANS)
+ * The enum to set the arc's mode
  * @enum {number}
  * @readonly
+ * @property {number<{0}>} DEGREES the value for degrees
+ * @property {number<{1}>} RADIANS the value for radians
  */
 export var ArcMode;
 (function (ArcMode) {
     ArcMode[ArcMode["DEGREES"] = 0] = "DEGREES";
     ArcMode[ArcMode["RADIANS"] = 1] = "RADIANS";
 })(ArcMode || (ArcMode = {}));
-/**
- * @typedef {Object} Angle
- * @property {number} startingAngle - The starting angle in radians
- * @property {number} endingAngle - The ending angle in radians
- */
 /**
  * The Arc shape
  */
@@ -28,13 +25,13 @@ export class Arc extends baseObj {
      * @param {number | undefined} y the y-position of the arc
      * @param {boolean | undefined} counterClockwise whether the arc is counterclockwise or not
      */
-    constructor(radius, starting, ending, mode, x, y, counterClockwise) {
+    constructor(radius, startingAngle, endingAngle, mode, x, y, counterClockwise) {
         super();
         this.x = x === 0 ? 0 : x || -1000;
         this.y = y === 0 ? 0 : y || -1000;
         this._radius = radius;
-        this._sa = mode === ArcMode.DEGREES ? starting * Math.PI / 180 : starting;
-        this._ea = mode === ArcMode.DEGREES ? ending * Math.PI / 180 : ending;
+        this._sa = mode === ArcMode.DEGREES ? startingAngle * Math.PI / 180 : startingAngle;
+        this._ea = mode === ArcMode.DEGREES ? endingAngle * Math.PI / 180 : endingAngle;
         this._cc = counterClockwise || false;
         this.type = 'Arc';
     }
@@ -109,7 +106,7 @@ export class Arc extends baseObj {
     }
     /**
      * Returns the angle of the arc
-     * @returns {Angle}
+     * @returns {Object<{startingAngle: number, endingAngle: number}>}
      */
     getAngle() {
         return {

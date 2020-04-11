@@ -56,4 +56,12 @@ export class Randomizer {
     return c.length > length ? c : c.padStart(length, '0');
   }
 
-};
+  /**
+   * Returns a random value from the array
+   * @param {Array<ArrayType>} array The array to extract a value from
+   * @returns {ArrayType}
+   */
+  static randomArrayValue<ArrayType>(array: ArrayType[]): ArrayType {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+}

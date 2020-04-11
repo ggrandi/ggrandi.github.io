@@ -1,17 +1,5 @@
 import { Rectangle, ctx, gcf } from './index.js';
 /**
- * @typedef AspectRatio
- * @property {number} w the width
- * @property {number} h the height
- */
-/**
- * @typedef ImageClip
- * @property {number} sx
- * @property {number} sy
- * @property {number} swidth
- * @property {number} sheight
- */
-/**
  * The Image from the web shape
  */
 export class WebImage extends Rectangle {
@@ -33,7 +21,7 @@ export class WebImage extends Rectangle {
         this._img = new Image();
         this._img.src = src;
         this._img.onload = (e) => {
-            let { naturalHeight, naturalWidth } = e.srcElement;
+            let { naturalHeight, naturalWidth } = e.target;
             if (this.width === 0) {
                 this.width = naturalWidth;
                 this.height = naturalHeight;
@@ -60,7 +48,7 @@ export class WebImage extends Rectangle {
     /**
      * Sets the image to have a width of `width` while maintaining the aspect ratio
      * @param {number} width the new width
-   * @returns {this}
+     * @returns {this}
      */
     setAspectWidth(width) {
         let { w, h } = this.aspectRatio;
@@ -71,7 +59,7 @@ export class WebImage extends Rectangle {
     /**
      * Sets the image to have a height of `height` while maintaining the aspect ratio
      * @param {number} height the new height
-   * @returns {this}
+     * @returns {this}
      */
     setAspectHeight(height) {
         let { w, h } = this.aspectRatio;
@@ -82,7 +70,7 @@ export class WebImage extends Rectangle {
     /**
      * the aspect ratio of the image
      * @readonly
-   * @type {AspectRatio}
+     * @type {Object<{ w: number, h: number }>}
      */
     get aspectRatio() {
         let { naturalWidth, naturalHeight } = this._img;
@@ -99,7 +87,7 @@ export class WebImage extends Rectangle {
      * @param {number} sy the y-position of the clip
      * @param {number} swidth the width of the clip
      * @param {number} sheight the height of the clip
-   * @returns {this}
+     * @returns {this}
      */
     setClip(sx, sy, swidth, sheight) {
         this._sx = sx;
@@ -110,7 +98,7 @@ export class WebImage extends Rectangle {
     }
     /**
      * Returns the clip of the image
-     * @returns {ImageClip}
+     * @returns {Object<{ sx: number, sy: number, swidth: number, sheight: number }>}
      */
     getClip() {
         return { sx: this._sx, sy: this._sy, swidth: this._sw, sheight: this._sh };
@@ -125,5 +113,4 @@ export class WebImage extends Rectangle {
         ctx.restore();
     }
 }
-;
 //# sourceMappingURL=WebImage.js.map

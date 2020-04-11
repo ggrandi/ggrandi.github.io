@@ -31,7 +31,7 @@ export declare class Oval extends baseObj {
      * @param {number} height the new height
      * @returns {this}
      */
-    setHeight(v: number): this;
+    setHeight(height: number): this;
     /**
      * Set the width and height of the oval
      * @param {number} width the new width of the oval

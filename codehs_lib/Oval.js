@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
 /**
  * The oval shape
  */
@@ -18,6 +18,10 @@ export class Oval extends baseObj {
         this.x = x === 0 ? 0 : x || -1000;
         this.y = y === 0 ? 0 : y || -1000;
         this.color = color || 'black';
+        if (color && !checkColor(color)) {
+            console.warn(`Your color of ${color} is not a valid color`);
+            this.color = "black";
+        }
     }
     /**
      * The width of the oval
@@ -53,8 +57,8 @@ export class Oval extends baseObj {
      * @param {number} height the new height
      * @returns {this}
      */
-    setHeight(v) {
-        this._height = v;
+    setHeight(height) {
+        this._height = height;
         return this;
     }
     /**

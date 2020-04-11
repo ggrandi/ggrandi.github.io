@@ -1,15 +1,9 @@
 /**
- * @typedef Point
- * @property {number} x the x-coordinate
- * @property {number} y the y-coordinate
- */
-
-/**
  * Returns point (`x`, `y`) if it where rotated around (0, 0) by `radians` radians
  * @param {number} x A numeric expression for the x coordinate.
  * @param {number} y A numeric expression for the y coordinate.
  * @param {number} radians A numeric expression for the number of radians it is rotated.
- * @returns {Point}
+ * @returns {Object<{ x: number, y: number }>}
  * @function
  */
 export const rotatePoint = (x: number, y: number, radians: number): { x: number, y: number } => {
@@ -55,17 +49,17 @@ export const gcf = (a: number, b: number): number => {
  * Returns the mouse's position on the canvas
  * @param {MouseEvent} e the event to get the position from
  * @function
- * @returns {Point}
+ * @returns {Object<{ x: number, y: number }>}
  */
-export const getPosition = (e: MouseEvent) => {
-  let p = <HTMLElement>e.target;
+export const getPosition = (e: MouseEvent): { x: number, y: number } => {
+  let p = e.target as HTMLElement;
   let offsetLeft = 0;
   let offsetTop = 0;
 
   while (p.offsetParent) {
     offsetLeft += p.offsetLeft;
     offsetTop += p.offsetTop;
-    p = <HTMLElement>p.offsetParent;
+    p = p.offsetParent as HTMLElement;
   }
 
   return {

@@ -1,4 +1,4 @@
-import { baseObj, ctx, lineDistance } from './index.js';
+import { baseObj, ctx, lineDistance, checkColor } from './index.js';
 /**
  * The Circle shape
  */
@@ -17,8 +17,16 @@ export class Circle extends baseObj {
         this.x = x === 0 ? 0 : Math.abs(x || 0) || -1000;
         this.y = y === 0 ? 0 : Math.abs(y || 0) || -1000;
         this.color = color || "black";
+        if (color && !checkColor(color)) {
+            console.warn(`The color ${color} is not a valid color`);
+            this.color = "black";
+        }
         this.outline = outline || false;
-        this.outlineColor = outlineColor || 'black';
+        this.outlineColor = outlineColor || "black";
+        if (outlineColor && !checkColor(outlineColor)) {
+            console.warn(`The outline color ${outlineColor} is not a valid color`);
+            this.outlineColor = "black";
+        }
         this._radius = radius;
         this.type = 'Circle';
     }
@@ -70,8 +78,8 @@ export class Circle extends baseObj {
      * @param {number} radius the new radius
      * @returns {this}
      */
-    setRadius(r) {
-        this._radius = Math.abs(r);
+    setRadius(radius) {
+        this._radius = Math.abs(radius);
         return this;
     }
     draw() {
@@ -90,5 +98,4 @@ export class Circle extends baseObj {
         return lineDistance(this.x, this.y, x, y) < this.radius + oW;
     }
 }
-;
 //# sourceMappingURL=Circle.js.map

@@ -1,4 +1,5 @@
 import { baseObj } from './index.js';
+export declare const checkFont: (font: string) => boolean;
 /**
  * The Text shape
  */

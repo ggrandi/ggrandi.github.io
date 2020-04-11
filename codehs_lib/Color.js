@@ -1083,4 +1083,16 @@ export class Color extends String {
         return `#1010${Randomizer.randomHex(32, 255)}`;
     }
 }
+/**
+ * Checks if a string is a color
+ * @param {string} color color to check
+ * @returns {boolean}
+ * @function
+ */
+export const checkColor = (color) => {
+    const hexColor = /^#[a-f0-9]{6}([a-f0-9]{2})?$/;
+    const rgbColor = /^rgba?\(([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5]))(,\s?(1|0(.\d+)?))?\)$/;
+    const hslColor = /^hsla?\((3([0-5]\d|60)|[0-2]?(\d)?\d),\s?((100|\d?\d)%),\s?((100|\d?\d)%)(,\s?(1|0(.\d+)?))?\)$/;
+    return hexColor.test(color) || rgbColor.test(color) || hslColor.test(color) || Color.hasOwnProperty(color);
+};
 //# sourceMappingURL=Color.js.map

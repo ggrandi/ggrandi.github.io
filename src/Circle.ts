@@ -1,4 +1,4 @@
-import { baseObj, ctx, lineDistance } from './index.js';
+import { baseObj, ctx, lineDistance, checkColor } from './index.js';
 
 /**
  * The Circle shape
@@ -25,8 +25,18 @@ export class Circle extends baseObj {
     this.x = x === 0 ? 0 : Math.abs(x || 0) || -1000;
     this.y = y === 0 ? 0 : Math.abs(y || 0) || -1000;
     this.color = color || "black";
+    if (color && !checkColor(color)) {
+      console.warn(`The color ${color} is not a valid color`);
+      this.color = "black";
+    }
+
     this.outline = outline || false;
-    this.outlineColor = outlineColor || 'black';
+    this.outlineColor = outlineColor || "black";
+    if (outlineColor && !checkColor(outlineColor)) {
+      console.warn(`The outline color ${outlineColor} is not a valid color`);
+      this.outlineColor = "black";
+    }
+
     this._radius = radius;
     this.type = 'Circle';
   }
@@ -50,7 +60,7 @@ export class Circle extends baseObj {
   set diameter(v: number) {
     this._radius = Math.abs(2 * v);
   }
-  
+
   get diameter(): number {
     return 2 * this._radius;
   }
@@ -85,8 +95,8 @@ export class Circle extends baseObj {
    * @param {number} radius the new radius
    * @returns {this}
    */
-  setRadius(r: number): this {
-    this._radius = Math.abs(r);
+  setRadius(radius: number): this {
+    this._radius = Math.abs(radius);
     return this;
   }
 
@@ -103,7 +113,7 @@ export class Circle extends baseObj {
   }
 
   containsPoint(x: number, y: number): boolean {
-    const oW = this.outline ? this.outlineWidth / 2: 0;
+    const oW = this.outline ? this.outlineWidth / 2 : 0;
     return lineDistance(this.x, this.y, x, y) < this.radius + oW;
   }
-};
+}

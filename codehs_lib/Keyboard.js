@@ -1,7 +1,7 @@
 /**
  * CodeHS's Keyboard object. If possible use the built-in javascript
  * KeyboardEvent.key or KeyboardEvent.code in your handler
- * (Included for compatibilty with CodeHS)
+ * (Included for compatibility with CodeHS)
  * @deprecated
  */
 export class Keyboard {

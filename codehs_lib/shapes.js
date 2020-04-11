@@ -80,7 +80,6 @@ const main = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         shapes.forEach(s => s.draw());
     }
-    ;
     requestAnimationFrame(main);
 };
 main();
