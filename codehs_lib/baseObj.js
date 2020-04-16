@@ -108,7 +108,7 @@ export class baseObj {
      * @returns {this}
      */
     setOutlineWidth(width) {
-        this._outlineWidth = width;
+        this.outlineWidth = width;
         return this;
     }
     /**
@@ -117,7 +117,7 @@ export class baseObj {
    * @returns {this}
      */
     setBorderWidth(width) {
-        this._outlineWidth = width;
+        this.outlineWidth = width;
         return this;
     }
     /**
@@ -145,6 +145,10 @@ export class baseObj {
      * @type {number}
      */
     set outlineWidth(v) {
+        if (v < 0) {
+            console.warn(`The outline width should be positive, please fix your outline width of ${v}`);
+            v = Math.abs(v);
+        }
         this._outlineWidth = v;
     }
     get outlineWidth() {

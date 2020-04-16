@@ -1,8 +1,9 @@
 import { canvas } from "./index.js";
 
 /**
- * Set the canvas onclick method
+ * Set the canvas onclick method, use canvas.onclick instead (included for compatibility with CodeHS)
  * @function
+ * @deprecated
  * @returns {void}
  */
 export const mouseClickMethod = (func: (e: MouseEvent) => void): void => {
@@ -10,8 +11,9 @@ export const mouseClickMethod = (func: (e: MouseEvent) => void): void => {
 };
 
 /**
- * Set the canvas mousemove method 
+ * Set the canvas mousemove method, use canvas.onmousemove instead (included for compatibility with CodeHS)
  * @function
+ * @deprecated
  * @returns {void}
  */
 export const mouseMoveMethod = (func: (e: MouseEvent) => void): void => {
@@ -19,8 +21,9 @@ export const mouseMoveMethod = (func: (e: MouseEvent) => void): void => {
 };
 
 /**
- * Set the document's keydown method 
+ * Set the document's keydown method, use window.onkeydown instead (included for compatibility with CodeHS)
  * @function
+ * @deprecated
  * @returns {void}
  */
 export const keyDownMethod = (func: (e: KeyboardEvent) => void): void => {
@@ -28,8 +31,9 @@ export const keyDownMethod = (func: (e: KeyboardEvent) => void): void => {
 }
 
 /**
- * Set the document's keyup method 
+ * Set the document's keyup method, use window.onkeyup instead (included for compatibility with CodeHS)
  * @function
+ * @deprecated
  * @returns {void}
  */
 export const keyUpMethod = (func: (e: KeyboardEvent) => void): void => {

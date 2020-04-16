@@ -1,8 +1,14 @@
 import { baseObj, ctx, rotatePoint } from './index.js';
 
+const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
+
+/**
+ * Checks if a font matches a canvas font
+ * @param {string} font the font to check
+ * @returns {boolean}
+ */
 export const checkFont = (font: string): boolean => {
-  const fontCheck = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
-  return fontCheck.test(font);
+  return fontRegExp.test(font);
 }
 
 /**
@@ -26,8 +32,8 @@ export class Text extends baseObj {
   constructor(txt: string, font: string, x?: number, y?: number) {
     super();
 
-    this.x = x === 0 ? 0 : x || -1000;
-    this.y = y === 0 ? 0 : y || -1000;
+    this.x = x ?? -1000;
+    this.y = y ?? -1000;
 
     this._txt = txt;
     font = font.replace(/pt/i, "px");
@@ -38,7 +44,7 @@ export class Text extends baseObj {
 
     ctx.font = this._font;
     this._w = ctx.measureText(txt).width;
-    this._h = Number((/(\d)+/g.exec(this._font) || [0])[0])
+    this._h = Number((fontRegExp.exec(font) as RegExpExecArray)[7]);
 
     this.type = 'Text';
   }
@@ -171,13 +177,13 @@ export class Text extends baseObj {
     ctx.beginPath();
     ctx.translate(this.x + this._w / 2, this.y - this._h / 2);
     ctx.rotate(this.rotation);
-    ctx.fillStyle = this.color;
     ctx.font = this._font
-    ctx.fillText(this._txt, -this._w / 2, this._h / 2);
     if (this.outline) {
       ctx.strokeStyle = this.outlineColor;
       ctx.strokeText(this._txt, -this._w / 2, this._h / 2);
     }
+    ctx.fillStyle = this.color;
+    ctx.fillText(this._txt, -this._w / 2, this._h / 2);
     ctx.restore();
   }
 

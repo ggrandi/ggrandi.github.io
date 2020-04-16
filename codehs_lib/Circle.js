@@ -14,9 +14,9 @@ export class Circle extends baseObj {
      */
     constructor(radius, x, y, color, outline, outlineColor) {
         super();
-        this.x = x === 0 ? 0 : Math.abs(x || 0) || -1000;
-        this.y = y === 0 ? 0 : Math.abs(y || 0) || -1000;
-        this.color = color || "black";
+        this.x = x !== null && x !== void 0 ? x : -1000;
+        this.y = y !== null && y !== void 0 ? y : -1000;
+        this.color = color !== null && color !== void 0 ? color : "black";
         if (color && !checkColor(color)) {
             console.warn(`The color ${color} is not a valid color`);
             this.color = "black";
@@ -85,13 +85,13 @@ export class Circle extends baseObj {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this._radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
         if (this.outline) {
             ctx.strokeStyle = this.outlineColor;
             ctx.lineWidth = this.outlineWidth;
             ctx.stroke();
         }
+        ctx.fillStyle = this.color;
+        ctx.fill();
     }
     containsPoint(x, y) {
         const oW = this.outline ? this.outlineWidth / 2 : 0;

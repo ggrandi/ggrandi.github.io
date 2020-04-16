@@ -22,6 +22,10 @@ export class Randomizer {
    * @returns {boolean}
      */
     static nextBoolean(probability = 0.5) {
+        if (probability < 0 || probability > 1) {
+            console.warn(`The value of ${probability} is not between 1 and 0. Please pick a valid value`);
+            probability = 0.5;
+        }
         return Math.random() < probability;
     }
     /**

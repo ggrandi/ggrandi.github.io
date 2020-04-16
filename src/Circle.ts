@@ -22,9 +22,9 @@ export class Circle extends baseObj {
    */
   constructor(radius: number, x?: number, y?: number, color?: string, outline?: boolean, outlineColor?: string) {
     super();
-    this.x = x === 0 ? 0 : Math.abs(x || 0) || -1000;
-    this.y = y === 0 ? 0 : Math.abs(y || 0) || -1000;
-    this.color = color || "black";
+    this.x = x ?? -1000;
+    this.y = y ?? -1000;
+    this.color = color ?? "black";
     if (color && !checkColor(color)) {
       console.warn(`The color ${color} is not a valid color`);
       this.color = "black";
@@ -103,13 +103,13 @@ export class Circle extends baseObj {
   draw(): void {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this._radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
     if (this.outline) {
       ctx.strokeStyle = this.outlineColor;
       ctx.lineWidth = this.outlineWidth;
       ctx.stroke();
     }
+    ctx.fillStyle = this.color;
+    ctx.fill();
   }
 
   containsPoint(x: number, y: number): boolean {

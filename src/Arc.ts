@@ -37,15 +37,15 @@ export class Arc extends baseObj {
   constructor(radius: number, startingAngle: number, endingAngle: number, mode: ArcMode, x?: number, y?: number, counterClockwise?: boolean) {
     super();
 
-    this.x = x === 0 ? 0 : x || -1000;
-    this.y = y === 0 ? 0 : y || -1000;
+    this.x = x ?? -1000;
+    this.y = y ?? -1000;
 
     this._radius = radius;
 
     this._sa = mode === ArcMode.DEGREES ? startingAngle * Math.PI / 180 : startingAngle;
     this._ea = mode === ArcMode.DEGREES ? endingAngle * Math.PI / 180 : endingAngle;
 
-    this._cc = counterClockwise || false;
+    this._cc = counterClockwise ?? false;
 
     this.type = 'Arc';
   }
@@ -148,15 +148,15 @@ export class Arc extends baseObj {
     ctx.translate(this.x, this.y);
     ctx.rotate(this.rotation);
     ctx.arc(0, 0, this._radius, this._sa, this._ea, this._cc);
-    ctx.fillStyle = this.color;
     ctx.lineTo(0, 0);
     ctx.closePath();
-    ctx.fill();
     if (this.outline) {
-			ctx.strokeStyle = this.outlineColor;
-			ctx.lineWidth = this.outlineWidth;
-			ctx.stroke();
-		}
+      ctx.strokeStyle = this.outlineColor;
+      ctx.lineWidth = this.outlineWidth;
+      ctx.stroke();
+    }
+    ctx.fillStyle = this.color;
+    ctx.fill();
     ctx.restore();
   }
 

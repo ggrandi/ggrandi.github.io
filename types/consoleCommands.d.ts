@@ -49,7 +49,7 @@ export declare const readBoolean: (message: string, y?: string, n?: string) => b
  * @function
  * @async
  */
-export declare const consoleInput: <PromiseType>(message: string, submitHandler: (input: HTMLInputElement, e: KeyboardEvent | MouseEvent) => {
+export declare const consoleInput: <PromiseType, EventType extends MouseEvent | KeyboardEvent>(message: string, submitHandler: (input: HTMLInputElement, e: EventType) => {
     done: boolean;
     value?: PromiseType | undefined;
     color?: string | undefined;

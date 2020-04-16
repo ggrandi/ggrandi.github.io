@@ -148,7 +148,7 @@ export const readBoolean = (message: string, y = "y", n = "n"): boolean => {
  * @function
  * @async
  */
-export const consoleInput = async<PromiseType>(message: string, submitHandler: (input: HTMLInputElement, e: KeyboardEvent | MouseEvent) => { done: boolean, value?: PromiseType, color?: string }, inputType: string, submitButton?: boolean): Promise<PromiseType> => {
+export const consoleInput = async<PromiseType, EventType extends KeyboardEvent | MouseEvent>(message: string, submitHandler: (input: HTMLInputElement, e: EventType) => { done: boolean, value?: PromiseType, color?: string }, inputType: string, submitButton?: boolean): Promise<PromiseType> => {
   addSeparator(output);
 
   output.append(new Text(`${message}: `));
@@ -177,7 +177,7 @@ export const consoleInput = async<PromiseType>(message: string, submitHandler: (
 
       submit.addEventListener("click", function (e) {
         if (!(e.metaKey || e.ctrlKey)) {
-          const { value, done, color } = submitHandler(i, e);
+          const { value, done, color } = submitHandler(i, e as EventType);
           if (done) {
             i.before(createColoredSpan(String(value), String(color)));
             output.removeChild(i);
@@ -189,7 +189,7 @@ export const consoleInput = async<PromiseType>(message: string, submitHandler: (
     } else {
       i.addEventListener("keydown", function (e) {
         if (!(e.metaKey || e.ctrlKey)) {
-          const { value, done, color } = submitHandler(i, e);
+          const { value, done, color } = submitHandler(i, e as EventType);
           if (done) {
             i.before(createColoredSpan(String(value), String(color)));
             output.removeChild(i);
@@ -215,8 +215,8 @@ export const consoleInput = async<PromiseType>(message: string, submitHandler: (
  * @async
  */
 export const readLineConsole = async (message: string): Promise<string> => {
-  return await consoleInput<string>(message, function (input, e) {
-    if ((e as KeyboardEvent).key === "Enter") {
+  return await consoleInput<string, KeyboardEvent>(message, function (input, e) {
+    if (e.key === "Enter") {
       return {
         done: true,
         value: input.value,
@@ -228,8 +228,8 @@ export const readLineConsole = async (message: string): Promise<string> => {
 }
 
 const readNumberConsole = async (message: string, validation: (str: string) => number, checks?: (value: string, e: KeyboardEvent) => boolean): Promise<number> => {
-  return await consoleInput<number>(message, function (input, e) {
-    if ((e as KeyboardEvent).key === "Enter" && !isNaN(validation(input.value))) {
+  return await consoleInput<number, KeyboardEvent>(message, function (input, e) {
+    if (e.key === "Enter" && !isNaN(validation(input.value))) {
       return {
         done: true,
         value: validation(input.value),
@@ -237,7 +237,7 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
       }
     }
 
-    if ((e as KeyboardEvent).key === "-" && input.value.length > 0) {
+    if (e.key === "-" && input.value.length > 0) {
       e.preventDefault();
     }
 
@@ -245,10 +245,9 @@ const readNumberConsole = async (message: string, validation: (str: string) => n
       return { done: false };
     }
 
-    if ((isNaN(+(e as KeyboardEvent).key) && (e as KeyboardEvent).key.length < 2 || (e as KeyboardEvent).key === " ") && !((e as KeyboardEvent).key === "-")) {
+    if ((isNaN(+e.key) && e.key.length < 2 || e.key === " ") && !(e.key === "-")) {
       e.preventDefault();
     }
-
     return { done: false };
   }, "number");
 }
@@ -290,7 +289,7 @@ export const readFloatConsole = async (message: string): Promise<number> => {
  * @async
  */
 export const readBooleanConsole = async (message: string): Promise<boolean> => {
-  return await consoleInput<boolean>(message, function (input) {
+  return await consoleInput<boolean, MouseEvent>(message, function (input) {
     return { done: true, color: "red", value: input.checked };
   }, "checkbox", true)
 };
@@ -303,7 +302,7 @@ export const readBooleanConsole = async (message: string): Promise<boolean> => {
  * @returns {Promise<string>}
  */
 export const readColorConsole = async (message: string): Promise<string> => {
-  return await consoleInput<string>(message, function (input) {
+  return await consoleInput<string, MouseEvent>(message, function (input) {
     return { done: true, color: input.value, value: input.value };
   }, "color", true)
 }

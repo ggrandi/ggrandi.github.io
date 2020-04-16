@@ -15,8 +15,8 @@ export class Oval extends baseObj {
         super();
         this._width = width;
         this._height = height;
-        this.x = x === 0 ? 0 : x || -1000;
-        this.y = y === 0 ? 0 : y || -1000;
+        this.x = x !== null && x !== void 0 ? x : -1000;
+        this.y = y !== null && y !== void 0 ? y : -1000;
         this.color = color || 'black';
         if (color && !checkColor(color)) {
             console.warn(`Your color of ${color} is not a valid color`);

@@ -1,7 +1,7 @@
 /**
  * CodeHS's Keyboard object. If possible use the built-in javascript
  * KeyboardEvent.key or KeyboardEvent.code in your handler
- * (Included for compatibility with CodeHS)
+ * (Included for compatibility with CodeHS, compare to e.code instead of e.keyCode)
  * @deprecated
  */
 export class Keyboard {
@@ -13,11 +13,18 @@ export class Keyboard {
         return key;
     }
     /**
-     * The key for ALT
+     * The key for the Left Alt
      * @type {string}
      */
-    static get ALT() {
-        return "Alt";
+    static get ALT_LEFT() {
+        return "AltLeft";
+    }
+    /**
+     * The key for the right Alt
+     * @type {string}
+     */
+    static get ALT_RIGHT() {
+        return "AltRight";
     }
     /**
      * The key for BACKSPACE
@@ -31,14 +38,21 @@ export class Keyboard {
      * @type {string}
      */
     static get CAPS_LOCK() {
-        return "";
+        return "CapsLock";
     }
     /**
-     * The key for CTRL
+     * The key for the left CTRL
      * @type {string}
      */
-    static get CTRL() {
-        return "Control";
+    static get CTRL_LEFT() {
+        return "ControlLeft";
+    }
+    /**
+     * The key for the right CTRL
+     * @type {string}
+     */
+    static get CTRL_RIGHT() {
+        return "ControlRight";
     }
     /**
      * The key for DOWN
@@ -66,14 +80,14 @@ export class Keyboard {
      * @type {string}
      */
     static get LEFT_COMMAND() {
-        return "Meta";
+        return "OSLeft";
     }
     /**
      * The key for LEFT WINDOW
      * @type {string}
      */
     static get LEFT_WINDOW() {
-        return "Meta";
+        return "OSLeft";
     }
     /**
      * The key for RIGHT
@@ -87,35 +101,42 @@ export class Keyboard {
      * @type {string}
      */
     static get RIGHT_COMMAND() {
-        return "Meta";
+        return "OSRight";
     }
     /**
      * The key for RIGHT WINDOW
      * @type {string}
      */
     static get RIGHT_WINDOW() {
-        return "Meta";
+        return "OSRight";
     }
     /**
      * The key for SELECT
      * @type {string}
      */
     static get SELECT() {
-        return "Meta";
+        return "OSLeft";
     }
     /**
-     * The key for SHIFT
+     * The key for the left SHIFT
      * @type {string}
      */
-    static get SHIFT() {
-        return "Shift";
+    static get SHIFT_LEFT() {
+        return "ShiftLeft";
+    }
+    /**
+     * The key for the right SHIFT
+     * @type {string}
+     */
+    static get SHIFT_RIGHT() {
+        return "ShiftLeft";
     }
     /**
      * The key for SPACE
      * @type {string}
      */
     static get SPACE() {
-        return " ";
+        return "Space";
     }
     /**
      * The key for TAB

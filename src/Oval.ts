@@ -24,8 +24,8 @@ export class Oval extends baseObj {
     this._width = width;
     this._height = height;
 
-    this.x = x === 0 ? 0 : x || -1000;
-    this.y = y === 0 ? 0 : y || -1000;
+    this.x = x ?? -1000;
+    this.y = y ?? -1000;
 
     this.color = color || 'black';
     if (color && !checkColor(color)) {

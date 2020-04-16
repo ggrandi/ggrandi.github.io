@@ -28,7 +28,7 @@ export class WebImage extends Rectangle {
 	 * @param {number} sheight the height of the clip
 	 */
   constructor(src: string, width?: number, height?: number, x?: number, y?: number, sx?: number, sy?: number, swidth?: number, sheight?: number) {
-    super(width || 0, height || 0, x === 0 ? 0 : x || -1000, y === 0 ? 0 : y || -1000, 'rgba(0, 0, 0, 0)');
+    super(width ?? 0, height ?? 0, x ?? -1000, y ?? -1000, '#00000000');
     this._img = new Image();
     this._img.src = src;
     this._img.onload = (e: Event) => {
@@ -45,10 +45,10 @@ export class WebImage extends Rectangle {
 
     this.type = 'Image';
 
-    this._sx = sx || 0;
-    this._sy = sy || 0;
-    this._sw = swidth || 1;
-    this._sh = sheight || 1;
+    this._sx = sx ?? 0;
+    this._sy = sy ?? 0;
+    this._sw = swidth ?? 1;
+    this._sh = sheight ?? 1;
   }
 
 	/**
@@ -63,7 +63,7 @@ export class WebImage extends Rectangle {
 	/**
 	 * Sets the image to have a width of `width` while maintaining the aspect ratio
 	 * @param {number} width the new width
-     * @returns {this}
+   * @returns {this}
 	 */
   setAspectWidth(width: number): this {
     let { w, h } = this.aspectRatio;
@@ -77,7 +77,7 @@ export class WebImage extends Rectangle {
 	/**
 	 * Sets the image to have a height of `height` while maintaining the aspect ratio
 	 * @param {number} height the new height
-     * @returns {this}
+   * @returns {this}
 	 */
   setAspectHeight(height: number): this {
     let { w, h } = this.aspectRatio;
@@ -91,7 +91,7 @@ export class WebImage extends Rectangle {
 	/**
 	 * the aspect ratio of the image
 	 * @readonly
-     * @type {Object<{ w: number, h: number }>}
+   * @type {Object<{ w: number, h: number }>}
 	 */
   get aspectRatio(): { w: number, h: number } {
     let { naturalWidth, naturalHeight } = this._img;
@@ -113,7 +113,7 @@ export class WebImage extends Rectangle {
 	 * @param {number} sy the y-position of the clip
 	 * @param {number} swidth the width of the clip
 	 * @param {number} sheight the height of the clip
-     * @returns {this}
+   * @returns {this}
 	 */
   setClip(sx: number, sy: number, swidth: number, sheight: number): this {
     this._sx = sx;

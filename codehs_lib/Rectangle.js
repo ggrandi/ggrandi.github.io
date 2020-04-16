@@ -16,8 +16,8 @@ export class Rectangle extends baseObj {
      */
     constructor(width, height, x, y, color, rotation, outline, outlineColor) {
         super();
-        this.x = x === 0 ? 0 : x || -1000;
-        this.y = y === 0 ? 0 : y || -1000;
+        this.x = x !== null && x !== void 0 ? x : -1000;
+        this.y = y !== null && y !== void 0 ? y : -1000;
         this.color = color || "black";
         if (color && !checkColor(color)) {
             console.warn(`Your color of ${color} is not a valid color`);
@@ -77,14 +77,14 @@ export class Rectangle extends baseObj {
         ctx.beginPath();
         ctx.translate(this.x + this._width / 2, this.y + this._height / 2);
         ctx.rotate(this.rotation);
-        ctx.fillStyle = this.color;
         ctx.rect(-this._width / 2, -this._height / 2, this._width, this._height);
-        ctx.fill();
         if (this.outline) {
             ctx.strokeStyle = this.outlineColor;
             ctx.lineWidth = this.outlineWidth;
             ctx.stroke();
         }
+        ctx.fillStyle = this.color;
+        ctx.fill();
         ctx.restore();
     }
     containsPoint(x, y) {

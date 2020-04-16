@@ -1,7 +1,12 @@
 import { baseObj, ctx, rotatePoint } from './index.js';
+const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
+/**
+ * Checks if a font matches a canvas font
+ * @param {string} font the font to check
+ * @returns {boolean}
+ */
 export const checkFont = (font) => {
-    const fontCheck = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
-    return fontCheck.test(font);
+    return fontRegExp.test(font);
 };
 /**
  * The Text shape
@@ -16,8 +21,8 @@ export class Text extends baseObj {
      */
     constructor(txt, font, x, y) {
         super();
-        this.x = x === 0 ? 0 : x || -1000;
-        this.y = y === 0 ? 0 : y || -1000;
+        this.x = x !== null && x !== void 0 ? x : -1000;
+        this.y = y !== null && y !== void 0 ? y : -1000;
         this._txt = txt;
         font = font.replace(/pt/i, "px");
         if (!checkFont(font)) {
@@ -26,7 +31,7 @@ export class Text extends baseObj {
         this._font = checkFont(font) ? font : '20px Arial';
         ctx.font = this._font;
         this._w = ctx.measureText(txt).width;
-        this._h = Number((/(\d)+/g.exec(this._font) || [0])[0]);
+        this._h = Number(fontRegExp.exec(font)[7]);
         this.type = 'Text';
     }
     /**
@@ -138,13 +143,13 @@ export class Text extends baseObj {
         ctx.beginPath();
         ctx.translate(this.x + this._w / 2, this.y - this._h / 2);
         ctx.rotate(this.rotation);
-        ctx.fillStyle = this.color;
         ctx.font = this._font;
-        ctx.fillText(this._txt, -this._w / 2, this._h / 2);
         if (this.outline) {
             ctx.strokeStyle = this.outlineColor;
             ctx.strokeText(this._txt, -this._w / 2, this._h / 2);
         }
+        ctx.fillStyle = this.color;
+        ctx.fillText(this._txt, -this._w / 2, this._h / 2);
         ctx.restore();
     }
     containsPoint(x, y) {
