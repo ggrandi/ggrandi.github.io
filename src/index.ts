@@ -1,5 +1,5 @@
 import { canvas, ctx, output, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor } from "./setup.js";
-import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt } from "./shapes.js";
+import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes } from "./shapes.js";
 import { baseObj } from './baseObj.js';
 import { clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole } from './consoleCommands.js';
 import { Randomizer } from './Randomizer.js';
@@ -12,7 +12,7 @@ import { WebImage } from './WebImage.js';
 import { Text, checkFont } from './Text.js';
 import { Arc, ArcMode } from "./Arc.js";
 import { Oval } from "./Oval.js";
-import { setTimer, stopTimer, stopAllTimers } from "./Timers.js";
+import { setTimer, stopTimer, stopAllTimers, timers } from "./Timers.js";
 import { keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod } from "./userInteraction.js";
 import { gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, } from "./utils.js";
 
@@ -83,4 +83,6 @@ export {
   rotatePoint,
   toDegrees,
   toRadians,
+  shapes,
+  timers,
 };

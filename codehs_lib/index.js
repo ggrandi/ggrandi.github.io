@@ -1,5 +1,5 @@
 import { canvas, ctx, output, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor } from "./setup.js";
-import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt } from "./shapes.js";
+import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes } from "./shapes.js";
 import { baseObj } from './baseObj.js';
 import { clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole } from './consoleCommands.js';
 import { Randomizer } from './Randomizer.js';
@@ -12,7 +12,7 @@ import { WebImage } from './WebImage.js';
 import { Text, checkFont } from './Text.js';
 import { Arc, ArcMode } from "./Arc.js";
 import { Oval } from "./Oval.js";
-import { setTimer, stopTimer, stopAllTimers } from "./Timers.js";
+import { setTimer, stopTimer, stopAllTimers, timers } from "./Timers.js";
 import { keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod } from "./userInteraction.js";
 import { gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, } from "./utils.js";
 console.log(`%c
@@ -26,5 +26,5 @@ console.log(`%c
                                                                          
  read the docs: %chttps://pythonkiwi123.github.io/documentation/
 `, "font-family: monospace; color: lightgreen; background-color: black;", "background-color: black");
-export { canvas, ctx, output, setUpdate, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, add, remove, removeAll, getElementAt, getElementsAt, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, baseObj, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, mouseClickMethod, mouseMoveMethod, keyUpMethod, keyDownMethod, gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, };
+export { canvas, ctx, output, setUpdate, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, add, remove, removeAll, getElementAt, getElementsAt, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, baseObj, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, mouseClickMethod, mouseMoveMethod, keyUpMethod, keyDownMethod, gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, shapes, timers, };
 //# sourceMappingURL=index.js.map

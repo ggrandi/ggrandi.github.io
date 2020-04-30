@@ -1,6 +1,10 @@
 import { baseObj, canvas, ctx } from './index.js';
 
-const shapes: baseObj[] = [];
+/**
+ * All the shapes that have been added to the screen
+ * @type {Array<baseObj>}
+ */
+export const shapes: baseObj[] = [];
 let update: boolean = true;
 
 /**
@@ -24,17 +28,19 @@ export const removeAll = (): void => { shapes.splice(0, shapes.length) };
  * @returns {void}
  */
 export const add = (...args: baseObj[]): void => {
-  args.forEach(e => {
-    if (shapes.indexOf(e) !== -1) {
-      remove(e);
-    }
+  setTimeout(() => {
+    args.forEach(e => {
+      if (shapes.indexOf(e) !== -1) {
+        remove(e);
+      }
 
-    shapes.push(e);
+      shapes.push(e);
 
-    if (!update) {
-      e.draw();
-    }
-  });
+      if (!update) {
+        e.draw();
+      }
+    });
+  }, 1);
 };
 
 /**
@@ -44,11 +50,13 @@ export const add = (...args: baseObj[]): void => {
  * @returns {void}
  */
 export const remove = (...args: baseObj[]): void => {
-  args.forEach(e => {
-    if (shapes.indexOf(e) != -1) {
-      shapes.splice(shapes.indexOf(e), 1);
-    }
-  });
+  setTimeout(() => {
+    args.forEach(e => {
+      if (shapes.indexOf(e) != -1) {
+        shapes.splice(shapes.indexOf(e), 1);
+      }
+    });
+  }, 1);
 };
 
 /**
@@ -70,15 +78,34 @@ export const getElementAt = (x: number, y: number): baseObj | undefined => {
 
 /**
  * Returns the all the shapes that are at the point (`x`, `y`)
- * @param x {number} x-coordinate to check
- * @param y {number} y-coordinate to check
+ * @param {number} x the x-value to find
+ * @param {number} y the y-value to check
  * @function
  * @returns {baseObj[]}
  */
-export const getElementsAt = (x: number, y: number): Array<baseObj> => {
+export function getElementsAt(x: number, y: number): Array<baseObj>;
+/**
+ * Returns the all the shapes onscreen
+ * @param {boolean} showAll return all shapes onscreen
+ * @function
+ * @returns {baseObj[]}
+ */
+export function getElementsAt(showAll: true): Array<baseObj>;
+/**
+ * Returns the all the shapes that are at the point (`x`, `y`)
+ * @param {number} x the x-value to find, if set to true it returns all the shapes onscreen
+ * @param {number} y the y-value to check
+ * @function
+ * @returns {baseObj[]}
+ */
+export function getElementsAt(x: number | true, y?: number): Array<baseObj> {
+  if (x === true) {
+    return shapes;
+  }
+
   let elems: Array<baseObj> = [];
   shapes.forEach(i => {
-    if (i.containsPoint(x, y)) {
+    if (i.containsPoint(x as number, y as number)) {
       elems.push(i);
     }
   });
