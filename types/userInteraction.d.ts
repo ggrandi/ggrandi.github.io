@@ -26,4 +26,3 @@ export declare const keyDownMethod: (func: (e: KeyboardEvent) => void) => void;
  * @returns {void}
  */
 export declare const keyUpMethod: (func: (e: KeyboardEvent) => void) => void;
-//# sourceMappingURL=userInteraction.d.ts.map

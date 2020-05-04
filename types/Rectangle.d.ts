@@ -23,11 +23,28 @@ export declare class Rectangle extends baseObj {
      */
     getWidth(): number;
     /**
-     * The rectangle's height
-     * @type {number}
+       * Sets the width of the rectangle
+     * @param {number} width the new width
+     * @returns {number}
+       */
+    setWidth(width: number): this;
+    /**
+   * The rectangle's height
+   * @type {number}
      */
     set height(v: number);
     get height(): number;
+    /**
+     * Returns the height of the rectangle
+     * @returns {number}
+     */
+    getHeight(): number;
+    /**
+     * Sets the height of the rectangle
+     * @param {number} height the new height
+     * @returns {number}
+     */
+    setHeight(height: number): this;
     /**
      * Set the width and height of the rectangle
      * @param {number} width the rectangle's new width
@@ -38,4 +55,3 @@ export declare class Rectangle extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Rectangle.d.ts.map

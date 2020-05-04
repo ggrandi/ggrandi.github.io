@@ -66,4 +66,3 @@ export declare class Line extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Line.d.ts.map

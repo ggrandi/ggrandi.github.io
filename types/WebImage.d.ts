@@ -8,6 +8,7 @@ export declare class WebImage extends Rectangle {
     private _sy;
     private _sw;
     private _sh;
+    private _hasLoaded;
     constructor(src: string);
     constructor(src: string, width: number, height: number);
     constructor(src: string, width: number, height: number, x: number, y: number);
@@ -60,4 +61,3 @@ export declare class WebImage extends Rectangle {
     };
     draw(): void;
 }
-//# sourceMappingURL=WebImage.d.ts.map

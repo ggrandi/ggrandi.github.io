@@ -64,12 +64,23 @@ export class Rectangle extends baseObj {
    * @returns {number}
 	 */
   getWidth(): number {
-    return this._width;
+    return this.width;
+  }
+
+  /**
+	 * Sets the width of the rectangle
+   * @param {number} width the new width
+   * @returns {number}
+	 */
+  setWidth(width: number): this {
+    this.width = width;
+
+    return this;
   }
 
 	/**
-	 * The rectangle's height
-	 * @type {number}
+   * The rectangle's height
+   * @type {number}
 	 */
   set height(v: number) {
     this._height = v;
@@ -77,6 +88,25 @@ export class Rectangle extends baseObj {
 
   get height(): number {
     return this._height;
+  }
+
+  /**
+   * Returns the height of the rectangle
+   * @returns {number}
+   */
+  getHeight(): number {
+    return this.height;
+  }
+
+  /**
+   * Sets the height of the rectangle
+   * @param {number} height the new height
+   * @returns {number}
+   */
+  setHeight(height: number): this {
+    this.height = height;
+
+    return this;
   }
 
 	/**

@@ -42,4 +42,3 @@ export declare class Oval extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Oval.d.ts.map

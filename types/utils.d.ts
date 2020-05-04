@@ -53,4 +53,3 @@ export declare const toRadians: (degrees: number) => number;
  * @returns {number}
  */
 export declare const toDegrees: (radians: number) => number;
-//# sourceMappingURL=utils.d.ts.map

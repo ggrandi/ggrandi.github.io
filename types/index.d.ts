@@ -16,4 +16,3 @@ import { setTimer, stopTimer, stopAllTimers, timers } from "./Timers.js";
 import { keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod } from "./userInteraction.js";
 import { gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians } from "./utils.js";
 export { canvas, ctx, output, setUpdate, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, add, remove, removeAll, getElementAt, getElementsAt, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, baseObj, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, mouseClickMethod, mouseMoveMethod, keyUpMethod, keyDownMethod, gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, shapes, timers, };
-//# sourceMappingURL=index.d.ts.map

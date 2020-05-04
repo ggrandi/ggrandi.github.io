@@ -50,4 +50,3 @@ export declare const showCursor: (cursor?: string | undefined) => void;
  * @function
  */
 export declare const hideCursor: () => void;
-//# sourceMappingURL=setup.d.ts.map

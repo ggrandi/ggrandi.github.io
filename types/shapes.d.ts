@@ -53,4 +53,3 @@ export declare function getElementsAt(x: number, y: number): Array<baseObj>;
  * @returns {baseObj[]}
  */
 export declare function getElementsAt(showAll: true): Array<baseObj>;
-//# sourceMappingURL=shapes.d.ts.map

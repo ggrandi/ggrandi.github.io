@@ -94,4 +94,3 @@ export declare const readBooleanConsole: (message: string) => Promise<boolean>;
  * @returns {Promise<string>}
  */
 export declare const readColorConsole: (message: string) => Promise<string>;
-//# sourceMappingURL=consoleCommands.d.ts.map

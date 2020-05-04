@@ -75,4 +75,3 @@ export declare class Arc extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Arc.d.ts.map

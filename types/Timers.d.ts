@@ -37,4 +37,3 @@ export declare const stopTimer: (stopId: string | ((...params: any[]) => void)) 
  */
 export declare const stopAllTimers: () => void;
 export {};
-//# sourceMappingURL=Timers.d.ts.map

@@ -75,4 +75,3 @@ export declare class Text extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Text.d.ts.map

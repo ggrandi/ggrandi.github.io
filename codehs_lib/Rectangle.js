@@ -49,17 +49,42 @@ export class Rectangle extends baseObj {
    * @returns {number}
      */
     getWidth() {
-        return this._width;
+        return this.width;
     }
     /**
-     * The rectangle's height
-     * @type {number}
+       * Sets the width of the rectangle
+     * @param {number} width the new width
+     * @returns {number}
+       */
+    setWidth(width) {
+        this.width = width;
+        return this;
+    }
+    /**
+   * The rectangle's height
+   * @type {number}
      */
     set height(v) {
         this._height = v;
     }
     get height() {
         return this._height;
+    }
+    /**
+     * Returns the height of the rectangle
+     * @returns {number}
+     */
+    getHeight() {
+        return this.height;
+    }
+    /**
+     * Sets the height of the rectangle
+     * @param {number} height the new height
+     * @returns {number}
+     */
+    setHeight(height) {
+        this.height = height;
+        return this;
     }
     /**
      * Set the width and height of the rectangle

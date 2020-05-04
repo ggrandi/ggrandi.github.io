@@ -200,4 +200,3 @@ export declare class baseObj {
      */
     draw(): void;
 }
-//# sourceMappingURL=baseObj.d.ts.map

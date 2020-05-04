@@ -18,10 +18,12 @@ export class WebImage extends Rectangle {
      */
     constructor(src, width, height, x, y, sx, sy, swidth, sheight) {
         super(width !== null && width !== void 0 ? width : 0, height !== null && height !== void 0 ? height : 0, x !== null && x !== void 0 ? x : -1000, y !== null && y !== void 0 ? y : -1000, '#00000000');
+        this._hasLoaded = false;
         this._img = new Image();
         this._img.src = src;
         this._img.onload = (e) => {
             let { naturalHeight, naturalWidth } = e.target;
+            this._hasLoaded = true;
             if (this.width === 0) {
                 this.width = naturalWidth;
                 this.height = naturalHeight;
@@ -105,12 +107,14 @@ export class WebImage extends Rectangle {
     }
     draw() {
         super.draw();
-        ctx.save();
-        ctx.beginPath();
-        ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
-        ctx.rotate(this.rotation);
-        ctx.drawImage(this._img, this._sx, this._sy, this._sw, this._sh, -this.width / 2, -this.height / 2, this.width, this.height);
-        ctx.restore();
+        if (this._hasLoaded) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+            ctx.rotate(this.rotation);
+            ctx.drawImage(this._img, this._sx, this._sy, this._sw, this._sh, -this.width / 2, -this.height / 2, this.width, this.height);
+            ctx.restore();
+        }
     }
 }
 //# sourceMappingURL=WebImage.js.map

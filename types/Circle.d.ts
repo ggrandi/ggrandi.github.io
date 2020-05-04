@@ -46,4 +46,3 @@ export declare class Circle extends baseObj {
     draw(): void;
     containsPoint(x: number, y: number): boolean;
 }
-//# sourceMappingURL=Circle.d.ts.map

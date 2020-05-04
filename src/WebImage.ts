@@ -9,6 +9,7 @@ export class WebImage extends Rectangle {
   private _sy: number;
   private _sw: number;
   private _sh: number;
+  private _hasLoaded: boolean = false;
 
   constructor(src: string);
   constructor(src: string, width: number, height: number);
@@ -33,6 +34,7 @@ export class WebImage extends Rectangle {
     this._img.src = src;
     this._img.onload = (e: Event) => {
       let { naturalHeight, naturalWidth } = e.target as HTMLImageElement;
+      this._hasLoaded = true;
       if (this.width === 0) {
         this.width = naturalWidth;
         this.height = naturalHeight;
@@ -128,17 +130,19 @@ export class WebImage extends Rectangle {
    * Returns the clip of the image
    * @returns {Object<{ sx: number, sy: number, swidth: number, sheight: number }>}
    */
-  getClip(): { sx: number, sy: number, swidth: number, sheight: number } {
+  getClip(): { sx: number; sy: number; swidth: number; sheight: number; } {
     return { sx: this._sx, sy: this._sy, swidth: this._sw, sheight: this._sh };
   }
 
   draw() {
     super.draw();
-    ctx.save()
-    ctx.beginPath();
-    ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
-    ctx.rotate(this.rotation);
-    ctx.drawImage(this._img, this._sx, this._sy, this._sw, this._sh, - this.width / 2, -this.height / 2, this.width, this.height);
-    ctx.restore();
+    if (this._hasLoaded) {
+      ctx.save()
+      ctx.beginPath();
+      ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+      ctx.rotate(this.rotation);
+      ctx.drawImage(this._img, this._sx, this._sy, this._sw, this._sh, - this.width / 2, -this.height / 2, this.width, this.height);
+      ctx.restore();
+    }
   }
 }

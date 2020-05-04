@@ -773,4 +773,3 @@ export declare class Color extends String {
  * @function
  */
 export declare const checkColor: (color: string) => boolean;
-//# sourceMappingURL=Color.d.ts.map

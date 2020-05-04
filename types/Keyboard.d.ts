@@ -111,4 +111,3 @@ export declare class Keyboard {
      */
     static get UP(): string;
 }
-//# sourceMappingURL=Keyboard.d.ts.map
