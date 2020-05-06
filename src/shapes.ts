@@ -5,14 +5,15 @@ import { baseObj, canvas, ctx } from './index.js';
  * @type {Array<baseObj>}
  */
 export const shapes: baseObj[] = [];
-let update: boolean = true;
+let up: boolean = true;
 
 /**
  * Set whether the canvas should update every frame
+ * @param {boolean} update whether to redraw each frame;
  * @function
  * @returns {void}
  */
-export const setUpdate = (v: boolean): void => { update = v; };
+export const setUpdate = (update: boolean): void => { up = update; };
 
 /**
  * Removes all objects from the canvas 
@@ -36,7 +37,7 @@ export const add = (...args: baseObj[]): void => {
 
       shapes.push(e);
 
-      if (!update) {
+      if (!up) {
         e.draw();
       }
     });
@@ -113,7 +114,7 @@ export function getElementsAt(x: number | true, y?: number): Array<baseObj> {
 }
 
 const main = () => {
-  if (update) {
+  if (up) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     shapes.forEach(s => s.draw());
   }

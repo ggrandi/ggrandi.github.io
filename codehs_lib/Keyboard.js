@@ -6,13 +6,6 @@
  */
 export class Keyboard {
     /**
-     * Returns a letter to compare to e.keyCode
-     * @param {string} key the letter you want to get
-     */
-    static letter(key) {
-        return key;
-    }
-    /**
      * The key for the Left Alt
      * @type {string}
      */

@@ -6,10 +6,11 @@ import { baseObj } from './index.js';
 export declare const shapes: baseObj[];
 /**
  * Set whether the canvas should update every frame
+ * @param {boolean} update whether to redraw each frame;
  * @function
  * @returns {void}
  */
-export declare const setUpdate: (v: boolean) => void;
+export declare const setUpdate: (update: boolean) => void;
 /**
  * Removes all objects from the canvas
  * @function

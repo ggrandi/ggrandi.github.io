@@ -32,6 +32,7 @@ export class WebImage extends Rectangle {
     super(width ?? 0, height ?? 0, x ?? -1000, y ?? -1000, '#00000000');
     this._img = new Image();
     this._img.src = src;
+
     this._img.onload = (e: Event) => {
       let { naturalHeight, naturalWidth } = e.target as HTMLImageElement;
       this._hasLoaded = true;
@@ -43,7 +44,12 @@ export class WebImage extends Rectangle {
         this._sw = naturalWidth;
         this._sh = naturalHeight;
       }
+      this.draw();
     };
+
+    this._img.onerror = (err) => {
+      console.error(`Image with an src of "${src}" failed to load because of the following reason:`, err);
+    }
 
     this.type = 'Image';
 
