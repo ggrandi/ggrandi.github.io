@@ -100,20 +100,20 @@ export declare class baseObj {
     get type(): string;
     /**
      * Returns the type of the Shape
-   * @returns {string}
+     * @returns {string}
      */
     getType(): string;
     /**
      * Sets the shape to the position (`x`, `y`)
      * @param {number} x new x-coordinate of the shape
      * @param {number} y new y-coordinate of the shape
-   * @returns {this}
+     * @returns {this}
      */
     setPosition(x: number, y: number): this;
     /**
      * Sets the color of the shape to `color`
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setColor(color: string): this;
     setOutline(show: boolean): this;
@@ -123,13 +123,13 @@ export declare class baseObj {
     /**
      * Sets the color of the shape's outline to `color`
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setOutlineColor(color: string): this;
     /**
      * Sets the color of the shape's outline to `color` (same as setOutlineColor)
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setBorderColor(color: string): this;
     /**
@@ -141,7 +141,7 @@ export declare class baseObj {
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
      * @param {number} width the new width of the outline
-   * @returns {this}
+     * @returns {this}
      */
     setBorderWidth(width: number): this;
     /**
@@ -188,7 +188,7 @@ export declare class baseObj {
     get x(): number;
     /**
      * method to return the shapes x-position
-   * @returns {number}
+     * @returns {number}
      */
     getX(): number;
     /**
@@ -199,14 +199,14 @@ export declare class baseObj {
     get y(): number;
     /**
      * method to return the shapes y-position
-   * @returns {number}
+     * @returns {number}
      */
     getY(): number;
     /**
      * Move a shape `dx` pixels right and `dy` pixels left
      * @param {number} dx pixels to move along the x-axis
      * @param {number} dy pixels to move along the y-axis
-   * @returns {this}
+     * @returns {this}
      */
     move(dx: number, dy: number): this;
     /**
@@ -218,7 +218,7 @@ export declare class baseObj {
     /**
      * Rotate the shape by `degrees` degrees
      * @param {number} degrees number of degrees to rotate it by
-   * @returns {this}
+     * @returns {this}
      */
     rotateDegrees(degrees: number): this;
     /**
@@ -230,17 +230,17 @@ export declare class baseObj {
     /**
      * Rotate the shape by `radians` radians
      * @param {number} radians number of degrees to rotate it by
-   * @returns {this}
+     * @returns {this}
      */
     rotate(radians: number): this;
     /**
      * Returns the shapes rotation in radians
-   * @returns {number}
+     * @returns {number}
      */
     getRotation(): number;
     /**
      * Returns the shapes rotation in degrees
-   * @returns {number}
+     * @returns {number}
      */
     getRotationDegrees(): number;
     /**
@@ -251,29 +251,29 @@ export declare class baseObj {
     get color(): string;
     /**
      * Returns the shape's color
-   * @returns {string}
+     * @returns {string}
      */
     getColor(): string;
     /**
      * adds the shape to the canvas
-   * @returns {this}
+     * @returns {this}
      */
     add(): this;
     /**
      * removes the shape from the canvas
-   * @returns {this}
+     * @returns {this}
      */
     remove(): this;
     /**
      * Returns a boolean to check if the shape contains the point (`x`, `y`)
      * @param {number} x x-position of point
      * @param {number} y y-position of point
-   * @returns {boolean}
+     * @returns {boolean}
      */
     containsPoint(x: number, y: number): boolean;
     /**
      * Method called to draw the shape on the screen
-   * @returns {void}
+     * @returns {void}
      */
     draw(): void;
 }
@@ -1324,7 +1324,7 @@ export declare class Line extends baseObj {
     /**
      * Set the width of the line
      * @param {number} w the new width
-   * @returns {this}
+     * @returns {this}
      */
     setLineWidth(w: number): this;
     /**
@@ -1355,21 +1355,21 @@ export declare class Line extends baseObj {
      * Set the starting point
      * @param {number} x the x-coordinate for the starting point
      * @param {number} y the y-coordinate for the starting point
-   * @returns {this}
+     * @returns {this}
      */
     setStartpoint(x: number, y: number): this;
     /**
      * Set the ending point
      * @param {number} x the x-coordinate for the ending point
      * @param {number} y the y-coordinate for the ending point
-   * @returns {this}
+     * @returns {this}
      */
     setEndpoint(x: number, y: number): this;
     /**
      * Sets the Line's to the start position (`x1`, `y1`)
      * @param {number} x1 new x-coordinate of the shape
      * @param {number} y1 new y-coordinate of the shape
-   * @returns {this}
+     * @returns {this}
      */
     setPosition(x1: number, y1: number): this;
     draw(): void;
@@ -1429,25 +1429,25 @@ export declare class Randomizer {
      * Returns a random integer between `min` and `max`
      * @param min {number} minimum value of the integer
      * @param max {number} maximum value of the integer
-   * @returns {number}
+     * @returns {number}
      */
     static nextInt(min: number, max: number): number;
     /**
      * Returns true with a probability of 50% or `probability`%
      * @param {number | undefined} probability The probability of returning true from 0 (never) to 1 (always)
-   * @returns {boolean}
+     * @returns {boolean}
      */
     static nextBoolean(probability?: number): boolean;
     /**
      * Returns a random float between `min` and `max`
      * @param min {number} minimum value of the float
      * @param max {number} maximum value of the float
-   * @returns {float}
+     * @returns {float}
      */
     static nextFloat(min: number, max: number): number;
     /**
      * Returns a random hexadecimal color
-   * @returns {string}
+     * @returns {string}
      */
     static nextColor(): string;
     /**
@@ -1485,18 +1485,18 @@ export declare class Rectangle extends baseObj {
     get width(): number;
     /**
      * Returns the width of the rectangle
-   * @returns {number}
+     * @returns {number}
      */
     getWidth(): number;
     /**
-       * Sets the width of the rectangle
+     * Sets the width of the rectangle
      * @param {number} width the new width
      * @returns {number}
-       */
+     */
     setWidth(width: number): this;
     /**
-   * The rectangle's height
-   * @type {number}
+     * The rectangle's height
+     * @type {number}
      */
     set height(v: number);
     get height(): number;
@@ -1515,7 +1515,7 @@ export declare class Rectangle extends baseObj {
      * Set the width and height of the rectangle
      * @param {number} width the rectangle's new width
      * @param {number} height the rectangle's new height
-   * @returns {this}
+     * @returns {this}
      */
     setSize(width: number, height: number): this;
     draw(): void;
@@ -1850,25 +1850,25 @@ export declare class WebImage extends Rectangle {
     /**
      * The image to display
      * @readonly
-   * @type {HTMLImageElement}
+     * @type {HTMLImageElement}
      */
     get image(): HTMLImageElement;
     /**
      * Sets the image to have a width of `width` while maintaining the aspect ratio
      * @param {number} width the new width
-   * @returns {this}
+     * @returns {this}
      */
     setAspectWidth(width: number): this;
     /**
      * Sets the image to have a height of `height` while maintaining the aspect ratio
      * @param {number} height the new height
-   * @returns {this}
+     * @returns {this}
      */
     setAspectHeight(height: number): this;
     /**
      * the aspect ratio of the image
      * @readonly
-   * @type {Object<{ w: number, h: number }>}
+     * @type {Object<{ w: number, h: number }>}
      */
     get aspectRatio(): {
         w: number;
@@ -1880,7 +1880,7 @@ export declare class WebImage extends Rectangle {
      * @param {number} sy the y-position of the clip
      * @param {number} swidth the width of the clip
      * @param {number} sheight the height of the clip
-   * @returns {this}
+     * @returns {this}
      */
     setClip(sx: number, sy: number, swidth: number, sheight: number): this;
     /**

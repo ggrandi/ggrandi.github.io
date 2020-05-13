@@ -34,7 +34,7 @@ export const setTimer = (callback, delay, params, name) => {
  * @returns {void}
  */
 export const stopTimer = (stopId) => {
-    timers.forEach(t => {
+    timers.forEach((t) => {
         if (t.name === stopId || t.callback === stopId) {
             clearInterval(t.id);
             timers.splice(timers.indexOf(t), 1);
@@ -47,7 +47,7 @@ export const stopTimer = (stopId) => {
  * @returns {void}
  */
 export const stopAllTimers = () => {
-    timers.forEach(t => clearInterval(t.id));
+    timers.forEach((t) => clearInterval(t.id));
     timers.splice(0, timers.length);
 };
 //# sourceMappingURL=Timers.js.map

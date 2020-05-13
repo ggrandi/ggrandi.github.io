@@ -1,4 +1,4 @@
-import { baseObj } from './index.js';
+import { baseObj } from "./index.js";
 /**
  * Checks if a font matches a canvas font
  * @param {string} font the font to check

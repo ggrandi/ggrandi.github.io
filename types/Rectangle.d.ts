@@ -1,4 +1,4 @@
-import { baseObj } from './index.js';
+import { baseObj } from "./index.js";
 /**
  * The rectangle shape
  */
@@ -19,18 +19,18 @@ export declare class Rectangle extends baseObj {
     get width(): number;
     /**
      * Returns the width of the rectangle
-   * @returns {number}
+     * @returns {number}
      */
     getWidth(): number;
     /**
-       * Sets the width of the rectangle
+     * Sets the width of the rectangle
      * @param {number} width the new width
      * @returns {number}
-       */
+     */
     setWidth(width: number): this;
     /**
-   * The rectangle's height
-   * @type {number}
+     * The rectangle's height
+     * @type {number}
      */
     set height(v: number);
     get height(): number;
@@ -49,7 +49,7 @@ export declare class Rectangle extends baseObj {
      * Set the width and height of the rectangle
      * @param {number} width the rectangle's new width
      * @param {number} height the rectangle's new height
-   * @returns {this}
+     * @returns {this}
      */
     setSize(width: number, height: number): this;
     draw(): void;

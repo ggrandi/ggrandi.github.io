@@ -13,7 +13,7 @@ export const output = createConsole(outputDiv);
  * The canvas context
  * @type {CanvasRenderingContext2D}
  */
-export const ctx = canvas.getContext("2d");
+export const ctx = (canvas.getContext("2d"));
 if (!ctx) {
     throw new Error("Error creating canvas context. Check that the canvas is loading correctly.");
 }
@@ -76,13 +76,13 @@ export const setBackgroundColor = (color) => {
  * @function
  */
 export const showCursor = (cursor) => {
-    canvas.style.cursor = cursor || 'default';
+    canvas.style.cursor = cursor || "default";
 };
 /**
  * Hide the mouse over the canvas
  * @function
  */
 export const hideCursor = () => {
-    canvas.style.cursor = 'none';
+    canvas.style.cursor = "none";
 };
 //# sourceMappingURL=setup.js.map

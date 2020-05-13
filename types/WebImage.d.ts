@@ -1,4 +1,4 @@
-import { Rectangle } from './index.js';
+import { Rectangle } from "./index.js";
 /**
  * The Image from the web shape
  */
@@ -16,25 +16,25 @@ export declare class WebImage extends Rectangle {
     /**
      * The image to display
      * @readonly
-   * @type {HTMLImageElement}
+     * @type {HTMLImageElement}
      */
     get image(): HTMLImageElement;
     /**
      * Sets the image to have a width of `width` while maintaining the aspect ratio
      * @param {number} width the new width
-   * @returns {this}
+     * @returns {this}
      */
     setAspectWidth(width: number): this;
     /**
      * Sets the image to have a height of `height` while maintaining the aspect ratio
      * @param {number} height the new height
-   * @returns {this}
+     * @returns {this}
      */
     setAspectHeight(height: number): this;
     /**
      * the aspect ratio of the image
      * @readonly
-   * @type {Object<{ w: number, h: number }>}
+     * @type {Object<{ w: number, h: number }>}
      */
     get aspectRatio(): {
         w: number;
@@ -46,7 +46,7 @@ export declare class WebImage extends Rectangle {
      * @param {number} sy the y-position of the clip
      * @param {number} swidth the width of the clip
      * @param {number} sheight the height of the clip
-   * @returns {this}
+     * @returns {this}
      */
     setClip(sx: number, sy: number, swidth: number, sheight: number): this;
     /**

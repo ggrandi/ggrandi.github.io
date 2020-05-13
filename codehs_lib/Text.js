@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint } from './index.js';
+import { baseObj, ctx, rotatePoint } from "./index.js";
 const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
 /**
  * Checks if a font matches a canvas font
@@ -28,11 +28,11 @@ export class Text extends baseObj {
         if (!checkFont(font)) {
             console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
         }
-        this._font = checkFont(font) ? font : '20px Arial';
+        this._font = checkFont(font) ? font : "20px Arial";
         ctx.font = this._font;
         this._w = ctx.measureText(txt).width;
         this._h = Number(fontRegExp.exec(font)[7]);
-        this.type = 'Text';
+        this.type = "Text";
     }
     /**
      * A string that follows the pattern \`${size}px ${fontname}\`
@@ -41,7 +41,7 @@ export class Text extends baseObj {
     set font(v) {
         this._font = v;
         v = v.replace(/pt/i, "px");
-        this._font = checkFont(v) ? v : '20px Arial';
+        this._font = checkFont(v) ? v : "20px Arial";
         if (!checkFont(v)) {
             console.warn(`Please pass a valid font to Text. Your font \`${v}\` should match \`\${size}px \${fontname}\``);
         }
@@ -59,7 +59,7 @@ export class Text extends baseObj {
      */
     setFont(font) {
         font = font.replace(/pt/i, "px");
-        this._font = checkFont(font) ? font : '20px Arial';
+        this._font = checkFont(font) ? font : "20px Arial";
         if (!checkFont(font)) {
             console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
         }
@@ -117,7 +117,7 @@ export class Text extends baseObj {
      * @type {number}
      */
     set height(v) {
-        this.font = `${v}px ${this._font.split('px ')[1]}`;
+        this.font = `${v}px ${this._font.split("px ")[1]}`;
     }
     get height() {
         return this._h;
@@ -160,7 +160,7 @@ export class Text extends baseObj {
             x = point.x;
             y = point.y;
         }
-        return -this._w / 2 < x && x < this._w / 2 && -this._h / 2 < y && y < this._h / 2;
+        return (-this._w / 2 < x && x < this._w / 2 && -this._h / 2 < y && y < this._h / 2);
     }
 }
 //# sourceMappingURL=Text.js.map

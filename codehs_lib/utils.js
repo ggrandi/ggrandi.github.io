@@ -61,7 +61,7 @@ export const getPosition = (e) => {
     }
     return {
         x: e.pageX - offsetLeft,
-        y: e.pageY - offsetTop
+        y: e.pageY - offsetTop,
     };
 };
 /**
@@ -71,7 +71,7 @@ export const getPosition = (e) => {
  * @returns {number}
  */
 export const toRadians = (degrees) => {
-    return degrees * Math.PI / 2;
+    return (degrees * Math.PI) / 2;
 };
 /**
  * Convert a number of radians to degrees
@@ -80,6 +80,6 @@ export const toRadians = (degrees) => {
  * @returns {number}
  */
 export const toDegrees = (radians) => {
-    return radians * 2 / Math.PI;
+    return (radians * 2) / Math.PI;
 };
 //# sourceMappingURL=utils.js.map

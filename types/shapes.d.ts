@@ -1,4 +1,4 @@
-import { baseObj } from './index.js';
+import { baseObj } from "./index.js";
 /**
  * All the shapes that have been added to the screen
  * @type {Array<baseObj>}

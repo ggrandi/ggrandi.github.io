@@ -1,4 +1,4 @@
-import { canvas, ctx } from './index.js';
+import { canvas, ctx } from "./index.js";
 /**
  * All the shapes that have been added to the screen
  * @type {Array<baseObj>}
@@ -11,13 +11,17 @@ let up = true;
  * @function
  * @returns {void}
  */
-export const setUpdate = (update) => { up = update; };
+export const setUpdate = (update) => {
+    up = update;
+};
 /**
  * Removes all objects from the canvas
  * @function
  * @returns {void}
  */
-export const removeAll = () => { shapes.splice(0, shapes.length); };
+export const removeAll = () => {
+    shapes.splice(0, shapes.length);
+};
 /**
  * Adds all shapes that are passed to the screen
  * @param args {baseObj[]} any number of shapes to add
@@ -26,7 +30,7 @@ export const removeAll = () => { shapes.splice(0, shapes.length); };
  */
 export const add = (...args) => {
     setTimeout(() => {
-        args.forEach(e => {
+        args.forEach((e) => {
             if (shapes.indexOf(e) !== -1) {
                 remove(e);
             }
@@ -45,7 +49,7 @@ export const add = (...args) => {
  */
 export const remove = (...args) => {
     setTimeout(() => {
-        args.forEach(e => {
+        args.forEach((e) => {
             if (shapes.indexOf(e) != -1) {
                 shapes.splice(shapes.indexOf(e), 1);
             }
@@ -61,7 +65,7 @@ export const remove = (...args) => {
  */
 export const getElementAt = (x, y) => {
     let elem = undefined;
-    shapes.forEach(i => {
+    shapes.forEach((i) => {
         if (i.containsPoint(x, y)) {
             elem = i;
         }
@@ -80,7 +84,7 @@ export function getElementsAt(x, y) {
         return shapes;
     }
     let elems = [];
-    shapes.forEach(i => {
+    shapes.forEach((i) => {
         if (i.containsPoint(x, y)) {
             elems.push(i);
         }
@@ -90,7 +94,7 @@ export function getElementsAt(x, y) {
 const main = () => {
     if (up) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        shapes.forEach(s => s.draw());
+        shapes.forEach((s) => s.draw());
     }
     requestAnimationFrame(main);
 };

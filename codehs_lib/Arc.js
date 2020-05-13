@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint, lineDistance, } from "./index.js";
+import { baseObj, ctx, rotatePoint, lineDistance } from "./index.js";
 /**
  * The enum to set the arc's mode
  * @enum {number}
@@ -30,10 +30,14 @@ export class Arc extends baseObj {
         this.x = x !== null && x !== void 0 ? x : -1000;
         this.y = y !== null && y !== void 0 ? y : -1000;
         this._radius = radius;
-        this._sa = mode === ArcMode.DEGREES ? startingAngle * Math.PI / 180 : startingAngle;
-        this._ea = mode === ArcMode.DEGREES ? endingAngle * Math.PI / 180 : endingAngle;
+        this._sa =
+            mode === ArcMode.DEGREES
+                ? (startingAngle * Math.PI) / 180
+                : startingAngle;
+        this._ea =
+            mode === ArcMode.DEGREES ? (endingAngle * Math.PI) / 180 : endingAngle;
         this._cc = counterClockwise !== null && counterClockwise !== void 0 ? counterClockwise : false;
-        this.type = 'Arc';
+        this.type = "Arc";
     }
     /**
      * The radius of the arc
@@ -111,7 +115,7 @@ export class Arc extends baseObj {
     getAngle() {
         return {
             startingAngle: this._sa,
-            endingAngle: this._ea
+            endingAngle: this._ea,
         };
     }
     draw() {
@@ -148,7 +152,10 @@ export class Arc extends baseObj {
         if (A < 0) {
             A += 2 * Math.PI;
         }
-        return this._cc !== (this._sa < this._ea ? (this._sa < A && A < this._ea) : (A > this._sa || A < this._ea));
+        return (this._cc !==
+            (this._sa < this._ea
+                ? this._sa < A && A < this._ea
+                : A > this._sa || A < this._ea));
     }
 }
 //# sourceMappingURL=Arc.js.map

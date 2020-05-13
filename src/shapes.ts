@@ -1,4 +1,4 @@
-import { baseObj, canvas, ctx } from './index.js';
+import { baseObj, canvas, ctx } from "./index.js";
 
 /**
  * All the shapes that have been added to the screen
@@ -13,14 +13,18 @@ let up: boolean = true;
  * @function
  * @returns {void}
  */
-export const setUpdate = (update: boolean): void => { up = update; };
+export const setUpdate = (update: boolean): void => {
+	up = update;
+};
 
 /**
- * Removes all objects from the canvas 
+ * Removes all objects from the canvas
  * @function
  * @returns {void}
  */
-export const removeAll = (): void => { shapes.splice(0, shapes.length) };
+export const removeAll = (): void => {
+	shapes.splice(0, shapes.length);
+};
 
 /**
  * Adds all shapes that are passed to the screen
@@ -29,35 +33,35 @@ export const removeAll = (): void => { shapes.splice(0, shapes.length) };
  * @returns {void}
  */
 export const add = (...args: baseObj[]): void => {
-  setTimeout(() => {
-    args.forEach(e => {
-      if (shapes.indexOf(e) !== -1) {
-        remove(e);
-      }
+	setTimeout(() => {
+		args.forEach((e) => {
+			if (shapes.indexOf(e) !== -1) {
+				remove(e);
+			}
 
-      shapes.push(e);
+			shapes.push(e);
 
-      if (!up) {
-        e.draw();
-      }
-    });
-  }, 1);
+			if (!up) {
+				e.draw();
+			}
+		});
+	}, 1);
 };
 
 /**
- * Removes all shapes that are passed from the screen 
+ * Removes all shapes that are passed from the screen
  * @param args {baseObj[]} shapes to remove
  * @function
  * @returns {void}
  */
 export const remove = (...args: baseObj[]): void => {
-  setTimeout(() => {
-    args.forEach(e => {
-      if (shapes.indexOf(e) != -1) {
-        shapes.splice(shapes.indexOf(e), 1);
-      }
-    });
-  }, 1);
+	setTimeout(() => {
+		args.forEach((e) => {
+			if (shapes.indexOf(e) != -1) {
+				shapes.splice(shapes.indexOf(e), 1);
+			}
+		});
+	}, 1);
 };
 
 /**
@@ -68,14 +72,14 @@ export const remove = (...args: baseObj[]): void => {
  * @returns {baseObj | undefined}
  */
 export const getElementAt = (x: number, y: number): baseObj | undefined => {
-  let elem: baseObj | undefined = undefined;
-  shapes.forEach(i => {
-    if (i.containsPoint(x, y)) {
-      elem = i;
-    }
-  });
-  return elem;
-}
+	let elem: baseObj | undefined = undefined;
+	shapes.forEach((i) => {
+		if (i.containsPoint(x, y)) {
+			elem = i;
+		}
+	});
+	return elem;
+};
 
 /**
  * Returns the all the shapes that are at the point (`x`, `y`)
@@ -100,25 +104,25 @@ export function getElementsAt(showAll: true): Array<baseObj>;
  * @returns {baseObj[]}
  */
 export function getElementsAt(x: number | true, y?: number): Array<baseObj> {
-  if (x === true) {
-    return shapes;
-  }
+	if (x === true) {
+		return shapes;
+	}
 
-  let elems: Array<baseObj> = [];
-  shapes.forEach(i => {
-    if (i.containsPoint(x as number, y as number)) {
-      elems.push(i);
-    }
-  });
-  return elems.reverse();
+	let elems: Array<baseObj> = [];
+	shapes.forEach((i) => {
+		if (i.containsPoint(x as number, y as number)) {
+			elems.push(i);
+		}
+	});
+	return elems.reverse();
 }
 
 const main = () => {
-  if (up) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shapes.forEach(s => s.draw());
-  }
-  requestAnimationFrame(main);
+	if (up) {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		shapes.forEach((s) => s.draw());
+	}
+	requestAnimationFrame(main);
 };
 
 main();

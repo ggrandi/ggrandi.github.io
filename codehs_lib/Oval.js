@@ -17,7 +17,7 @@ export class Oval extends baseObj {
         this._height = height;
         this.x = x !== null && x !== void 0 ? x : -1000;
         this.y = y !== null && y !== void 0 ? y : -1000;
-        this.color = color || 'black';
+        this.color = color || "black";
         if (color && !checkColor(color)) {
             console.warn(`Your color of ${color} is not a valid color`);
             this.color = "black";
@@ -92,7 +92,9 @@ export class Oval extends baseObj {
             y = point.y;
         }
         const oW = this.outline ? this.outlineWidth / 2 : 0;
-        return (x ** 2) / (this._width / 2 + oW) ** 2 + (y ** 2) / (this._height / 2 + oW) ** 2 <= 1;
+        return (x ** 2 / (this._width / 2 + oW) ** 2 +
+            y ** 2 / (this._height / 2 + oW) ** 2 <=
+            1);
     }
 }
 //# sourceMappingURL=Oval.js.map

@@ -1,5 +1,5 @@
 const outputDiv = "output";
-/** 
+/**
  * The canvas everything is drawn to
  * @type {HTMLCanvasElement}
  */
@@ -11,43 +11,51 @@ export const canvas: HTMLCanvasElement = createCanvas(outputDiv);
  */
 export const output: HTMLPreElement = createConsole(outputDiv);
 
-/** 
- * The canvas context 
+/**
+ * The canvas context
  * @type {CanvasRenderingContext2D}
  */
-export const ctx: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
+export const ctx: CanvasRenderingContext2D = <CanvasRenderingContext2D>(
+	canvas.getContext("2d")
+);
 if (!ctx) {
-  throw new Error("Error creating canvas context. Check that the canvas is loading correctly.")
+	throw new Error(
+		"Error creating canvas context. Check that the canvas is loading correctly."
+	);
 }
 
 function createCanvas(divId: string): HTMLCanvasElement {
-  let div: HTMLElement | null = document.getElementById(divId);
+	let div: HTMLElement | null = document.getElementById(divId);
 
-  if (!div) {
-    throw new Error(`Cannot find any element with the id of "${divId}". Please create that div in your html file.`);
-  }
+	if (!div) {
+		throw new Error(
+			`Cannot find any element with the id of "${divId}". Please create that div in your html file.`
+		);
+	}
 
-  let c: HTMLCanvasElement = document.createElement("canvas");
-  c.height = 480;
-  c.width = 400;
-  c.id = "game";
-  div.append(c);
+	let c: HTMLCanvasElement = document.createElement("canvas");
+	c.height = 480;
+	c.width = 400;
+	c.id = "game";
+	div.append(c);
 
-  return c;
+	return c;
 }
 
 function createConsole(divId: string): HTMLPreElement {
-  let div: HTMLElement | null = document.getElementById(divId);
+	let div: HTMLElement | null = document.getElementById(divId);
 
-  if (!div) {
-    throw new Error(`Cannot find any element with the id of "${divId}". Please create that div in your html file.`);
-  }
+	if (!div) {
+		throw new Error(
+			`Cannot find any element with the id of "${divId}". Please create that div in your html file.`
+		);
+	}
 
-  let p: HTMLPreElement = document.createElement("pre");
-  p.id = "console";
-  div.append(p);
+	let p: HTMLPreElement = document.createElement("pre");
+	p.id = "console";
+	div.append(p);
 
-  return p;
+	return p;
 }
 
 /**
@@ -72,9 +80,9 @@ export const getHeight = (): number => canvas.height;
  * @returns {void}
  */
 export const setSize = (width: number, height: number): void => {
-  canvas.width = width;
-  canvas.height = height;
-}
+	canvas.width = width;
+	canvas.height = height;
+};
 
 /**
  * Set the background color of the canvas
@@ -82,8 +90,8 @@ export const setSize = (width: number, height: number): void => {
  * @function
  */
 export const setBackgroundColor = (color: string): void => {
-  canvas.style.backgroundColor = color;
-}
+	canvas.style.backgroundColor = color;
+};
 
 /**
  * Show the mouse over the canvas
@@ -91,13 +99,13 @@ export const setBackgroundColor = (color: string): void => {
  * @function
  */
 export const showCursor = (cursor?: string): void => {
-  canvas.style.cursor = cursor || 'default';
-}
+	canvas.style.cursor = cursor || "default";
+};
 
 /**
  * Hide the mouse over the canvas
  * @function
  */
 export const hideCursor = (): void => {
-  canvas.style.cursor = 'none';
-}
+	canvas.style.cursor = "none";
+};

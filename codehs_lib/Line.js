@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint, lineDistance, checkColor } from './index.js';
+import { baseObj, ctx, rotatePoint, lineDistance, checkColor, } from "./index.js";
 /**
  * The Line shape
  */
@@ -24,7 +24,7 @@ export class Line extends baseObj {
             this.color = "black";
         }
         this._width = width || 2;
-        this.type = 'Line';
+        this.type = "Line";
     }
     toString() {
         return `${this.type} from (${this.x1}, ${this.y1}) to (${this.x2}, ${this.y2})`;
@@ -32,7 +32,7 @@ export class Line extends baseObj {
     /**
      * Set the width of the line
      * @param {number} w the new width
-   * @returns {this}
+     * @returns {this}
      */
     setLineWidth(w) {
         this._width = w;
@@ -82,7 +82,7 @@ export class Line extends baseObj {
      * Set the starting point
      * @param {number} x the x-coordinate for the starting point
      * @param {number} y the y-coordinate for the starting point
-   * @returns {this}
+     * @returns {this}
      */
     setStartpoint(x, y) {
         this._x1 = x;
@@ -93,7 +93,7 @@ export class Line extends baseObj {
      * Set the ending point
      * @param {number} x the x-coordinate for the ending point
      * @param {number} y the y-coordinate for the ending point
-   * @returns {this}
+     * @returns {this}
      */
     setEndpoint(x, y) {
         this._x2 = x;
@@ -104,7 +104,7 @@ export class Line extends baseObj {
      * Sets the Line's to the start position (`x1`, `y1`)
      * @param {number} x1 new x-coordinate of the shape
      * @param {number} y1 new y-coordinate of the shape
-   * @returns {this}
+     * @returns {this}
      */
     setPosition(x1, y1) {
         return this.setStartpoint(x1, y1);
@@ -114,7 +114,8 @@ export class Line extends baseObj {
             ctx.save();
             ctx.beginPath();
             const w = this._width + 2 * this.outlineWidth;
-            const h = lineDistance(this.x1, this.y1, this.x2, this.y2) + 2 * this.outlineWidth;
+            const h = lineDistance(this.x1, this.y1, this.x2, this.y2) +
+                2 * this.outlineWidth;
             ctx.translate(Math.min(this._x1, this._x2) + Math.abs(this._x1 - this._x2) / 2, Math.min(this._y1, this._y2) + Math.abs(this._y1 - this._y2) / 2);
             ctx.rotate(Math.atan2(-(this.x2 - this.x1), this.y2 - this.y1));
             ctx.fillStyle = this.outlineColor;
@@ -137,7 +138,10 @@ export class Line extends baseObj {
         y = point.y;
         let length = lineDistance(this.x1, this.y1, this.x2, this.y2);
         const oW = this.outline ? this.outlineWidth : 0;
-        return -this._width / 2 - oW < x && x < this._width / 2 + oW && -oW < y && y < length + oW;
+        return (-this._width / 2 - oW < x &&
+            x < this._width / 2 + oW &&
+            -oW < y &&
+            y < length + oW);
     }
 }
 //# sourceMappingURL=Line.js.map

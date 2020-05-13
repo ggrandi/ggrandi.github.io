@@ -1,4 +1,4 @@
-import { baseObj, ctx, lineDistance, checkColor } from './index.js';
+import { baseObj, ctx, lineDistance, checkColor } from "./index.js";
 /**
  * The Circle shape
  */
@@ -28,7 +28,7 @@ export class Circle extends baseObj {
             this.outlineColor = "black";
         }
         this._radius = radius;
-        this.type = 'Circle';
+        this.type = "Circle";
     }
     /**
      * The circle's radius

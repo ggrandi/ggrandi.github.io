@@ -3,13 +3,13 @@
  */
 export class Randomizer {
     constructor() {
-        console.warn('Creating a new Randomizer creates a new blank object');
+        console.warn("Creating a new Randomizer creates a new blank object");
     }
     /**
      * Returns a random integer between `min` and `max`
      * @param min {number} minimum value of the integer
      * @param max {number} maximum value of the integer
-   * @returns {number}
+     * @returns {number}
      */
     static nextInt(min, max) {
         min = Math.ceil(min);
@@ -19,7 +19,7 @@ export class Randomizer {
     /**
      * Returns true with a probability of 50% or `probability`%
      * @param {number | undefined} probability The probability of returning true from 0 (never) to 1 (always)
-   * @returns {boolean}
+     * @returns {boolean}
      */
     static nextBoolean(probability = 0.5) {
         if (probability < 0 || probability > 1) {
@@ -32,14 +32,14 @@ export class Randomizer {
      * Returns a random float between `min` and `max`
      * @param min {number} minimum value of the float
      * @param max {number} maximum value of the float
-   * @returns {float}
+     * @returns {float}
      */
     static nextFloat(min, max) {
         return Math.random() * (max - min) + min;
     }
     /**
      * Returns a random hexadecimal color
-   * @returns {string}
+     * @returns {string}
      */
     static nextColor() {
         return `#${this.randomHex(0, 255)}${this.randomHex(0, 255)}${this.randomHex(0, 255)}`;
@@ -53,7 +53,7 @@ export class Randomizer {
     static randomHex(min, max) {
         const c = this.nextInt(min, max).toString(16);
         const length = max.toString(16).length;
-        return c.length > length ? c : c.padStart(length, '0');
+        return c.length > length ? c : c.padStart(length, "0");
     }
     /**
      * Returns a random value from the array

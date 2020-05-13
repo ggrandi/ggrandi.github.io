@@ -1,4 +1,4 @@
-import { baseObj, ctx, rotatePoint, checkColor } from './index.js';
+import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
 /**
  * The rectangle shape
  */
@@ -27,12 +27,12 @@ export class Rectangle extends baseObj {
         this._width = width;
         this._height = height;
         this.outline = outline || false;
-        this.outlineColor = outlineColor || 'black';
+        this.outlineColor = outlineColor || "black";
         if (outlineColor && !checkColor(outlineColor)) {
             console.warn(`Your outline color of ${outlineColor} is not a valid color`);
             this.outlineColor = "black";
         }
-        this.type = 'Rectangle';
+        this.type = "Rectangle";
     }
     /**
      * The rectangle's width
@@ -46,23 +46,23 @@ export class Rectangle extends baseObj {
     }
     /**
      * Returns the width of the rectangle
-   * @returns {number}
+     * @returns {number}
      */
     getWidth() {
         return this.width;
     }
     /**
-       * Sets the width of the rectangle
+     * Sets the width of the rectangle
      * @param {number} width the new width
      * @returns {number}
-       */
+     */
     setWidth(width) {
         this.width = width;
         return this;
     }
     /**
-   * The rectangle's height
-   * @type {number}
+     * The rectangle's height
+     * @type {number}
      */
     set height(v) {
         this._height = v;
@@ -90,7 +90,7 @@ export class Rectangle extends baseObj {
      * Set the width and height of the rectangle
      * @param {number} width the rectangle's new width
      * @param {number} height the rectangle's new height
-   * @returns {this}
+     * @returns {this}
      */
     setSize(width, height) {
         this._width = width;
@@ -121,7 +121,10 @@ export class Rectangle extends baseObj {
             y = point.y;
         }
         const oW = this.outline ? this.outlineWidth / 2 : 0;
-        return -this._width / 2 - oW < x && x < this._width / 2 + oW && -this._height / 2 - oW < y && y < this._height / 2 + oW;
+        return (-this._width / 2 - oW < x &&
+            x < this._width / 2 + oW &&
+            -this._height / 2 - oW < y &&
+            y < this._height / 2 + oW);
     }
 }
 //# sourceMappingURL=Rectangle.js.map

@@ -1,4 +1,4 @@
-import { output } from './index.js';
+import { output } from "./index.js";
 const createColoredSpan = (inner, color) => {
     let s = document.createElement("span");
     s.innerHTML = inner;
@@ -7,13 +7,13 @@ const createColoredSpan = (inner, color) => {
 };
 const addSeparator = (pre) => {
     if (pre.innerText) {
-        let d = document.createElement('div');
-        d.style.height = '1px';
-        d.style.width = '100%';
-        d.style.backgroundColor = 'black';
-        d.style.marginTop = '5px';
-        d.style.marginBottom = '5px';
-        d.className = 'separator';
+        let d = document.createElement("div");
+        d.style.height = "1px";
+        d.style.width = "100%";
+        d.style.backgroundColor = "black";
+        d.style.marginTop = "5px";
+        d.style.marginBottom = "5px";
+        d.className = "separator";
         pre.append(d);
     }
 };
@@ -36,10 +36,10 @@ export const println = (...args) => {
     addSeparator(output);
     for (let i = 0; i < args.length; i++) {
         if (args[i] === null) {
-            output.append(createColoredSpan('null', "deeppink"));
+            output.append(createColoredSpan("null", "deeppink"));
         }
         else {
-            switch (typeof (args[i])) {
+            switch (typeof args[i]) {
                 case "number":
                     {
                         output.append(createColoredSpan(args[i], "purple"));
@@ -58,7 +58,7 @@ export const println = (...args) => {
                     break;
                 case "undefined":
                     {
-                        output.append(createColoredSpan('undefined', "deeppink"));
+                        output.append(createColoredSpan("undefined", "deeppink"));
                     }
                     break;
                 default:
@@ -88,11 +88,11 @@ export const readLine = (message) => {
  */
 export const readInt = (message) => {
     let ans;
-    if (Boolean(ans = parseInt(prompt(message) || "", 10))) {
+    if (Boolean((ans = parseInt(prompt(message) || "", 10)))) {
         return ans;
     }
     for (let i = 0; i < 100; i++) {
-        if (Boolean(ans = parseInt(prompt("Please enter an Integer. " + message) || "", 10))) {
+        if (Boolean((ans = parseInt(prompt("Please enter an Integer. " + message) || "", 10)))) {
             return ans;
         }
     }
@@ -106,11 +106,11 @@ export const readInt = (message) => {
  */
 export const readFloat = (message) => {
     let ans;
-    if (Boolean(ans = parseFloat(prompt(message) || ""))) {
+    if (Boolean((ans = parseFloat(prompt(message) || "")))) {
         return ans;
     }
     for (let i = 0; i < 100; i++) {
-        if (Boolean(ans = parseFloat(prompt("Please enter an Integer. " + message) || ""))) {
+        if (Boolean((ans = parseFloat(prompt("Please enter an Integer. " + message) || "")))) {
             return ans;
         }
     }
@@ -130,7 +130,8 @@ export const readBoolean = (message, y = "y", n = "n") => {
         return ans === y;
     }
     for (let i = 0; i < 100; i++) {
-        if ((ans = prompt(`Please enter ${message} (${y}|${n})`)) === y || ans === n) {
+        if ((ans = prompt(`Please enter ${message} (${y}|${n})`)) === y ||
+            ans === n) {
             return ans === y;
         }
     }
@@ -148,16 +149,16 @@ export const readBoolean = (message, y = "y", n = "n") => {
 export const consoleInput = async (message, submitHandler, inputType, submitButton) => {
     addSeparator(output);
     output.append(new Text(`${message}: `));
-    let i = document.createElement('input');
-    i.className = 'consoleInput';
+    let i = document.createElement("input");
+    i.className = "consoleInput";
     i.type = inputType;
     i.value = "";
     output.append(i);
     let submit;
     if (submitButton) {
-        submit = document.createElement('input');
+        submit = document.createElement("input");
         submit.style.marginLeft = "10px";
-        submit.className = 'consoleInput';
+        submit.className = "consoleInput";
         submit.type = "button";
         submit.value = "Submit";
         output.append(submit);
@@ -230,7 +231,8 @@ const readNumberConsole = async (message, validation, checks) => {
         if (checks && !checks(input.value, e)) {
             return { done: false };
         }
-        if ((isNaN(+e.key) && e.key.length < 2 || e.key === " ") && !(e.key === "-")) {
+        if (((isNaN(+e.key) && e.key.length < 2) || e.key === " ") &&
+            !(e.key === "-")) {
             e.preventDefault();
         }
         return { done: false };
@@ -254,7 +256,7 @@ export const readIntConsole = async (message) => {
  * @async
  */
 export const readFloatConsole = async (message) => {
-    return await readNumberConsole(message, (str) => parseFloat(str), (value, e) => !(e.key === "." && value.split('.').length <= 1));
+    return await readNumberConsole(message, (str) => parseFloat(str), (value, e) => !(e.key === "." && value.split(".").length <= 1));
 };
 /**
  * Ask a question in the console and return a boolean value

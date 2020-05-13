@@ -12,18 +12,18 @@ export class Color extends String {
      */
     constructor(red, green, blue, alpha) {
         if (red < 0 || red > 255) {
-            console.warn('The red should be between 0 and 255');
+            console.warn("The red should be between 0 and 255");
         }
         if (green < 0 || green > 255) {
-            console.warn('The green should be between 0 and 255');
+            console.warn("The green should be between 0 and 255");
         }
         if (blue < 0 || blue > 255) {
-            console.warn('The blue should be between 0 and 255');
+            console.warn("The blue should be between 0 and 255");
         }
         if (alpha && (alpha < 0 || alpha > 1)) {
-            console.warn('The alpha should be between 0 and 1');
+            console.warn("The alpha should be between 0 and 1");
         }
-        super(`rgb${alpha ? 'a' : ''}(${red}, ${green}, ${blue}${alpha ? `, ${alpha}` : ''})`);
+        super(`rgb${alpha ? "a" : ""}(${red}, ${green}, ${blue}${alpha ? `, ${alpha}` : ""})`);
     }
     /**
      * The css color black
@@ -1090,9 +1090,12 @@ export class Color extends String {
  * @function
  */
 export const checkColor = (color) => {
-    const hexColor = /^#[a-f0-9]{6}([a-f0-9]{2})?$/;
-    const rgbColor = /^rgba?\(([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5])),\s?([01]?\d?\d|2([0-4]\d|5[0-5]))(,\s?(1|0(.\d+)?))?\)$/;
-    const hslColor = /^hsla?\((3([0-5]\d|60)|[0-2]?(\d)?\d),\s?((100|\d?\d)%),\s?((100|\d?\d)%)(,\s?(1|0(.\d+)?))?\)$/;
-    return hexColor.test(color) || rgbColor.test(color) || hslColor.test(color) || Color.hasOwnProperty(color);
+    const hexColor = /^#([a-fA-F0-9]{3}|[a-fA-F0-9]{6}|[a-fA-F0-9]{8})$/;
+    const rgbColor = /^rgb(\((([01]?\d?\d|2([0-4]\d|5[0-5])), ?){2}([01]?\d?\d|2([0-4]\d|5[0-5]))|a\((([01]?\d?\d|2([0-4]\d|5[0-5])), ?){3}(1|0?(.\d+)?))\)$/;
+    const hslColor = /^hsl(\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}|a\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}, ?(1|0(.\d+)?))\)$/;
+    return (hexColor.test(color) ||
+        rgbColor.test(color) ||
+        hslColor.test(color) ||
+        Color.hasOwnProperty(color));
 };
 //# sourceMappingURL=Color.js.map

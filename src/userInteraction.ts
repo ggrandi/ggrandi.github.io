@@ -7,7 +7,7 @@ import { canvas } from "./index.js";
  * @returns {void}
  */
 export const mouseClickMethod = (func: (e: MouseEvent) => void): void => {
-  canvas.onclick = func;
+	canvas.onclick = func;
 };
 
 /**
@@ -17,7 +17,7 @@ export const mouseClickMethod = (func: (e: MouseEvent) => void): void => {
  * @returns {void}
  */
 export const mouseMoveMethod = (func: (e: MouseEvent) => void): void => {
-  canvas.onmousemove = func;
+	canvas.onmousemove = func;
 };
 
 /**
@@ -27,8 +27,8 @@ export const mouseMoveMethod = (func: (e: MouseEvent) => void): void => {
  * @returns {void}
  */
 export const keyDownMethod = (func: (e: KeyboardEvent) => void): void => {
-  window.onkeydown = func;
-}
+	window.onkeydown = func;
+};
 
 /**
  * Set the document's keyup method, use window.onkeyup instead (included for compatibility with CodeHS)
@@ -37,5 +37,5 @@ export const keyDownMethod = (func: (e: KeyboardEvent) => void): void => {
  * @returns {void}
  */
 export const keyUpMethod = (func: (e: KeyboardEvent) => void): void => {
-  window.onkeyup = func;
-}
+	window.onkeyup = func;
+};

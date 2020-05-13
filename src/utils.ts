@@ -6,12 +6,16 @@
  * @returns {Object<{ x: number, y: number }>}
  * @function
  */
-export const rotatePoint = (x: number, y: number, radians: number): { x: number, y: number } => {
-  return {
-    x: Math.cos(radians) * x + Math.sin(radians) * y,
-    y: -(Math.sin(radians) * x) + Math.cos(radians) * y,
-  }
-}
+export const rotatePoint = (
+	x: number,
+	y: number,
+	radians: number
+): { x: number; y: number } => {
+	return {
+		x: Math.cos(radians) * x + Math.sin(radians) * y,
+		y: -(Math.sin(radians) * x) + Math.cos(radians) * y,
+	};
+};
 
 /**
  * Returns the distance of a line segment starting at (`x1`, `y1`)
@@ -23,26 +27,31 @@ export const rotatePoint = (x: number, y: number, radians: number): { x: number,
  * @function
  * @returns {number}
  */
-export const lineDistance = (x1: number, y1: number, x2: number, y2: number): number => {
-  return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
-}
+export const lineDistance = (
+	x1: number,
+	y1: number,
+	x2: number,
+	y2: number
+): number => {
+	return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+};
 
 /**
  * Returns the greatest common factor between `a` and `b`
  * @param {number} a numerical expression
- * @param {number} b numerical expression 
+ * @param {number} b numerical expression
  * @function
  * @returns {number}
  */
 export const gcf = (a: number, b: number): number => {
-  a = Math.max(Math.abs(a), Math.abs(b));
-  b = Math.min(Math.abs(a), Math.abs(b));
-  while (true) {
-    if (b == 0) return a;
-    a %= b;
-    if (a == 0) return b;
-    b %= a;
-  }
+	a = Math.max(Math.abs(a), Math.abs(b));
+	b = Math.min(Math.abs(a), Math.abs(b));
+	while (true) {
+		if (b == 0) return a;
+		a %= b;
+		if (a == 0) return b;
+		b %= a;
+	}
 };
 
 /**
@@ -51,21 +60,21 @@ export const gcf = (a: number, b: number): number => {
  * @function
  * @returns {Object<{ x: number, y: number }>}
  */
-export const getPosition = (e: MouseEvent): { x: number, y: number } => {
-  let p = e.target as HTMLElement;
-  let offsetLeft = 0;
-  let offsetTop = 0;
+export const getPosition = (e: MouseEvent): { x: number; y: number } => {
+	let p = e.target as HTMLElement;
+	let offsetLeft = 0;
+	let offsetTop = 0;
 
-  while (p.offsetParent) {
-    offsetLeft += p.offsetLeft;
-    offsetTop += p.offsetTop;
-    p = p.offsetParent as HTMLElement;
-  }
+	while (p.offsetParent) {
+		offsetLeft += p.offsetLeft;
+		offsetTop += p.offsetTop;
+		p = p.offsetParent as HTMLElement;
+	}
 
-  return {
-    x: e.pageX - offsetLeft,
-    y: e.pageY - offsetTop
-  };
+	return {
+		x: e.pageX - offsetLeft,
+		y: e.pageY - offsetTop,
+	};
 };
 
 /**
@@ -75,8 +84,8 @@ export const getPosition = (e: MouseEvent): { x: number, y: number } => {
  * @returns {number}
  */
 export const toRadians = (degrees: number): number => {
-  return degrees * Math.PI / 2;
-}
+	return (degrees * Math.PI) / 2;
+};
 
 /**
  * Convert a number of radians to degrees
@@ -85,5 +94,5 @@ export const toRadians = (degrees: number): number => {
  * @returns {number}
  */
 export const toDegrees = (radians: number): number => {
-  return radians * 2 / Math.PI;
-}
+	return (radians * 2) / Math.PI;
+};

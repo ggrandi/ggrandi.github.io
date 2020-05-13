@@ -23,20 +23,20 @@ export declare class baseObj {
     get type(): string;
     /**
      * Returns the type of the Shape
-   * @returns {string}
+     * @returns {string}
      */
     getType(): string;
     /**
      * Sets the shape to the position (`x`, `y`)
      * @param {number} x new x-coordinate of the shape
      * @param {number} y new y-coordinate of the shape
-   * @returns {this}
+     * @returns {this}
      */
     setPosition(x: number, y: number): this;
     /**
      * Sets the color of the shape to `color`
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setColor(color: string): this;
     setOutline(show: boolean): this;
@@ -46,13 +46,13 @@ export declare class baseObj {
     /**
      * Sets the color of the shape's outline to `color`
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setOutlineColor(color: string): this;
     /**
      * Sets the color of the shape's outline to `color` (same as setOutlineColor)
      * @param {string} color css color, hexadecimal string, or rgba() string
-   * @returns {this}
+     * @returns {this}
      */
     setBorderColor(color: string): this;
     /**
@@ -64,7 +64,7 @@ export declare class baseObj {
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
      * @param {number} width the new width of the outline
-   * @returns {this}
+     * @returns {this}
      */
     setBorderWidth(width: number): this;
     /**
@@ -111,7 +111,7 @@ export declare class baseObj {
     get x(): number;
     /**
      * method to return the shapes x-position
-   * @returns {number}
+     * @returns {number}
      */
     getX(): number;
     /**
@@ -122,14 +122,14 @@ export declare class baseObj {
     get y(): number;
     /**
      * method to return the shapes y-position
-   * @returns {number}
+     * @returns {number}
      */
     getY(): number;
     /**
      * Move a shape `dx` pixels right and `dy` pixels left
      * @param {number} dx pixels to move along the x-axis
      * @param {number} dy pixels to move along the y-axis
-   * @returns {this}
+     * @returns {this}
      */
     move(dx: number, dy: number): this;
     /**
@@ -141,7 +141,7 @@ export declare class baseObj {
     /**
      * Rotate the shape by `degrees` degrees
      * @param {number} degrees number of degrees to rotate it by
-   * @returns {this}
+     * @returns {this}
      */
     rotateDegrees(degrees: number): this;
     /**
@@ -153,17 +153,17 @@ export declare class baseObj {
     /**
      * Rotate the shape by `radians` radians
      * @param {number} radians number of degrees to rotate it by
-   * @returns {this}
+     * @returns {this}
      */
     rotate(radians: number): this;
     /**
      * Returns the shapes rotation in radians
-   * @returns {number}
+     * @returns {number}
      */
     getRotation(): number;
     /**
      * Returns the shapes rotation in degrees
-   * @returns {number}
+     * @returns {number}
      */
     getRotationDegrees(): number;
     /**
@@ -174,29 +174,29 @@ export declare class baseObj {
     get color(): string;
     /**
      * Returns the shape's color
-   * @returns {string}
+     * @returns {string}
      */
     getColor(): string;
     /**
      * adds the shape to the canvas
-   * @returns {this}
+     * @returns {this}
      */
     add(): this;
     /**
      * removes the shape from the canvas
-   * @returns {this}
+     * @returns {this}
      */
     remove(): this;
     /**
      * Returns a boolean to check if the shape contains the point (`x`, `y`)
      * @param {number} x x-position of point
      * @param {number} y y-position of point
-   * @returns {boolean}
+     * @returns {boolean}
      */
     containsPoint(x: number, y: number): boolean;
     /**
      * Method called to draw the shape on the screen
-   * @returns {void}
+     * @returns {void}
      */
     draw(): void;
 }

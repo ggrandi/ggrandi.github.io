@@ -1,4 +1,4 @@
-import { baseObj } from './index.js';
+import { baseObj } from "./index.js";
 /**
  * The Line shape
  */
@@ -15,7 +15,7 @@ export declare class Line extends baseObj {
     /**
      * Set the width of the line
      * @param {number} w the new width
-   * @returns {this}
+     * @returns {this}
      */
     setLineWidth(w: number): this;
     /**
@@ -46,21 +46,21 @@ export declare class Line extends baseObj {
      * Set the starting point
      * @param {number} x the x-coordinate for the starting point
      * @param {number} y the y-coordinate for the starting point
-   * @returns {this}
+     * @returns {this}
      */
     setStartpoint(x: number, y: number): this;
     /**
      * Set the ending point
      * @param {number} x the x-coordinate for the ending point
      * @param {number} y the y-coordinate for the ending point
-   * @returns {this}
+     * @returns {this}
      */
     setEndpoint(x: number, y: number): this;
     /**
      * Sets the Line's to the start position (`x1`, `y1`)
      * @param {number} x1 new x-coordinate of the shape
      * @param {number} y1 new y-coordinate of the shape
-   * @returns {this}
+     * @returns {this}
      */
     setPosition(x1: number, y1: number): this;
     draw(): void;
