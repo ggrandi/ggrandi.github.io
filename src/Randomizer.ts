@@ -8,9 +8,8 @@ export class Randomizer {
 
 	/**
 	 * Returns a random integer between `min` and `max`
-	 * @param min {number} minimum value of the integer
-	 * @param max {number} maximum value of the integer
-	 * @returns {number}
+	 * @param min minimum value of the integer
+	 * @param max maximum value of the integer
 	 */
 	static nextInt(min: number, max: number): number {
 		min = Math.ceil(min);
@@ -20,8 +19,7 @@ export class Randomizer {
 
 	/**
 	 * Returns true with a probability of 50% or `probability`%
-	 * @param {number | undefined} probability The probability of returning true from 0 (never) to 1 (always)
-	 * @returns {boolean}
+	 * @param probability The probability of returning true from 0 (never) to 1 (always)
 	 */
 	static nextBoolean(probability: number = 0.5): boolean {
 		if (probability < 0 || probability > 1) {
@@ -34,9 +32,8 @@ export class Randomizer {
 	}
 	/**
 	 * Returns a random float between `min` and `max`
-	 * @param min {number} minimum value of the float
-	 * @param max {number} maximum value of the float
-	 * @returns {float}
+	 * @param min minimum value of the float
+	 * @param max maximum value of the float
 	 */
 	static nextFloat(min: number, max: number): number {
 		return Math.random() * (max - min) + min;
@@ -44,7 +41,6 @@ export class Randomizer {
 
 	/**
 	 * Returns a random hexadecimal color
-	 * @returns {string}
 	 */
 	static nextColor(): string {
 		return `#${this.randomHex(0, 255)}${this.randomHex(0, 255)}${this.randomHex(
@@ -55,9 +51,8 @@ export class Randomizer {
 
 	/**
 	 * Returns a random hex string between min and max
-	 * @param min {number} minimum value
-	 * @param max {number} maximum value
-	 * @returns {string}
+	 * @param min minimum value
+	 * @param max maximum value
 	 */
 	static randomHex(min: number, max: number): string {
 		const c = this.nextInt(min, max).toString(16);
@@ -67,8 +62,7 @@ export class Randomizer {
 
 	/**
 	 * Returns a random value from the array
-	 * @param {Array<ArrayType>} array The array to extract a value from
-	 * @returns {ArrayType}
+	 * @param array The array to extract a value from
 	 */
 	static randomArrayValue<ArrayType>(array: ArrayType[]): ArrayType {
 		return array[Math.floor(Math.random() * array.length)];

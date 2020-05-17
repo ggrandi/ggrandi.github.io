@@ -3,19 +3,6 @@ import { Rectangle, ctx, gcf } from "./index.js";
  * The Image from the web shape
  */
 export class WebImage extends Rectangle {
-    /**
-     * Note: the clip is a smaller portion of the image
-     * @constructor
-     * @param {string} src The images source (url or dataurl)
-     * @param {number} width the image's width
-     * @param {number} height the image's height
-     * @param {number} x the image's x-position
-     * @param {number} y the image's y-position
-     * @param {number} sx the x-position of the clip
-     * @param {number} sy the y-position of the clip
-     * @param {number} swidth the width of the clip
-     * @param {number} sheight the height of the clip
-     */
     constructor(src, width, height, x, y, sx, sy, swidth, sheight) {
         super(width !== null && width !== void 0 ? width : 0, height !== null && height !== void 0 ? height : 0, x !== null && x !== void 0 ? x : -1000, y !== null && y !== void 0 ? y : -1000, "#00000000");
         this._hasLoaded = false;
@@ -46,15 +33,13 @@ export class WebImage extends Rectangle {
     /**
      * The image to display
      * @readonly
-     * @type {HTMLImageElement}
      */
     get image() {
         return this._img;
     }
     /**
-     * Sets the image to have a width of `width` while maintaining the aspect ratio
-     * @param {number} width the new width
-     * @returns {this}
+     * sets the image to have a width of `width` while maintaining the aspect ratio
+     * @param width the new width
      */
     setAspectWidth(width) {
         let { w, h } = this.aspectRatio;
@@ -63,9 +48,8 @@ export class WebImage extends Rectangle {
         return this;
     }
     /**
-     * Sets the image to have a height of `height` while maintaining the aspect ratio
-     * @param {number} height the new height
-     * @returns {this}
+     * sets the image to have a height of `height` while maintaining the aspect ratio
+     * @param height the new height
      */
     setAspectHeight(height) {
         let { w, h } = this.aspectRatio;
@@ -76,7 +60,6 @@ export class WebImage extends Rectangle {
     /**
      * the aspect ratio of the image
      * @readonly
-     * @type {Object<{ w: number, h: number }>}
      */
     get aspectRatio() {
         let { naturalWidth, naturalHeight } = this._img;
@@ -88,12 +71,11 @@ export class WebImage extends Rectangle {
         };
     }
     /**
-     * Sets a new portion of the image to display
-     * @param {number} sx the x-position of the clip
-     * @param {number} sy the y-position of the clip
-     * @param {number} swidth the width of the clip
-     * @param {number} sheight the height of the clip
-     * @returns {this}
+     * sets a new portion of the image to display
+     * @param sx the x-position of the clip
+     * @param sy the y-position of the clip
+     * @param swidth the width of the clip
+     * @param sheight the height of the clip
      */
     setClip(sx, sy, swidth, sheight) {
         this._sx = sx;

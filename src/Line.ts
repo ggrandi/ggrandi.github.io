@@ -16,32 +16,47 @@ export class Line extends baseObj {
 	private _y2: number;
 	private _width: number;
 
-	constructor(x1: number, y1: number, x2: number, y2: number);
-	constructor(x1: number, y1: number, x2: number, y2: number, width: number);
-	constructor(
-		x1: number,
-		y1: number,
-		x2: number,
-		y2: number,
-		width: number,
-		color: string
-	);
 	/**
 	 * @constructor
-	 * @param {number} x1 x-coordinate for the starting point
-	 * @param {number} y1 y-coordinate for the starting point
-	 * @param {number} x2 x-coordinate for the ending point
-	 * @param {number} y2 y-coordinate for the ending point
-	 * @param {number | undefined} width the width of the line
-	 * @param {string | undefined} color the color of the line
+	 * @param x1 x-coordinate for the starting point
+	 * @param y1 y-coordinate for the starting point
+	 * @param x2 x-coordinate for the ending point
+	 * @param y2 y-coordinate for the ending point
+	 */
+	constructor(x1: number, y1: number, x2: number, y2: number);
+	/**
+	 * @constructor
+	 * @param x1 x-coordinate for the starting point
+	 * @param y1 y-coordinate for the starting point
+	 * @param x2 x-coordinate for the ending point
+	 * @param y2 y-coordinate for the ending point
+	 * @param width the width of the line
+	 */
+	constructor(x1: number, y1: number, x2: number, y2: number, width: number);
+	/**
+	 * @constructor
+	 * @param x1 x-coordinate for the starting point
+	 * @param y1 y-coordinate for the starting point
+	 * @param x2 x-coordinate for the ending point
+	 * @param y2 y-coordinate for the ending point
+	 * @param width the width of the line
+	 * @param color the color of the line
 	 */
 	constructor(
 		x1: number,
 		y1: number,
 		x2: number,
 		y2: number,
+		width: number,
+		color: string | CanvasGradient
+	);
+	constructor(
+		x1: number,
+		y1: number,
+		x2: number,
+		y2: number,
 		width?: number,
-		color?: string
+		color?: string | CanvasGradient
 	) {
 		super();
 		this._x1 = x1;
@@ -63,11 +78,10 @@ export class Line extends baseObj {
 	}
 
 	/**
-	 * Set the width of the line
-	 * @param {number} w the new width
-	 * @returns {this}
+	 * set the width of the line
+	 * @param w the new width
 	 */
-	setLineWidth(w: number): this {
+	public setLineWidth(w: number): this {
 		this._width = w;
 
 		return this;
@@ -75,59 +89,54 @@ export class Line extends baseObj {
 
 	/**
 	 * X-coordinate for the starting point
-	 * @type {number}
 	 */
-	set x1(v: number) {
+	public set x1(v: number) {
 		this._x1 = v;
 	}
 
-	get x1(): number {
+	public get x1(): number {
 		return this._x1;
 	}
 
 	/**
 	 * X-coordinate for the ending point
-	 * @type {number}
 	 */
-	set x2(v: number) {
+	public set x2(v: number) {
 		this._x2 = v;
 	}
 
-	get x2(): number {
+	public get x2(): number {
 		return this._x2;
 	}
 
 	/**
 	 * Y-coordinate for the starting point
-	 * @type {number}
 	 */
-	set y1(v: number) {
+	public set y1(v: number) {
 		this._y1 = v;
 	}
 
-	get y1(): number {
+	public get y1(): number {
 		return this._y1;
 	}
 
 	/**
 	 * Y-coordinate for the ending point
-	 * @type {number}
 	 */
-	set y2(v: number) {
+	public set y2(v: number) {
 		this._y2 = v;
 	}
 
-	get y2(): number {
+	public get y2(): number {
 		return this._y2;
 	}
 
 	/**
-	 * Set the starting point
-	 * @param {number} x the x-coordinate for the starting point
-	 * @param {number} y the y-coordinate for the starting point
-	 * @returns {this}
+	 * set the starting point
+	 * @param x the x-coordinate for the starting point
+	 * @param y the y-coordinate for the starting point
 	 */
-	setStartpoint(x: number, y: number): this {
+	public setStartpoint(x: number, y: number): this {
 		this._x1 = x;
 		this._y1 = y;
 
@@ -135,12 +144,11 @@ export class Line extends baseObj {
 	}
 
 	/**
-	 * Set the ending point
-	 * @param {number} x the x-coordinate for the ending point
-	 * @param {number} y the y-coordinate for the ending point
-	 * @returns {this}
+	 * set the ending point
+	 * @param x the x-coordinate for the ending point
+	 * @param y the y-coordinate for the ending point
 	 */
-	setEndpoint(x: number, y: number): this {
+	public setEndpoint(x: number, y: number): this {
 		this._x2 = x;
 		this._y2 = y;
 
@@ -148,16 +156,15 @@ export class Line extends baseObj {
 	}
 
 	/**
-	 * Sets the Line's to the start position (`x1`, `y1`)
-	 * @param {number} x1 new x-coordinate of the shape
-	 * @param {number} y1 new y-coordinate of the shape
-	 * @returns {this}
+	 * sets the Line's to the start position (`x1`, `y1`)
+	 * @param x1 new x-coordinate of the shape
+	 * @param y1 new y-coordinate of the shape
 	 */
-	setPosition(x1: number, y1: number): this {
+	public setPosition(x1: number, y1: number): this {
 		return this.setStartpoint(x1, y1);
 	}
 
-	draw() {
+	public draw() {
 		if (this.outline) {
 			ctx.save();
 			ctx.beginPath();
@@ -184,7 +191,7 @@ export class Line extends baseObj {
 		ctx.closePath();
 	}
 
-	containsPoint(x: number, y: number): boolean {
+	public containsPoint(x: number, y: number): boolean {
 		let r = Math.atan2(-(this.x2 - this.x1), this.y2 - this.y1);
 
 		let point = rotatePoint(x - this.x1, y - this.y1, r);

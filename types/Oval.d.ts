@@ -5,38 +5,53 @@ import { baseObj } from "./index.js";
 export declare class Oval extends baseObj {
     private _width;
     private _height;
+    /**
+     * @constructor
+     * @param width the width of the oval
+     * @param height the height of the oval
+     */
     constructor(width: number, height: number);
+    /**
+     * @constructor
+     * @param width the width of the oval
+     * @param height the height of the oval
+     * @param x the x-position
+     * @param y the y-position
+     */
     constructor(width: number, height: number, x: number, y: number);
-    constructor(width: number, height: number, x: number, y: number, color: string);
+    /**
+     * @constructor
+     * @param width the width of the oval
+     * @param height the height of the oval
+     * @param x the x-position
+     * @param y the y-position
+     * @param color the color of the oval
+     */
+    constructor(width: number, height: number, x: number, y: number, color: string | CanvasGradient);
     /**
      * The width of the oval
-     * @type {number}
      */
     set width(v: number);
     get width(): number;
     /**
-     * Set the width of the oval
-     * @param {number} width the new width
-     * @returns {this}
+     * set the width of the oval
+     * @param width the new width
      */
     setWidth(width: number): this;
     /**
      * The height of the oval
-     * @type {number}
      */
     set height(v: number);
     get height(): number;
     /**
-     * Set the height of the oval
-     * @param {number} height the new height
-     * @returns {this}
+     * set the height of the oval
+     * @param height the new height
      */
     setHeight(height: number): this;
     /**
-     * Set the width and height of the oval
-     * @param {number} width the new width of the oval
-     * @param {number} height the new height of the oval
-     * @returns {this}
+     * set the width and height of the oval
+     * @param width the new width of the oval
+     * @param height the new height of the oval
      */
     setSize(width: number, height: number): this;
     draw(): void;

@@ -2,8 +2,7 @@ import { baseObj, ctx, rotatePoint } from "./index.js";
 const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
 /**
  * Checks if a font matches a canvas font
- * @param {string} font the font to check
- * @returns {boolean}
+ * @param font the font to check
  */
 export const checkFont = (font) => {
     return fontRegExp.test(font);
@@ -12,13 +11,6 @@ export const checkFont = (font) => {
  * The Text shape
  */
 export class Text extends baseObj {
-    /**
-     * @constructor
-     * @param {string} txt the text to display
-     * @param {string} font the font to use as \`${size}px ${fontname}\`
-     * @param {number | undefined} x the x position of the text
-     * @param {number | undefined} y the y position of the text
-     */
     constructor(txt, font, x, y) {
         super();
         this.x = x !== null && x !== void 0 ? x : -1000;
@@ -36,7 +28,6 @@ export class Text extends baseObj {
     }
     /**
      * A string that follows the pattern \`${size}px ${fontname}\`
-     * @type {string}
      */
     set font(v) {
         this._font = v;
@@ -53,9 +44,8 @@ export class Text extends baseObj {
         return this._font;
     }
     /**
-     * Allows you to set the text's font
-     * @param {string} font the new font of the Text
-     * @returns {this}
+     * Allows you to public set the text's font
+     * @param font the new font of the Text
      */
     setFont(font) {
         font = font.replace(/pt/i, "px");
@@ -70,7 +60,6 @@ export class Text extends baseObj {
     }
     /**
      * The text to display
-     * @type {string}
      */
     set text(v) {
         this._txt = v;
@@ -83,15 +72,13 @@ export class Text extends baseObj {
     }
     /**
      * Returns the Text's text
-     * @returns {string}
      */
     getText() {
         return this.text;
     }
     /**
-     * Sets the text to display to `txt`
-     * @param {string} txt the string to display
-     * @returns {this}
+     * sets the text to display to `txt`
+     * @param txt the string to display
      */
     setText(txt) {
         this.text = txt;
@@ -100,21 +87,18 @@ export class Text extends baseObj {
     /**
      * The width of the Text
      * @readonly
-     * @type {number}
      */
     get width() {
         return this._w;
     }
     /**
      * Returns the Text's width
-     * @returns {number}
      */
     getWidth() {
         return this._w;
     }
     /**
      * The Text's height
-     * @type {number}
      */
     set height(v) {
         this.font = `${v}px ${this._font.split("px ")[1]}`;
@@ -124,15 +108,13 @@ export class Text extends baseObj {
     }
     /**
      * Returns the height of the Text
-     * @returns {number}
      */
     getHeight() {
         return this.height;
     }
     /**
-     * Set the Height for the Text
+     * set the Height for the Text
      * @param height {number} the new height
-     * @returns {this}
      */
     setHeight(height) {
         this.font = this.font.replace(/\d+/g, String(height));

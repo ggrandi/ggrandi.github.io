@@ -4,11 +4,11 @@ import { baseObj, ctx, rotatePoint, lineDistance } from "./index.js";
  * The enum to set the arc's mode
  * @enum {number}
  * @readonly
- * @property {number<{0}>} DEGREES the value for degrees
- * @property {number<{1}>} RADIANS the value for radians
  */
 export enum ArcMode {
+	/** the value for degrees */
 	DEGREES = 0,
+	/** the value for radians */
 	RADIANS = 1,
 }
 
@@ -21,7 +21,23 @@ export class Arc extends baseObj {
 	private _ea: number;
 	private _cc: boolean;
 
+	/**
+	 * @constructor
+	 * @param radius the radius of the arc
+	 * @param startingAngle the starting angle of the arc
+	 * @param endingAngle {number} the ending angle of the arc
+	 * @param mode 0 for degrees, 1 for radians
+	 */
 	constructor(radius: number, starting: number, ending: number, mode: ArcMode);
+	/**
+	 * @constructor
+	 * @param radius the radius of the arc
+	 * @param startingAngle the starting angle of the arc
+	 * @param endingAngle {number} the ending angle of the arc
+	 * @param mode 0 for degrees, 1 for radians
+	 * @param x the x-position of the arc
+	 * @param y the y-position of the arc
+	 */
 	constructor(
 		radius: number,
 		starting: number,
@@ -30,6 +46,16 @@ export class Arc extends baseObj {
 		x: number,
 		y: number
 	);
+	/**
+	 * @constructor
+	 * @param radius the radius of the arc
+	 * @param startingAngle the starting angle of the arc
+	 * @param endingAngle {number} the ending angle of the arc
+	 * @param mode 0 for degrees, 1 for radians
+	 * @param x the x-position of the arc
+	 * @param y the y-position of the arc
+	 * @param counterClockwise whether the arc is counterclockwise or not
+	 */
 	constructor(
 		radius: number,
 		starting: number,
@@ -39,16 +65,6 @@ export class Arc extends baseObj {
 		y: number,
 		counterClockwise: boolean
 	);
-	/**
-	 * @constructor
-	 * @param {number} radius the radius of the arc
-	 * @param {number} startingAngle the starting angle of the arc
-	 * @param {number} endingAngle {number} the ending angle of the arc
-	 * @param {ArcMode} mode 0 for degrees, 1 for radians
-	 * @param {number | undefined} x the x-position of the arc
-	 * @param {number | undefined} y the y-position of the arc
-	 * @param {boolean | undefined} counterClockwise whether the arc is counterclockwise or not
-	 */
 	constructor(
 		radius: number,
 		startingAngle: number,
@@ -79,7 +95,6 @@ export class Arc extends baseObj {
 
 	/**
 	 * The radius of the arc
-	 * @type {number}
 	 */
 	public set radius(v: number) {
 		this._radius = v;
@@ -91,7 +106,6 @@ export class Arc extends baseObj {
 
 	/**
 	 * The starting angle of the arc
-	 * @type {number}
 	 */
 	public set startingAngle(v: number) {
 		this._sa = v;
@@ -103,8 +117,7 @@ export class Arc extends baseObj {
 
 	/**
 	 * Set the new startingAngle
-	 * @param {number} angle the new starting angle
-	 * @returns {this}
+	 * @param angle the new starting angle
 	 */
 	public setStartingAngle(angle: number): this {
 		this._sa = angle;
@@ -113,7 +126,6 @@ export class Arc extends baseObj {
 
 	/**
 	 * The ending angle of the arc
-	 * @type {number}
 	 */
 	public set endingAngle(v: number) {
 		this._ea = v;
@@ -125,7 +137,6 @@ export class Arc extends baseObj {
 
 	/**
 	 * Whether or not the arc is counterclockwise
-	 * @type {boolean}
 	 */
 	public set counterClockwise(cc: boolean) {
 		this._cc = cc;
@@ -137,21 +148,19 @@ export class Arc extends baseObj {
 
 	/**
 	 * Set the ending angle of the arc
-	 * @param {number} angle The new ending angle
-	 * @returns {this}
+	 * @param angle The new ending angle
 	 */
-	setEndingAngle(angle: number): this {
+	public setEndingAngle(angle: number): this {
 		this._sa = angle;
 		return this;
 	}
 
 	/**
 	 * Set the starting and ending angle of the arc
-	 * @param {number} startingAngle the new starting angle
-	 * @param {number} endingAngle the new ending angle
-	 * @returns {this}
+	 * @param startingAngle the new starting angle
+	 * @param endingAngle the new ending angle
 	 */
-	setAngle(startingAngle: number, endingAngle: number): this {
+	public setAngle(startingAngle: number, endingAngle: number): this {
 		this._sa = startingAngle;
 		this._ea = endingAngle;
 
@@ -160,16 +169,15 @@ export class Arc extends baseObj {
 
 	/**
 	 * Returns the angle of the arc
-	 * @returns {Object<{startingAngle: number, endingAngle: number}>}
 	 */
-	getAngle(): { startingAngle: number; endingAngle: number } {
+	public getAngle(): { startingAngle: number; endingAngle: number } {
 		return {
 			startingAngle: this._sa,
 			endingAngle: this._ea,
 		};
 	}
 
-	draw(): void {
+	public draw(): void {
 		ctx.save();
 		ctx.beginPath();
 		ctx.translate(this.x, this.y);
@@ -187,7 +195,7 @@ export class Arc extends baseObj {
 		ctx.restore();
 	}
 
-	containsPoint(x: number, y: number): boolean {
+	public containsPoint(x: number, y: number): boolean {
 		x -= this.x;
 		y -= this.y;
 

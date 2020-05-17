@@ -7,59 +7,98 @@ export class Rectangle extends baseObj {
 	private _width: number;
 	private _height: number;
 
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 */
 	constructor(width: number, height: number);
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 * @param x the rectangle's x-position
+	 * @param y the rectangle's y-position
+	 */
 	constructor(width: number, height: number, x: number, y: number);
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 * @param x the rectangle's x-position
+	 * @param y the rectangle's y-position
+	 * @param color the rectangle's color
+	 */
 	constructor(
 		width: number,
 		height: number,
 		x: number,
 		y: number,
-		color: string
+		color: string | CanvasGradient
 	);
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 * @param x the rectangle's x-position
+	 * @param y the rectangle's y-position
+	 * @param color the rectangle's color
+	 * @param rotation the rectangle's rotation in radians
+	 */
 	constructor(
 		width: number,
 		height: number,
 		x: number,
 		y: number,
-		color: string,
+		color: string | CanvasGradient,
 		rotation: number
 	);
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 * @param x the rectangle's x-position
+	 * @param y the rectangle's y-position
+	 * @param color the rectangle's color
+	 * @param rotation the rectangle's rotation in radians
+	 * @param outline whether to outline the rectangle
+	 */
 	constructor(
 		width: number,
 		height: number,
 		x: number,
 		y: number,
-		color: string,
+		color: string | CanvasGradient,
 		rotation: number,
 		outline: boolean
 	);
+	/**
+	 * @constructor
+	 * @param width the rectangle's width
+	 * @param height the rectangle's height
+	 * @param x the rectangle's x-position
+	 * @param y the rectangle's y-position
+	 * @param color the rectangle's color
+	 * @param rotation the rectangle's rotation in radians
+	 * @param outline whether to outline the rectangle
+	 * @param outlineColor the outline's color
+	 */
 	constructor(
 		width: number,
 		height: number,
 		x: number,
 		y: number,
-		color: string,
+		color: string | CanvasGradient,
 		rotation: number,
 		outline: boolean,
 		outlineColor: string
 	);
-	/**
-	 * @constructor
-	 * @param {number} width the rectangle's width
-	 * @param {number} height the rectangle's height
-	 * @param {number | undefined} x the rectangle's x-position
-	 * @param {number | undefined} y the rectangle's y-position
-	 * @param {string | undefined} color the rectangle's color
-	 * @param {number | undefined} rotation the rectangle's rotation in radians
-	 * @param {boolean | undefined} outline whether to outline the rectangle
-	 * @param {string | undefined} outlineColor the outline's color
-	 */
 	constructor(
 		width: number,
 		height: number,
 		x?: number,
 		y?: number,
-		color?: string,
+		color?: string | CanvasGradient,
 		rotation?: number,
 		outline?: boolean,
 		outlineColor?: string
@@ -90,30 +129,27 @@ export class Rectangle extends baseObj {
 
 	/**
 	 * The rectangle's width
-	 * @type {number}
 	 */
-	set width(v: number) {
+	public set width(v: number) {
 		this._width = v;
 	}
 
-	get width(): number {
+	public get width(): number {
 		return this._width;
 	}
 
 	/**
 	 * Returns the width of the rectangle
-	 * @returns {number}
 	 */
-	getWidth(): number {
+	public getWidth(): number {
 		return this.width;
 	}
 
 	/**
-	 * Sets the width of the rectangle
-	 * @param {number} width the new width
-	 * @returns {number}
+	 * sets the width of the rectangle
+	 * @param width the new width
 	 */
-	setWidth(width: number): this {
+	public setWidth(width: number): this {
 		this.width = width;
 
 		return this;
@@ -121,42 +157,38 @@ export class Rectangle extends baseObj {
 
 	/**
 	 * The rectangle's height
-	 * @type {number}
 	 */
-	set height(v: number) {
+	public set height(v: number) {
 		this._height = v;
 	}
 
-	get height(): number {
+	public get height(): number {
 		return this._height;
 	}
 
 	/**
 	 * Returns the height of the rectangle
-	 * @returns {number}
 	 */
-	getHeight(): number {
+	public getHeight(): number {
 		return this.height;
 	}
 
 	/**
-	 * Sets the height of the rectangle
-	 * @param {number} height the new height
-	 * @returns {number}
+	 * sets the height of the rectangle
+	 * @param height the new height
 	 */
-	setHeight(height: number): this {
+	public setHeight(height: number): this {
 		this.height = height;
 
 		return this;
 	}
 
 	/**
-	 * Set the width and height of the rectangle
-	 * @param {number} width the rectangle's new width
-	 * @param {number} height the rectangle's new height
-	 * @returns {this}
+	 * set the width and height of the rectangle
+	 * @param width the rectangle's new width
+	 * @param height the rectangle's new height
 	 */
-	setSize(width: number, height: number): this {
+	public setSize(width: number, height: number): this {
 		this._width = width;
 		this._height = height;
 

@@ -7,7 +7,6 @@
 export class Keyboard {
 	/**
 	 * The key for the Left Alt
-	 * @type {string}
 	 */
 	static get ALT_LEFT(): string {
 		return "AltLeft";
@@ -15,7 +14,6 @@ export class Keyboard {
 
 	/**
 	 * The key for the right Alt
-	 * @type {string}
 	 */
 	static get ALT_RIGHT(): string {
 		return "AltRight";
@@ -23,7 +21,6 @@ export class Keyboard {
 
 	/**
 	 * The key for BACKSPACE
-	 * @type {string}
 	 */
 	static get BACKSPACE(): string {
 		return "Backspace";
@@ -31,7 +28,6 @@ export class Keyboard {
 
 	/**
 	 * The key for CAPS LOCK
-	 * @type {string}
 	 */
 	static get CAPS_LOCK(): string {
 		return "CapsLock";
@@ -39,7 +35,6 @@ export class Keyboard {
 
 	/**
 	 * The key for the left CTRL
-	 * @type {string}
 	 */
 	static get CTRL_LEFT(): string {
 		return "ControlLeft";
@@ -47,7 +42,6 @@ export class Keyboard {
 
 	/**
 	 * The key for the right CTRL
-	 * @type {string}
 	 */
 	static get CTRL_RIGHT(): string {
 		return "ControlRight";
@@ -55,7 +49,6 @@ export class Keyboard {
 
 	/**
 	 * The key for DOWN
-	 * @type {string}
 	 */
 	static get DOWN(): string {
 		return "ArrowDown";
@@ -63,7 +56,6 @@ export class Keyboard {
 
 	/**
 	 * The key for ENTER
-	 * @type {string}
 	 */
 	static get ENTER(): string {
 		return "Enter";
@@ -71,7 +63,6 @@ export class Keyboard {
 
 	/**
 	 * The key for LEFT
-	 * @type {string}
 	 */
 	static get LEFT(): string {
 		return "ArrowLeft";
@@ -79,7 +70,6 @@ export class Keyboard {
 
 	/**
 	 * The key for LEFT COMMAND
-	 * @type {string}
 	 */
 	static get LEFT_COMMAND(): string {
 		return "OSLeft";
@@ -87,7 +77,6 @@ export class Keyboard {
 
 	/**
 	 * The key for LEFT WINDOW
-	 * @type {string}
 	 */
 	static get LEFT_WINDOW(): string {
 		return "OSLeft";
@@ -95,7 +84,6 @@ export class Keyboard {
 
 	/**
 	 * The key for RIGHT
-	 * @type {string}
 	 */
 	static get RIGHT(): string {
 		return "ArrowRight";
@@ -103,7 +91,6 @@ export class Keyboard {
 
 	/**
 	 * The key for RIGHT COMMAND
-	 * @type {string}
 	 */
 	static get RIGHT_COMMAND(): string {
 		return "OSRight";
@@ -111,7 +98,6 @@ export class Keyboard {
 
 	/**
 	 * The key for RIGHT WINDOW
-	 * @type {string}
 	 */
 	static get RIGHT_WINDOW(): string {
 		return "OSRight";
@@ -119,7 +105,6 @@ export class Keyboard {
 
 	/**
 	 * The key for SELECT
-	 * @type {string}
 	 */
 	static get SELECT(): string {
 		return "OSLeft";
@@ -127,7 +112,6 @@ export class Keyboard {
 
 	/**
 	 * The key for the left SHIFT
-	 * @type {string}
 	 */
 	static get SHIFT_LEFT(): string {
 		return "ShiftLeft";
@@ -135,7 +119,6 @@ export class Keyboard {
 
 	/**
 	 * The key for the right SHIFT
-	 * @type {string}
 	 */
 	static get SHIFT_RIGHT(): string {
 		return "ShiftLeft";
@@ -143,7 +126,6 @@ export class Keyboard {
 
 	/**
 	 * The key for SPACE
-	 * @type {string}
 	 */
 	static get SPACE(): string {
 		return "Space";
@@ -151,7 +133,6 @@ export class Keyboard {
 
 	/**
 	 * The key for TAB
-	 * @type {string}
 	 */
 	static get TAB(): string {
 		return "Tab";
@@ -159,7 +140,6 @@ export class Keyboard {
 
 	/**
 	 * The key for UP
-	 * @type {string}
 	 */
 	static get UP(): string {
 		return "ArrowUp";

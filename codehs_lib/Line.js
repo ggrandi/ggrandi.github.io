@@ -3,15 +3,6 @@ import { baseObj, ctx, rotatePoint, lineDistance, checkColor, } from "./index.js
  * The Line shape
  */
 export class Line extends baseObj {
-    /**
-     * @constructor
-     * @param {number} x1 x-coordinate for the starting point
-     * @param {number} y1 y-coordinate for the starting point
-     * @param {number} x2 x-coordinate for the ending point
-     * @param {number} y2 y-coordinate for the ending point
-     * @param {number | undefined} width the width of the line
-     * @param {string | undefined} color the color of the line
-     */
     constructor(x1, y1, x2, y2, width, color) {
         super();
         this._x1 = x1;
@@ -30,9 +21,8 @@ export class Line extends baseObj {
         return `${this.type} from (${this.x1}, ${this.y1}) to (${this.x2}, ${this.y2})`;
     }
     /**
-     * Set the width of the line
-     * @param {number} w the new width
-     * @returns {this}
+     * set the width of the line
+     * @param w the new width
      */
     setLineWidth(w) {
         this._width = w;
@@ -40,7 +30,6 @@ export class Line extends baseObj {
     }
     /**
      * X-coordinate for the starting point
-     * @type {number}
      */
     set x1(v) {
         this._x1 = v;
@@ -50,7 +39,6 @@ export class Line extends baseObj {
     }
     /**
      * X-coordinate for the ending point
-     * @type {number}
      */
     set x2(v) {
         this._x2 = v;
@@ -60,7 +48,6 @@ export class Line extends baseObj {
     }
     /**
      * Y-coordinate for the starting point
-     * @type {number}
      */
     set y1(v) {
         this._y1 = v;
@@ -70,7 +57,6 @@ export class Line extends baseObj {
     }
     /**
      * Y-coordinate for the ending point
-     * @type {number}
      */
     set y2(v) {
         this._y2 = v;
@@ -79,10 +65,9 @@ export class Line extends baseObj {
         return this._y2;
     }
     /**
-     * Set the starting point
-     * @param {number} x the x-coordinate for the starting point
-     * @param {number} y the y-coordinate for the starting point
-     * @returns {this}
+     * set the starting point
+     * @param x the x-coordinate for the starting point
+     * @param y the y-coordinate for the starting point
      */
     setStartpoint(x, y) {
         this._x1 = x;
@@ -90,10 +75,9 @@ export class Line extends baseObj {
         return this;
     }
     /**
-     * Set the ending point
-     * @param {number} x the x-coordinate for the ending point
-     * @param {number} y the y-coordinate for the ending point
-     * @returns {this}
+     * set the ending point
+     * @param x the x-coordinate for the ending point
+     * @param y the y-coordinate for the ending point
      */
     setEndpoint(x, y) {
         this._x2 = x;
@@ -101,10 +85,9 @@ export class Line extends baseObj {
         return this;
     }
     /**
-     * Sets the Line's to the start position (`x1`, `y1`)
-     * @param {number} x1 new x-coordinate of the shape
-     * @param {number} y1 new y-coordinate of the shape
-     * @returns {this}
+     * sets the Line's to the start position (`x1`, `y1`)
+     * @param x1 new x-coordinate of the shape
+     * @param y1 new y-coordinate of the shape
      */
     setPosition(x1, y1) {
         return this.setStartpoint(x1, y1);

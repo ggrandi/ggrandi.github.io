@@ -21,7 +21,6 @@ export class baseObj {
     }
     /**
      * The type of the shape
-     * @type {string}
      */
     set type(v) {
         this._type = v;
@@ -31,16 +30,14 @@ export class baseObj {
     }
     /**
      * Returns the type of the Shape
-     * @returns {string}
      */
     getType() {
         return this._type;
     }
     /**
      * Sets the shape to the position (`x`, `y`)
-     * @param {number} x new x-coordinate of the shape
-     * @param {number} y new y-coordinate of the shape
-     * @returns {this}
+     * @param x new x-coordinate of the shape
+     * @param y new y-coordinate of the shape
      */
     setPosition(x, y) {
         this._x = x;
@@ -49,8 +46,7 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape to `color`
-     * @param {string} color css color, hexadecimal string, or rgba() string
-     * @returns {this}
+     * @param color css color, hexadecimal string, or rgba() string
      */
     setColor(color) {
         if (!checkColor(color)) {
@@ -59,25 +55,12 @@ export class baseObj {
         this.color = checkColor(color) ? color : "black";
         return this;
     }
-    /**
-     * Set whether to draw outline and the outline color and width
-     * @param {boolean} show boolean to show/hide the outline
-     * @param {string} color the new outline color
-     * @param {number} width the new outline width
-     * @returns {this}
-     */
     setOutline(show, color, width) {
         this.outline = show;
         this.outlineColor = color || this.outlineColor;
         this.outlineWidth = width || this.outlineWidth;
         return this;
     }
-    /**
-     * Set whether to draw outline and the outline color and width (same as setOutline)
-     * @param {boolean} show boolean to show/hide the outline
-     * @param {string} color the new outline color
-     * @param {number} width the new outline width
-     */
     setBorder(show, color, width) {
         this.outline = show;
         this.outlineColor = color || this.outlineColor;
@@ -86,8 +69,7 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape's outline to `color`
-     * @param {string} color css color, hexadecimal string, or rgba() string
-     * @returns {this}
+     * @param color css color, hexadecimal string, or rgba() string
      */
     setOutlineColor(color) {
         this.outlineColor = color;
@@ -95,8 +77,7 @@ export class baseObj {
     }
     /**
      * Sets the color of the shape's outline to `color` (same as setOutlineColor)
-     * @param {string} color css color, hexadecimal string, or rgba() string
-     * @returns {this}
+     * @param color css color, hexadecimal string, or rgba() string
      */
     setBorderColor(color) {
         this.outlineColor = color;
@@ -104,8 +85,7 @@ export class baseObj {
     }
     /**
      * Sets the width of the shape's outline to `width`
-     * @param {number} width the new widthoo of the outline
-     * @returns {this}
+     * @param width the new widthoo of the outline
      */
     setOutlineWidth(width) {
         this.outlineWidth = width;
@@ -113,8 +93,7 @@ export class baseObj {
     }
     /**
      * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
-     * @param {number} width the new width of the outline
-     * @returns {this}
+     * @param width the new width of the outline
      */
     setBorderWidth(width) {
         this.outlineWidth = width;
@@ -122,7 +101,6 @@ export class baseObj {
     }
     /**
      * Whether or not to draw outline
-     * @type {boolean}
      */
     set outline(v) {
         this._outline = v;
@@ -132,17 +110,15 @@ export class baseObj {
     }
     /**
      * Whether or not to draw outline (same as borderWidth)
-     * @type {number}
      */
     set borderWidth(v) {
-        this._outlineWidth = v;
+        this.outlineWidth = v;
     }
     get borderWidth() {
-        return this._outlineWidth;
+        return this.outlineWidth;
     }
     /**
      * Whether or not to draw outline
-     * @type {number}
      */
     set outlineWidth(v) {
         if (v < 0) {
@@ -156,7 +132,6 @@ export class baseObj {
     }
     /**
      * Whether or not to draw outline (same as outline)
-     * @type {boolean}
      */
     set border(v) {
         this._outline = v;
@@ -166,7 +141,6 @@ export class baseObj {
     }
     /**
      * The outline's color
-     * @type {string}
      */
     set outlineColor(v) {
         if (!checkColor(v)) {
@@ -179,7 +153,6 @@ export class baseObj {
     }
     /**
      * The outline's color (same as outlineColor)
-     * @type {string}
      */
     set borderColor(v) {
         this.outlineColor = v;
@@ -189,7 +162,6 @@ export class baseObj {
     }
     /**
      * The shape's x-position
-     * @type {number}
      */
     set x(v) {
         this._x = v;
@@ -199,14 +171,12 @@ export class baseObj {
     }
     /**
      * method to return the shapes x-position
-     * @returns {number}
      */
     getX() {
         return this._x;
     }
     /**
      * The shape's y-position
-     * @type {number}
      */
     set y(v) {
         this._y = v;
@@ -216,16 +186,14 @@ export class baseObj {
     }
     /**
      * method to return the shapes y-position
-     * @returns {number}
      */
     getY() {
         return this._y;
     }
     /**
      * Move a shape `dx` pixels right and `dy` pixels left
-     * @param {number} dx pixels to move along the x-axis
-     * @param {number} dy pixels to move along the y-axis
-     * @returns {this}
+     * @param dx pixels to move along the x-axis
+     * @param dy pixels to move along the y-axis
      */
     move(dx, dy) {
         this.x += dx;
@@ -234,7 +202,6 @@ export class baseObj {
     }
     /**
      * The shape's rotation in degrees
-     * @type {number}
      */
     set rotationDegrees(r) {
         this._rot = (r * Math.PI) / 180;
@@ -244,8 +211,7 @@ export class baseObj {
     }
     /**
      * Rotate the shape by `degrees` degrees
-     * @param {number} degrees number of degrees to rotate it by
-     * @returns {this}
+     * @param degrees number of degrees to rotate it by
      */
     rotateDegrees(degrees) {
         this._rot += (degrees * Math.PI) / 180;
@@ -253,7 +219,6 @@ export class baseObj {
     }
     /**
      * The shape's rotation in radians
-     * @type {number}
      */
     set rotation(r) {
         this._rot = r;
@@ -263,8 +228,7 @@ export class baseObj {
     }
     /**
      * Rotate the shape by `radians` radians
-     * @param {number} radians number of degrees to rotate it by
-     * @returns {this}
+     * @param radians number of degrees to rotate it by
      */
     rotate(radians) {
         this._rot += radians;
@@ -272,21 +236,18 @@ export class baseObj {
     }
     /**
      * Returns the shapes rotation in radians
-     * @returns {number}
      */
     getRotation() {
         return this._rot;
     }
     /**
      * Returns the shapes rotation in degrees
-     * @returns {number}
      */
     getRotationDegrees() {
         return (this._rot * 180) / Math.PI;
     }
     /**
      * The shape's color
-     * @type {string}
      */
     set color(v) {
         if (!checkColor(v)) {
@@ -299,14 +260,12 @@ export class baseObj {
     }
     /**
      * Returns the shape's color
-     * @returns {string}
      */
     getColor() {
-        return this._color;
+        return this.color;
     }
     /**
      * adds the shape to the canvas
-     * @returns {this}
      */
     add() {
         add(this);
@@ -314,7 +273,6 @@ export class baseObj {
     }
     /**
      * removes the shape from the canvas
-     * @returns {this}
      */
     remove() {
         remove(this);
@@ -322,16 +280,14 @@ export class baseObj {
     }
     /**
      * Returns a boolean to check if the shape contains the point (`x`, `y`)
-     * @param {number} x x-position of point
-     * @param {number} y y-position of point
-     * @returns {boolean}
+     * @param x x-position of point
+     * @param y y-position of point
      */
     containsPoint(x, y) {
         return false;
     }
     /**
      * Method called to draw the shape on the screen
-     * @returns {void}
      */
     draw() { }
 }

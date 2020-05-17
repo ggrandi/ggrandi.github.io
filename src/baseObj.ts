@@ -6,7 +6,7 @@ import { add, remove, checkColor } from "./index.js";
 export class baseObj {
 	private _x: number;
 	private _y: number;
-	private _color: string;
+	private _color: string | CanvasGradient;
 	private _type: string;
 	private _rot: number;
 	private _outline: boolean;
@@ -33,31 +33,28 @@ export class baseObj {
 
 	/**
 	 * The type of the shape
-	 * @type {string}
 	 */
-	set type(v: string) {
+	public set type(v: string) {
 		this._type = v;
 	}
 
-	get type(): string {
+	public get type(): string {
 		return this._type;
 	}
 
 	/**
 	 * Returns the type of the Shape
-	 * @returns {string}
 	 */
-	getType(): string {
+	public getType(): string {
 		return this._type;
 	}
 
 	/**
 	 * Sets the shape to the position (`x`, `y`)
-	 * @param {number} x new x-coordinate of the shape
-	 * @param {number} y new y-coordinate of the shape
-	 * @returns {this}
+	 * @param x new x-coordinate of the shape
+	 * @param y new y-coordinate of the shape
 	 */
-	setPosition(x: number, y: number): this {
+	public setPosition(x: number, y: number): this {
 		this._x = x;
 		this._y = y;
 
@@ -66,10 +63,9 @@ export class baseObj {
 
 	/**
 	 * Sets the color of the shape to `color`
-	 * @param {string} color css color, hexadecimal string, or rgba() string
-	 * @returns {this}
+	 * @param color css color, hexadecimal string, or rgba() string
 	 */
-	setColor(color: string): this {
+	public setColor(color: string): this {
 		if (!checkColor(color)) {
 			console.warn(`Your color of ${color} is not a valid color`);
 		}
@@ -79,31 +75,38 @@ export class baseObj {
 		return this;
 	}
 
-	setOutline(show: boolean): this;
-	setOutline(show: boolean, color: string, width: number): this;
+	/**
+	 * Set whether to draw outline
+	 * @param show boolean to show/hide the outline
+	 */
+	public setOutline(show: boolean): this;
 	/**
 	 * Set whether to draw outline and the outline color and width
-	 * @param {boolean} show boolean to show/hide the outline
-	 * @param {string} color the new outline color
-	 * @param {number} width the new outline width
-	 * @returns {this}
+	 * @param show boolean to show/hide the outline
+	 * @param color the new outline color
+	 * @param width the new outline width
 	 */
-	setOutline(show: boolean, color?: string, width?: number): this {
+	public setOutline(show: boolean, color: string, width: number): this;
+	public setOutline(show: boolean, color?: string, width?: number): this {
 		this.outline = show;
 		this.outlineColor = color || this.outlineColor;
 		this.outlineWidth = width || this.outlineWidth;
 		return this;
 	}
 
-	setBorder(show: boolean): this;
-	setBorder(show: boolean, color: string, width: number): this;
+	/**
+	 * Set whether to draw outline (same as setOutline)
+	 * @param show boolean to show/hide the outline
+	 */
+	public setBorder(show: boolean): this;
 	/**
 	 * Set whether to draw outline and the outline color and width (same as setOutline)
-	 * @param {boolean} show boolean to show/hide the outline
-	 * @param {string} color the new outline color
-	 * @param {number} width the new outline width
+	 * @param show boolean to show/hide the outline
+	 * @param color the new outline color
+	 * @param width the new outline width
 	 */
-	setBorder(show: boolean, color?: string, width?: number): this {
+	public setBorder(show: boolean, color: string, width: number): this;
+	public setBorder(show: boolean, color?: string, width?: number): this {
 		this.outline = show;
 		this.outlineColor = color || this.outlineColor;
 		this.outlineWidth = width || this.outlineWidth;
@@ -112,28 +115,25 @@ export class baseObj {
 
 	/**
 	 * Sets the color of the shape's outline to `color`
-	 * @param {string} color css color, hexadecimal string, or rgba() string
-	 * @returns {this}
+	 * @param color css color, hexadecimal string, or rgba() string
 	 */
-	setOutlineColor(color: string): this {
+	public setOutlineColor(color: string): this {
 		this.outlineColor = color;
 		return this;
 	}
 
 	/**
 	 * Sets the color of the shape's outline to `color` (same as setOutlineColor)
-	 * @param {string} color css color, hexadecimal string, or rgba() string
-	 * @returns {this}
+	 * @param color css color, hexadecimal string, or rgba() string
 	 */
-	setBorderColor(color: string): this {
+	public setBorderColor(color: string): this {
 		this.outlineColor = color;
 		return this;
 	}
 
 	/**
 	 * Sets the width of the shape's outline to `width`
-	 * @param {number} width the new widthoo of the outline
-	 * @returns {this}
+	 * @param width the new widthoo of the outline
 	 */
 	setOutlineWidth(width: number): this {
 		this.outlineWidth = width;
@@ -142,43 +142,39 @@ export class baseObj {
 
 	/**
 	 * Sets the width of the shape's outline to `width` (same as setOutlineWidth)
-	 * @param {number} width the new width of the outline
-	 * @returns {this}
+	 * @param width the new width of the outline
 	 */
-	setBorderWidth(width: number): this {
+	public setBorderWidth(width: number): this {
 		this.outlineWidth = width;
 		return this;
 	}
 
 	/**
 	 * Whether or not to draw outline
-	 * @type {boolean}
 	 */
-	set outline(v: boolean) {
+	public set outline(v: boolean) {
 		this._outline = v;
 	}
 
-	get outline(): boolean {
+	public get outline(): boolean {
 		return this._outline;
 	}
 
 	/**
 	 * Whether or not to draw outline (same as borderWidth)
-	 * @type {number}
 	 */
-	set borderWidth(v: number) {
-		this._outlineWidth = v;
+	public set borderWidth(v: number) {
+		this.outlineWidth = v;
 	}
 
-	get borderWidth(): number {
-		return this._outlineWidth;
+	public get borderWidth(): number {
+		return this.outlineWidth;
 	}
 
 	/**
 	 * Whether or not to draw outline
-	 * @type {number}
 	 */
-	set outlineWidth(v: number) {
+	public set outlineWidth(v: number) {
 		if (v < 0) {
 			console.warn(
 				`The outline width should be positive, please fix your outline width of ${v}`
@@ -189,27 +185,25 @@ export class baseObj {
 		this._outlineWidth = v;
 	}
 
-	get outlineWidth(): number {
+	public get outlineWidth(): number {
 		return this._outlineWidth;
 	}
 
 	/**
 	 * Whether or not to draw outline (same as outline)
-	 * @type {boolean}
 	 */
-	set border(v: boolean) {
+	public set border(v: boolean) {
 		this._outline = v;
 	}
 
-	get border(): boolean {
+	public get border(): boolean {
 		return this._outline;
 	}
 
 	/**
 	 * The outline's color
-	 * @type {string}
 	 */
-	set outlineColor(v: string) {
+	public set outlineColor(v: string) {
 		if (!checkColor(v)) {
 			console.warn(`Your color of ${v} is not a valid color`);
 		}
@@ -217,69 +211,63 @@ export class baseObj {
 		this._outlineColor = checkColor(v) ? v : "black";
 	}
 
-	get outlineColor(): string {
+	public get outlineColor(): string {
 		return this._outlineColor;
 	}
 
 	/**
 	 * The outline's color (same as outlineColor)
-	 * @type {string}
 	 */
-	set borderColor(v: string) {
+	public set borderColor(v: string) {
 		this.outlineColor = v;
 	}
 
-	get borderColor(): string {
+	public get borderColor(): string {
 		return this._outlineColor;
 	}
 
 	/**
 	 * The shape's x-position
-	 * @type {number}
 	 */
-	set x(v: number) {
+	public set x(v: number) {
 		this._x = v;
 	}
 
-	get x(): number {
+	public get x(): number {
 		return this._x;
 	}
 
 	/**
 	 * method to return the shapes x-position
-	 * @returns {number}
 	 */
-	getX(): number {
+	public getX(): number {
 		return this._x;
 	}
 
 	/**
 	 * The shape's y-position
-	 * @type {number}
 	 */
-	set y(v: number) {
+	public set y(v: number) {
 		this._y = v;
 	}
 
-	get y(): number {
+	public get y(): number {
 		return this._y;
 	}
 
 	/**
 	 * method to return the shapes y-position
-	 * @returns {number}
 	 */
-	getY(): number {
+	public getY(): number {
 		return this._y;
 	}
 
 	/**
 	 * Move a shape `dx` pixels right and `dy` pixels left
-	 * @param {number} dx pixels to move along the x-axis
-	 * @param {number} dy pixels to move along the y-axis
-	 * @returns {this}
+	 * @param dx pixels to move along the x-axis
+	 * @param dy pixels to move along the y-axis
 	 */
-	move(dx: number, dy: number): this {
+	public move(dx: number, dy: number): this {
 		this.x += dx;
 		this.y += dy;
 
@@ -288,22 +276,20 @@ export class baseObj {
 
 	/**
 	 * The shape's rotation in degrees
-	 * @type {number}
 	 */
-	set rotationDegrees(r: number) {
+	public set rotationDegrees(r: number) {
 		this._rot = (r * Math.PI) / 180;
 	}
 
-	get rotationDegrees(): number {
+	public get rotationDegrees(): number {
 		return (this._rot * 180) / Math.PI;
 	}
 
 	/**
 	 * Rotate the shape by `degrees` degrees
-	 * @param {number} degrees number of degrees to rotate it by
-	 * @returns {this}
+	 * @param degrees number of degrees to rotate it by
 	 */
-	rotateDegrees(degrees: number): this {
+	public rotateDegrees(degrees: number): this {
 		this._rot += (degrees * Math.PI) / 180;
 
 		return this;
@@ -311,22 +297,20 @@ export class baseObj {
 
 	/**
 	 * The shape's rotation in radians
-	 * @type {number}
 	 */
-	set rotation(r: number) {
+	public set rotation(r: number) {
 		this._rot = r;
 	}
 
-	get rotation(): number {
+	public get rotation(): number {
 		return this._rot;
 	}
 
 	/**
 	 * Rotate the shape by `radians` radians
-	 * @param {number} radians number of degrees to rotate it by
-	 * @returns {this}
+	 * @param radians number of degrees to rotate it by
 	 */
-	rotate(radians: number): this {
+	public rotate(radians: number): this {
 		this._rot += radians;
 
 		return this;
@@ -334,25 +318,22 @@ export class baseObj {
 
 	/**
 	 * Returns the shapes rotation in radians
-	 * @returns {number}
 	 */
-	getRotation(): number {
+	public getRotation(): number {
 		return this._rot;
 	}
 
 	/**
 	 * Returns the shapes rotation in degrees
-	 * @returns {number}
 	 */
-	getRotationDegrees(): number {
+	public getRotationDegrees(): number {
 		return (this._rot * 180) / Math.PI;
 	}
 
 	/**
 	 * The shape's color
-	 * @type {string}
 	 */
-	set color(v: string) {
+	public set color(v: string | CanvasGradient) {
 		if (!checkColor(v)) {
 			console.warn(`Your color of ${v} is not a valid color`);
 		}
@@ -360,23 +341,21 @@ export class baseObj {
 		this._color = checkColor(v) ? v : "black";
 	}
 
-	get color(): string {
+	public get color(): string | CanvasGradient {
 		return this._color;
 	}
 
 	/**
 	 * Returns the shape's color
-	 * @returns {string}
 	 */
-	getColor(): string {
-		return this._color;
+	public getColor(): string | CanvasGradient {
+		return this.color;
 	}
 
 	/**
 	 * adds the shape to the canvas
-	 * @returns {this}
 	 */
-	add(): this {
+	public add(): this {
 		add(this);
 
 		return this;
@@ -384,9 +363,8 @@ export class baseObj {
 
 	/**
 	 * removes the shape from the canvas
-	 * @returns {this}
 	 */
-	remove(): this {
+	public remove(): this {
 		remove(this);
 
 		return this;
@@ -394,17 +372,15 @@ export class baseObj {
 
 	/**
 	 * Returns a boolean to check if the shape contains the point (`x`, `y`)
-	 * @param {number} x x-position of point
-	 * @param {number} y y-position of point
-	 * @returns {boolean}
+	 * @param x x-position of point
+	 * @param y y-position of point
 	 */
-	containsPoint(x: number, y: number): boolean {
+	public containsPoint(x: number, y: number): boolean {
 		return false;
 	}
 
 	/**
 	 * Method called to draw the shape on the screen
-	 * @returns {void}
 	 */
-	draw(): void {}
+	public draw(): void {}
 }

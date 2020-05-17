@@ -8,7 +8,6 @@ interface ITimer {
 
 /**
  * The array of active timers
- * @type {Array}
  */
 export const timers: Array<ITimer> = new Array<ITimer>();
 
@@ -33,12 +32,10 @@ type TupleParams<T> = T extends null | undefined
 
 /**
  * Sets a timer with the callback `callback`
- * @param {function} callback function for the timer to call
- * @param {number} delay delay between the calls
- * @param {any} params the parameters to pass to the callback, can be anything
- * @param {string} name name of the timer
- * @function
- * @returns {void}
+ * @param callback function for the timer to call
+ * @param delay delay between the calls
+ * @param params the parameters to pass to the callback, can be anything
+ * @param name name of the timer
  */
 export const setTimer = <T extends NotArray | TenTuple>(
 	callback: TupleParams<T>,
@@ -53,8 +50,7 @@ export const setTimer = <T extends NotArray | TenTuple>(
 		delay = 50 / 3;
 	}
 
-	let boundCallback = (callback as Function).bind({}, params);
-	let id: number = setInterval(boundCallback, delay);
+	let id: number = setInterval(callback, delay, params);
 	timers.push({
 		callback,
 		delay,
@@ -66,9 +62,7 @@ export const setTimer = <T extends NotArray | TenTuple>(
 
 /**
  * Stops a previously set timer
- * @param {string | function} stopId the timer's name or the callback the timer was set with
- * @function
- * @returns {void}
+ * @param stopId the timer's name or the callback the timer was set with
  */
 export const stopTimer = (
 	stopId: string | ((...params: any[]) => void)
@@ -83,8 +77,6 @@ export const stopTimer = (
 
 /**
  * Stops all timers
- * @function
- * @returns {void}
  */
 export const stopAllTimers = (): void => {
 	timers.forEach((t) => clearInterval(t.id));

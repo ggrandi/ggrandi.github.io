@@ -6,38 +6,63 @@ import { baseObj, ctx, lineDistance, checkColor } from "./index.js";
 export class Circle extends baseObj {
 	private _radius: number;
 
+	/**
+	 * @constructor
+	 * @param radius The radius of the circle
+	 */
 	constructor(radius: number);
+	/**
+	 * @constructor
+	 * @param radius The radius of the circle
+	 * @param x The x-position of the Circle
+	 * @param y The y-position of the Circle
+	 */
 	constructor(radius: number, x: number, y: number);
+	/**
+	 * @constructor
+	 * @param radius The radius of the circle
+	 * @param x The x-position of the Circle
+	 * @param y The y-position of the Circle
+	 * @param color The color of the circle
+	 */
 	constructor(radius: number, x: number, y: number, color: string);
+	/**
+	 * @constructor
+	 * @param radius The radius of the circle
+	 * @param x The x-position of the Circle
+	 * @param y The y-position of the Circle
+	 * @param color The color of the circle
+	 * @param outline whether to draw the outline
+	 */
 	constructor(
 		radius: number,
 		x: number,
 		y: number,
-		color: string,
+		color: string | CanvasGradient,
 		outline: boolean
-	);
-	constructor(
-		radius: number,
-		x: number,
-		y: number,
-		color: string,
-		outline: boolean,
-		outlineColor: string
 	);
 	/**
 	 * @constructor
-	 * @param {number} radius The radius of the circle
-	 * @param {number | undefined} x The x-position of the Circle
-	 * @param {number | undefined} y The y-position of the Circle
-	 * @param {string | undefined} color The color of the circle
-	 * @param {boolean | undefined} outline whether to draw the outline
-	 * @param {string | undefined} outlineColor The color of the outline
+	 * @param radius The radius of the circle
+	 * @param x The x-position of the Circle
+	 * @param y The y-position of the Circle
+	 * @param color The color of the circle
+	 * @param outline whether to draw the outline
+	 * @param outlineColor The color of the outline
 	 */
+	constructor(
+		radius: number,
+		x: number,
+		y: number,
+		color: string | CanvasGradient,
+		outline: boolean,
+		outlineColor: string
+	);
 	constructor(
 		radius: number,
 		x?: number,
 		y?: number,
-		color?: string,
+		color?: string | CanvasGradient,
 		outline?: boolean,
 		outlineColor?: string
 	) {
@@ -63,64 +88,58 @@ export class Circle extends baseObj {
 
 	/**
 	 * The circle's radius
-	 * @type {number}
 	 */
-	set radius(v: number) {
+	public set radius(v: number) {
 		this._radius = Math.abs(v);
 	}
 
-	get radius(): number {
+	public get radius(): number {
 		return this._radius;
 	}
 
 	/**
 	 * The circle's diameter
-	 * @type {number}
 	 */
-	set diameter(v: number) {
+	public set diameter(v: number) {
 		this._radius = Math.abs(2 * v);
 	}
 
-	get diameter(): number {
+	public get diameter(): number {
 		return 2 * this._radius;
 	}
 
 	/**
 	 * Returns the Circle's diameter
-	 * @returns {number}
 	 */
-	getDiameter(): number {
+	public getDiameter(): number {
 		return 2 * this._radius;
 	}
 
 	/**
-	 * Sets the Circle's diameter to `diameter`
-	 * @param {number} diameter the new diameter
-	 * @returns {this}
+	 * sets the Circle's diameter to `diameter`
+	 * @param diameter the new diameter
 	 */
-	setDiameter(diameter: number): this {
+	public setDiameter(diameter: number): this {
 		this._radius = Math.abs(2 * diameter);
 		return this;
 	}
 
 	/**
 	 * Returns the Circle's radius
-	 * @returns {number}
 	 */
-	getRadius(): number {
+	public getRadius(): number {
 		return this._radius;
 	}
 	/**
-	 * Sets the Circle's radius to `radius`
-	 * @param {number} radius the new radius
-	 * @returns {this}
+	 * sets the Circle's radius to `radius`
+	 * @param radius the new radius
 	 */
-	setRadius(radius: number): this {
+	public setRadius(radius: number): this {
 		this._radius = Math.abs(radius);
 		return this;
 	}
 
-	draw(): void {
+	public draw(): void {
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, this._radius, 0, Math.PI * 2);
 		if (this.outline) {
@@ -132,7 +151,7 @@ export class Circle extends baseObj {
 		ctx.fill();
 	}
 
-	containsPoint(x: number, y: number): boolean {
+	public containsPoint(x: number, y: number): boolean {
 		const oW = this.outline ? this.outlineWidth / 2 : 0;
 		return lineDistance(this.x, this.y, x, y) < this.radius + oW;
 	}

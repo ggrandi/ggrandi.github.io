@@ -7,29 +7,41 @@ export class Oval extends baseObj {
 	private _width: number;
 	private _height: number;
 
+	/**
+	 * @constructor
+	 * @param width the width of the oval
+	 * @param height the height of the oval
+	 */
 	constructor(width: number, height: number);
+	/**
+	 * @constructor
+	 * @param width the width of the oval
+	 * @param height the height of the oval
+	 * @param x the x-position
+	 * @param y the y-position
+	 */
 	constructor(width: number, height: number, x: number, y: number);
+	/**
+	 * @constructor
+	 * @param width the width of the oval
+	 * @param height the height of the oval
+	 * @param x the x-position
+	 * @param y the y-position
+	 * @param color the color of the oval
+	 */
 	constructor(
 		width: number,
 		height: number,
 		x: number,
 		y: number,
-		color: string
+		color: string | CanvasGradient
 	);
-	/**
-	 * @constructor
-	 * @param {number} width the width of the oval
-	 * @param {number} height the height of the oval
-	 * @param {number | undefined} x the x-position
-	 * @param {number | undefined} y the y-position
-	 * @param {string | undefined} color the color of the oval
-	 */
 	constructor(
 		width: number,
 		height: number,
 		x?: number,
 		y?: number,
-		color?: string
+		color?: string | CanvasGradient
 	) {
 		super();
 
@@ -48,22 +60,20 @@ export class Oval extends baseObj {
 
 	/**
 	 * The width of the oval
-	 * @type {number}
 	 */
-	set width(v: number) {
+	public set width(v: number) {
 		this._width = v;
 	}
 
-	get width(): number {
+	public get width(): number {
 		return this._width;
 	}
 
 	/**
-	 * Set the width of the oval
-	 * @param {number} width the new width
-	 * @returns {this}
+	 * set the width of the oval
+	 * @param width the new width
 	 */
-	setWidth(width: number): this {
+	public setWidth(width: number): this {
 		this._width = width;
 
 		return this;
@@ -71,41 +81,38 @@ export class Oval extends baseObj {
 
 	/**
 	 * The height of the oval
-	 * @type {number}
 	 */
-	set height(v: number) {
+	public set height(v: number) {
 		this._height = v;
 	}
 
-	get height(): number {
+	public get height(): number {
 		return this._height;
 	}
 
 	/**
-	 * Set the height of the oval
-	 * @param {number} height the new height
-	 * @returns {this}
+	 * set the height of the oval
+	 * @param height the new height
 	 */
-	setHeight(height: number): this {
+	public setHeight(height: number): this {
 		this._height = height;
 
 		return this;
 	}
 
 	/**
-	 * Set the width and height of the oval
-	 * @param {number} width the new width of the oval
-	 * @param {number} height the new height of the oval
-	 * @returns {this}
+	 * set the width and height of the oval
+	 * @param width the new width of the oval
+	 * @param height the new height of the oval
 	 */
-	setSize(width: number, height: number): this {
+	public setSize(width: number, height: number): this {
 		this._width = width;
 		this._height = height;
 
 		return this;
 	}
 
-	draw(): void {
+	public draw(): void {
 		ctx.beginPath();
 		ctx.ellipse(
 			this.x,
@@ -125,7 +132,7 @@ export class Oval extends baseObj {
 		ctx.fill();
 	}
 
-	containsPoint(x: number, y: number): boolean {
+	public containsPoint(x: number, y: number): boolean {
 		x -= this.x;
 		y -= this.y;
 		if (this.rotation !== 0) {

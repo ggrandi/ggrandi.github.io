@@ -3,17 +3,6 @@ import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
  * The rectangle shape
  */
 export class Rectangle extends baseObj {
-    /**
-     * @constructor
-     * @param {number} width the rectangle's width
-     * @param {number} height the rectangle's height
-     * @param {number | undefined} x the rectangle's x-position
-     * @param {number | undefined} y the rectangle's y-position
-     * @param {string | undefined} color the rectangle's color
-     * @param {number | undefined} rotation the rectangle's rotation in radians
-     * @param {boolean | undefined} outline whether to outline the rectangle
-     * @param {string | undefined} outlineColor the outline's color
-     */
     constructor(width, height, x, y, color, rotation, outline, outlineColor) {
         super();
         this.x = x !== null && x !== void 0 ? x : -1000;
@@ -36,7 +25,6 @@ export class Rectangle extends baseObj {
     }
     /**
      * The rectangle's width
-     * @type {number}
      */
     set width(v) {
         this._width = v;
@@ -46,15 +34,13 @@ export class Rectangle extends baseObj {
     }
     /**
      * Returns the width of the rectangle
-     * @returns {number}
      */
     getWidth() {
         return this.width;
     }
     /**
-     * Sets the width of the rectangle
-     * @param {number} width the new width
-     * @returns {number}
+     * sets the width of the rectangle
+     * @param width the new width
      */
     setWidth(width) {
         this.width = width;
@@ -62,7 +48,6 @@ export class Rectangle extends baseObj {
     }
     /**
      * The rectangle's height
-     * @type {number}
      */
     set height(v) {
         this._height = v;
@@ -72,25 +57,22 @@ export class Rectangle extends baseObj {
     }
     /**
      * Returns the height of the rectangle
-     * @returns {number}
      */
     getHeight() {
         return this.height;
     }
     /**
-     * Sets the height of the rectangle
-     * @param {number} height the new height
-     * @returns {number}
+     * sets the height of the rectangle
+     * @param height the new height
      */
     setHeight(height) {
         this.height = height;
         return this;
     }
     /**
-     * Set the width and height of the rectangle
-     * @param {number} width the rectangle's new width
-     * @param {number} height the rectangle's new height
-     * @returns {this}
+     * set the width and height of the rectangle
+     * @param width the rectangle's new width
+     * @param height the rectangle's new height
      */
     setSize(width, height) {
         this._width = width;

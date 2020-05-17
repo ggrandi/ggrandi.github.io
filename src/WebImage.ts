@@ -11,9 +11,43 @@ export class WebImage extends Rectangle {
 	private _sh: number;
 	private _hasLoaded: boolean = false;
 
+	/**
+	 * Note: the clip is a smaller portion of the image
+	 * @constructor
+	 * @param src The images source (url or dataurl)
+	 */
 	constructor(src: string);
+	/**
+	 * Note: the clip is a smaller portion of the image
+	 * @constructor
+	 * @param src The images source (url or dataurl)
+	 * @param width the image's width
+	 * @param height the image's height
+	 */
 	constructor(src: string, width: number, height: number);
+	/**
+	 * Note: the clip is a smaller portion of the image
+	 * @constructor
+	 * @param src The images source (url or dataurl)
+	 * @param width the image's width
+	 * @param height the image's height
+	 * @param x the image's x-position
+	 * @param y the image's y-position
+	 */
 	constructor(src: string, width: number, height: number, x: number, y: number);
+	/**
+	 * Note: the clip is a smaller portion of the image
+	 * @constructor
+	 * @param src The images source (url or dataurl)
+	 * @param width the image's width
+	 * @param height the image's height
+	 * @param x the image's x-position
+	 * @param y the image's y-position
+	 * @param sx the x-position of the clip
+	 * @param sy the y-position of the clip
+	 * @param swidth the width of the clip
+	 * @param sheight the height of the clip
+	 */
 	constructor(
 		src: string,
 		width: number,
@@ -25,19 +59,6 @@ export class WebImage extends Rectangle {
 		swidth: number,
 		sheight: number
 	);
-	/**
-	 * Note: the clip is a smaller portion of the image
-	 * @constructor
-	 * @param {string} src The images source (url or dataurl)
-	 * @param {number} width the image's width
-	 * @param {number} height the image's height
-	 * @param {number} x the image's x-position
-	 * @param {number} y the image's y-position
-	 * @param {number} sx the x-position of the clip
-	 * @param {number} sy the y-position of the clip
-	 * @param {number} swidth the width of the clip
-	 * @param {number} sheight the height of the clip
-	 */
 	constructor(
 		src: string,
 		width?: number,
@@ -85,18 +106,16 @@ export class WebImage extends Rectangle {
 	/**
 	 * The image to display
 	 * @readonly
-	 * @type {HTMLImageElement}
 	 */
-	get image(): HTMLImageElement {
+	public get image(): HTMLImageElement {
 		return this._img;
 	}
 
 	/**
-	 * Sets the image to have a width of `width` while maintaining the aspect ratio
-	 * @param {number} width the new width
-	 * @returns {this}
+	 * sets the image to have a width of `width` while maintaining the aspect ratio
+	 * @param width the new width
 	 */
-	setAspectWidth(width: number): this {
+	public setAspectWidth(width: number): this {
 		let { w, h } = this.aspectRatio;
 
 		this.width = width;
@@ -106,11 +125,10 @@ export class WebImage extends Rectangle {
 	}
 
 	/**
-	 * Sets the image to have a height of `height` while maintaining the aspect ratio
-	 * @param {number} height the new height
-	 * @returns {this}
+	 * sets the image to have a height of `height` while maintaining the aspect ratio
+	 * @param height the new height
 	 */
-	setAspectHeight(height: number): this {
+	public setAspectHeight(height: number): this {
 		let { w, h } = this.aspectRatio;
 
 		this.height = height;
@@ -122,9 +140,8 @@ export class WebImage extends Rectangle {
 	/**
 	 * the aspect ratio of the image
 	 * @readonly
-	 * @type {Object<{ w: number, h: number }>}
 	 */
-	get aspectRatio(): { w: number; h: number } {
+	public get aspectRatio(): { w: number; h: number } {
 		let { naturalWidth, naturalHeight } = this._img;
 
 		console.log(naturalWidth, naturalHeight);
@@ -138,14 +155,13 @@ export class WebImage extends Rectangle {
 	}
 
 	/**
-	 * Sets a new portion of the image to display
-	 * @param {number} sx the x-position of the clip
-	 * @param {number} sy the y-position of the clip
-	 * @param {number} swidth the width of the clip
-	 * @param {number} sheight the height of the clip
-	 * @returns {this}
+	 * sets a new portion of the image to display
+	 * @param sx the x-position of the clip
+	 * @param sy the y-position of the clip
+	 * @param swidth the width of the clip
+	 * @param sheight the height of the clip
 	 */
-	setClip(sx: number, sy: number, swidth: number, sheight: number): this {
+	public setClip(sx: number, sy: number, swidth: number, sheight: number): this {
 		this._sx = sx;
 		this._sy = sy;
 		this._sw = swidth;
@@ -158,7 +174,7 @@ export class WebImage extends Rectangle {
 	 * Returns the clip of the image
 	 * @returns {Object<{ sx: number, sy: number, swidth: number, sheight: number }>}
 	 */
-	getClip(): { sx: number; sy: number; swidth: number; sheight: number } {
+	public getClip(): { sx: number; sy: number; swidth: number; sheight: number } {
 		return { sx: this._sx, sy: this._sy, swidth: this._sw, sheight: this._sh };
 	}
 

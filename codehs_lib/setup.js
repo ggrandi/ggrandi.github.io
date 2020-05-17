@@ -1,19 +1,16 @@
 const outputDiv = "output";
 /**
  * The canvas everything is drawn to
- * @type {HTMLCanvasElement}
  */
 export const canvas = createCanvas(outputDiv);
 /**
  * The console println logs to
- * @type {HTMLPreElement}
  */
 export const output = createConsole(outputDiv);
 /**
  * The canvas context
- * @type {CanvasRenderingContext2D}
  */
-export const ctx = (canvas.getContext("2d"));
+export const ctx = canvas.getContext("2d");
 if (!ctx) {
     throw new Error("Error creating canvas context. Check that the canvas is loading correctly.");
 }
@@ -41,22 +38,16 @@ function createConsole(divId) {
 }
 /**
  * Returns the width of the canvas
- * @function
- * @returns {number}
  */
 export const getWidth = () => canvas.width;
 /**
  * Returns the height of the canvas
- * @function
- * @returns {number}
  */
 export const getHeight = () => canvas.height;
 /**
  * Set the width and height of the canvas
- * @param width {number} the canvas's new width
- * @param height {number} the canvas's new height
- * @function
- * @returns {void}
+ * @param width the canvas's new width
+ * @param height the canvas's new height
  */
 export const setSize = (width, height) => {
     canvas.width = width;
@@ -64,23 +55,20 @@ export const setSize = (width, height) => {
 };
 /**
  * Set the background color of the canvas
- * @param color {string} the new background color
- * @function
+ * @param color the new background color
  */
 export const setBackgroundColor = (color) => {
     canvas.style.backgroundColor = color;
 };
 /**
  * Show the mouse over the canvas
- * @param cursor {string} (optional) the css cursor to show
- * @function
+ * @param cursor (optional) the css cursor to show
  */
 export const showCursor = (cursor) => {
     canvas.style.cursor = cursor || "default";
 };
 /**
  * Hide the mouse over the canvas
- * @function
  */
 export const hideCursor = () => {
     canvas.style.cursor = "none";

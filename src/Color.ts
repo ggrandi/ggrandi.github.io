@@ -6,10 +6,10 @@ import { Randomizer } from "./index.js";
 export class Color extends String {
 	/**
 	 * @constructor
-	 * @param red {number} the value of red from 0-255
-	 * @param green {number} the value of green from 0-255
-	 * @param blue {number} the value of blue from 0-255
-	 * @param alpha {number} the value of the opacity from 0 to 1
+	 * @param red the value of red from 0-255
+	 * @param green the value of green from 0-255
+	 * @param blue the value of blue from 0-255
+	 * @param alpha the value of the opacity from 0 to 1
 	 */
 	constructor(red: number, green: number, blue: number, alpha?: number) {
 		if (red < 0 || red > 255) {
@@ -33,7 +33,6 @@ export class Color extends String {
 
 	/**
 	 * The css color black
-	 * @type {string}
 	 */
 	static get black(): string {
 		return "#000000";
@@ -41,7 +40,6 @@ export class Color extends String {
 
 	/**
 	 * The css color silver
-	 * @type {string}
 	 */
 	static get silver(): string {
 		return "#c0c0c0";
@@ -49,7 +47,6 @@ export class Color extends String {
 
 	/**
 	 * The css color gray
-	 * @type {string}
 	 */
 	static get gray(): string {
 		return "#808080";
@@ -57,7 +54,6 @@ export class Color extends String {
 
 	/**
 	 * The css color white
-	 * @type {string}
 	 */
 	static get white(): string {
 		return "#ffffff";
@@ -65,7 +61,6 @@ export class Color extends String {
 
 	/**
 	 * The css color maroon
-	 * @type {string}
 	 */
 	static get maroon(): string {
 		return "#800000";
@@ -73,7 +68,6 @@ export class Color extends String {
 
 	/**
 	 * The css color red
-	 * @type {string}
 	 */
 	static get red(): string {
 		return "#ff0000";
@@ -81,7 +75,6 @@ export class Color extends String {
 
 	/**
 	 * The css color purple
-	 * @type {string}
 	 */
 	static get purple(): string {
 		return "#800080";
@@ -89,7 +82,6 @@ export class Color extends String {
 
 	/**
 	 * The css color fuchsia
-	 * @type {string}
 	 */
 	static get fuchsia(): string {
 		return "#ff00ff";
@@ -97,7 +89,6 @@ export class Color extends String {
 
 	/**
 	 * The css color green
-	 * @type {string}
 	 */
 	static get green(): string {
 		return "#008000";
@@ -105,7 +96,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lime
-	 * @type {string}
 	 */
 	static get lime(): string {
 		return "#00ff00";
@@ -113,7 +103,6 @@ export class Color extends String {
 
 	/**
 	 * The css color olive
-	 * @type {string}
 	 */
 	static get olive(): string {
 		return "#808000";
@@ -121,7 +110,6 @@ export class Color extends String {
 
 	/**
 	 * The css color yellow
-	 * @type {string}
 	 */
 	static get yellow(): string {
 		return "#ffff00";
@@ -129,7 +117,6 @@ export class Color extends String {
 
 	/**
 	 * The css color navy
-	 * @type {string}
 	 */
 	static get navy(): string {
 		return "#000080";
@@ -137,7 +124,6 @@ export class Color extends String {
 
 	/**
 	 * The css color blue
-	 * @type {string}
 	 */
 	static get blue(): string {
 		return "#0000ff";
@@ -145,7 +131,6 @@ export class Color extends String {
 
 	/**
 	 * The css color teal
-	 * @type {string}
 	 */
 	static get teal(): string {
 		return "#008080";
@@ -153,7 +138,6 @@ export class Color extends String {
 
 	/**
 	 * The css color aqua
-	 * @type {string}
 	 */
 	static get aqua(): string {
 		return "#00ffff";
@@ -161,7 +145,6 @@ export class Color extends String {
 
 	/**
 	 * The css color orange
-	 * @type {string}
 	 */
 	static get orange(): string {
 		return "#ffa500";
@@ -169,7 +152,6 @@ export class Color extends String {
 
 	/**
 	 * The css color aliceblue
-	 * @type {string}
 	 */
 	static get aliceblue(): string {
 		return "#f0f8ff";
@@ -177,7 +159,6 @@ export class Color extends String {
 
 	/**
 	 * The css color antiquewhite
-	 * @type {string}
 	 */
 	static get antiquewhite(): string {
 		return "#faebd7";
@@ -185,7 +166,6 @@ export class Color extends String {
 
 	/**
 	 * The css color aquamarine
-	 * @type {string}
 	 */
 	static get aquamarine(): string {
 		return "#7fffd4";
@@ -193,7 +173,6 @@ export class Color extends String {
 
 	/**
 	 * The css color azure
-	 * @type {string}
 	 */
 	static get azure(): string {
 		return "#f0ffff";
@@ -201,7 +180,6 @@ export class Color extends String {
 
 	/**
 	 * The css color beige
-	 * @type {string}
 	 */
 	static get beige(): string {
 		return "#f5f5dc";
@@ -209,7 +187,6 @@ export class Color extends String {
 
 	/**
 	 * The css color bisque
-	 * @type {string}
 	 */
 	static get bisque(): string {
 		return "#ffe4c4";
@@ -217,7 +194,6 @@ export class Color extends String {
 
 	/**
 	 * The css color blanchedalmond
-	 * @type {string}
 	 */
 	static get blanchedalmond(): string {
 		return "#ffebcd";
@@ -225,7 +201,6 @@ export class Color extends String {
 
 	/**
 	 * The css color blueviolet
-	 * @type {string}
 	 */
 	static get blueviolet(): string {
 		return "#8a2be2";
@@ -233,7 +208,6 @@ export class Color extends String {
 
 	/**
 	 * The css color brown
-	 * @type {string}
 	 */
 	static get brown(): string {
 		return "#a52a2a";
@@ -241,7 +215,6 @@ export class Color extends String {
 
 	/**
 	 * The css color burlywood
-	 * @type {string}
 	 */
 	static get burlywood(): string {
 		return "#deb887";
@@ -249,7 +222,6 @@ export class Color extends String {
 
 	/**
 	 * The css color cadetblue
-	 * @type {string}
 	 */
 	static get cadetblue(): string {
 		return "#5f9ea0";
@@ -257,7 +229,6 @@ export class Color extends String {
 
 	/**
 	 * The css color chartreuse
-	 * @type {string}
 	 */
 	static get chartreuse(): string {
 		return "#7fff00";
@@ -265,7 +236,6 @@ export class Color extends String {
 
 	/**
 	 * The css color chocolate
-	 * @type {string}
 	 */
 	static get chocolate(): string {
 		return "#d2691e";
@@ -273,7 +243,6 @@ export class Color extends String {
 
 	/**
 	 * The css color coral
-	 * @type {string}
 	 */
 	static get coral(): string {
 		return "#ff7f50";
@@ -281,7 +250,6 @@ export class Color extends String {
 
 	/**
 	 * The css color cornflowerblue
-	 * @type {string}
 	 */
 	static get cornflowerblue(): string {
 		return "#6495ed";
@@ -289,7 +257,6 @@ export class Color extends String {
 
 	/**
 	 * The css color cornsilk
-	 * @type {string}
 	 */
 	static get cornsilk(): string {
 		return "#fff8dc";
@@ -297,7 +264,6 @@ export class Color extends String {
 
 	/**
 	 * The css color crimson
-	 * @type {string}
 	 */
 	static get crimson(): string {
 		return "#dc143c";
@@ -305,7 +271,6 @@ export class Color extends String {
 
 	/**
 	 * The css color cyan
-	 * @type {string}
 	 */
 	static get cyan(): string {
 		return "#00ffff";
@@ -313,7 +278,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkblue
-	 * @type {string}
 	 */
 	static get darkblue(): string {
 		return "#00008b";
@@ -321,7 +285,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkcyan
-	 * @type {string}
 	 */
 	static get darkcyan(): string {
 		return "#008b8b";
@@ -329,7 +292,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkgoldenrod
-	 * @type {string}
 	 */
 	static get darkgoldenrod(): string {
 		return "#b8860b";
@@ -337,7 +299,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkgray
-	 * @type {string}
 	 */
 	static get darkgray(): string {
 		return "#a9a9a9";
@@ -345,7 +306,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkgreen
-	 * @type {string}
 	 */
 	static get darkgreen(): string {
 		return "#006400";
@@ -353,7 +313,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkgrey
-	 * @type {string}
 	 */
 	static get darkgrey(): string {
 		return "#a9a9a9";
@@ -361,7 +320,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkkhaki
-	 * @type {string}
 	 */
 	static get darkkhaki(): string {
 		return "#bdb76b";
@@ -369,7 +327,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkmagenta
-	 * @type {string}
 	 */
 	static get darkmagenta(): string {
 		return "#8b008b";
@@ -377,7 +334,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkolivegreen
-	 * @type {string}
 	 */
 	static get darkolivegreen(): string {
 		return "#556b2f";
@@ -385,7 +341,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkorange
-	 * @type {string}
 	 */
 	static get darkorange(): string {
 		return "#ff8c00";
@@ -393,7 +348,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkorchid
-	 * @type {string}
 	 */
 	static get darkorchid(): string {
 		return "#9932cc";
@@ -401,7 +355,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkred
-	 * @type {string}
 	 */
 	static get darkred(): string {
 		return "#8b0000";
@@ -409,7 +362,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darksalmon
-	 * @type {string}
 	 */
 	static get darksalmon(): string {
 		return "#e9967a";
@@ -417,7 +369,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkseagreen
-	 * @type {string}
 	 */
 	static get darkseagreen(): string {
 		return "#8fbc8f";
@@ -425,7 +376,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkslateblue
-	 * @type {string}
 	 */
 	static get darkslateblue(): string {
 		return "#483d8b";
@@ -433,7 +383,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkslategray
-	 * @type {string}
 	 */
 	static get darkslategray(): string {
 		return "#2f4f4f";
@@ -441,7 +390,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkslategrey
-	 * @type {string}
 	 */
 	static get darkslategrey(): string {
 		return "#2f4f4f";
@@ -449,7 +397,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkturquoise
-	 * @type {string}
 	 */
 	static get darkturquoise(): string {
 		return "#00ced1";
@@ -457,7 +404,6 @@ export class Color extends String {
 
 	/**
 	 * The css color darkviolet
-	 * @type {string}
 	 */
 	static get darkviolet(): string {
 		return "#9400d3";
@@ -465,7 +411,6 @@ export class Color extends String {
 
 	/**
 	 * The css color deeppink
-	 * @type {string}
 	 */
 	static get deeppink(): string {
 		return "#ff1493";
@@ -473,7 +418,6 @@ export class Color extends String {
 
 	/**
 	 * The css color deepskyblue
-	 * @type {string}
 	 */
 	static get deepskyblue(): string {
 		return "#00bfff";
@@ -481,7 +425,6 @@ export class Color extends String {
 
 	/**
 	 * The css color dimgray
-	 * @type {string}
 	 */
 	static get dimgray(): string {
 		return "#696969";
@@ -489,7 +432,6 @@ export class Color extends String {
 
 	/**
 	 * The css color dimgrey
-	 * @type {string}
 	 */
 	static get dimgrey(): string {
 		return "#696969";
@@ -497,7 +439,6 @@ export class Color extends String {
 
 	/**
 	 * The css color dodgerblue
-	 * @type {string}
 	 */
 	static get dodgerblue(): string {
 		return "#1e90ff";
@@ -505,7 +446,6 @@ export class Color extends String {
 
 	/**
 	 * The css color firebrick
-	 * @type {string}
 	 */
 	static get firebrick(): string {
 		return "#b22222";
@@ -513,7 +453,6 @@ export class Color extends String {
 
 	/**
 	 * The css color floralwhite
-	 * @type {string}
 	 */
 	static get floralwhite(): string {
 		return "#fffaf0";
@@ -521,7 +460,6 @@ export class Color extends String {
 
 	/**
 	 * The css color forestgreen
-	 * @type {string}
 	 */
 	static get forestgreen(): string {
 		return "#228b22";
@@ -529,7 +467,6 @@ export class Color extends String {
 
 	/**
 	 * The css color gainsboro
-	 * @type {string}
 	 */
 	static get gainsboro(): string {
 		return "#dcdcdc";
@@ -537,7 +474,6 @@ export class Color extends String {
 
 	/**
 	 * The css color ghostwhite
-	 * @type {string}
 	 */
 	static get ghostwhite(): string {
 		return "#f8f8ff";
@@ -545,7 +481,6 @@ export class Color extends String {
 
 	/**
 	 * The css color gold
-	 * @type {string}
 	 */
 	static get gold(): string {
 		return "#ffd700";
@@ -553,7 +488,6 @@ export class Color extends String {
 
 	/**
 	 * The css color goldenrod
-	 * @type {string}
 	 */
 	static get goldenrod(): string {
 		return "#daa520";
@@ -561,7 +495,6 @@ export class Color extends String {
 
 	/**
 	 * The css color greenyellow
-	 * @type {string}
 	 */
 	static get greenyellow(): string {
 		return "#adff2f";
@@ -569,7 +502,6 @@ export class Color extends String {
 
 	/**
 	 * The css color grey
-	 * @type {string}
 	 */
 	static get grey(): string {
 		return "#808080";
@@ -577,7 +509,6 @@ export class Color extends String {
 
 	/**
 	 * The css color honeydew
-	 * @type {string}
 	 */
 	static get honeydew(): string {
 		return "#f0fff0";
@@ -585,7 +516,6 @@ export class Color extends String {
 
 	/**
 	 * The css color hotpink
-	 * @type {string}
 	 */
 	static get hotpink(): string {
 		return "#ff69b4";
@@ -593,7 +523,6 @@ export class Color extends String {
 
 	/**
 	 * The css color indianred
-	 * @type {string}
 	 */
 	static get indianred(): string {
 		return "#cd5c5c";
@@ -601,7 +530,6 @@ export class Color extends String {
 
 	/**
 	 * The css color indigo
-	 * @type {string}
 	 */
 	static get indigo(): string {
 		return "#4b0082";
@@ -609,7 +537,6 @@ export class Color extends String {
 
 	/**
 	 * The css color ivory
-	 * @type {string}
 	 */
 	static get ivory(): string {
 		return "#fffff0";
@@ -617,7 +544,6 @@ export class Color extends String {
 
 	/**
 	 * The css color khaki
-	 * @type {string}
 	 */
 	static get khaki(): string {
 		return "#f0e68c";
@@ -625,7 +551,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lavender
-	 * @type {string}
 	 */
 	static get lavender(): string {
 		return "#e6e6fa";
@@ -633,7 +558,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lavenderblush
-	 * @type {string}
 	 */
 	static get lavenderblush(): string {
 		return "#fff0f5";
@@ -641,7 +565,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lawngreen
-	 * @type {string}
 	 */
 	static get lawngreen(): string {
 		return "#7cfc00";
@@ -649,7 +572,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lemonchiffon
-	 * @type {string}
 	 */
 	static get lemonchiffon(): string {
 		return "#fffacd";
@@ -657,7 +579,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightblue
-	 * @type {string}
 	 */
 	static get lightblue(): string {
 		return "#add8e6";
@@ -665,7 +586,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightcoral
-	 * @type {string}
 	 */
 	static get lightcoral(): string {
 		return "#f08080";
@@ -673,7 +593,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightcyan
-	 * @type {string}
 	 */
 	static get lightcyan(): string {
 		return "#e0ffff";
@@ -681,7 +600,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightgoldenrodyellow
-	 * @type {string}
 	 */
 	static get lightgoldenrodyellow(): string {
 		return "#fafad2";
@@ -689,7 +607,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightgray
-	 * @type {string}
 	 */
 	static get lightgray(): string {
 		return "#d3d3d3";
@@ -697,7 +614,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightgreen
-	 * @type {string}
 	 */
 	static get lightgreen(): string {
 		return "#90ee90";
@@ -705,7 +621,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightgrey
-	 * @type {string}
 	 */
 	static get lightgrey(): string {
 		return "#d3d3d3";
@@ -713,7 +628,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightpink
-	 * @type {string}
 	 */
 	static get lightpink(): string {
 		return "#ffb6c1";
@@ -721,7 +635,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightsalmon
-	 * @type {string}
 	 */
 	static get lightsalmon(): string {
 		return "#ffa07a";
@@ -729,7 +642,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightseagreen
-	 * @type {string}
 	 */
 	static get lightseagreen(): string {
 		return "#20b2aa";
@@ -737,7 +649,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightskyblue
-	 * @type {string}
 	 */
 	static get lightskyblue(): string {
 		return "#87cefa";
@@ -745,7 +656,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightslategray
-	 * @type {string}
 	 */
 	static get lightslategray(): string {
 		return "#778899";
@@ -753,7 +663,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightslategrey
-	 * @type {string}
 	 */
 	static get lightslategrey(): string {
 		return "#778899";
@@ -761,7 +670,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightsteelblue
-	 * @type {string}
 	 */
 	static get lightsteelblue(): string {
 		return "#b0c4de";
@@ -769,7 +677,6 @@ export class Color extends String {
 
 	/**
 	 * The css color lightyellow
-	 * @type {string}
 	 */
 	static get lightyellow(): string {
 		return "#ffffe0";
@@ -777,7 +684,6 @@ export class Color extends String {
 
 	/**
 	 * The css color limegreen
-	 * @type {string}
 	 */
 	static get limegreen(): string {
 		return "#32cd32";
@@ -785,7 +691,6 @@ export class Color extends String {
 
 	/**
 	 * The css color linen
-	 * @type {string}
 	 */
 	static get linen(): string {
 		return "#faf0e6";
@@ -793,7 +698,6 @@ export class Color extends String {
 
 	/**
 	 * The css color magenta
-	 * @type {string}
 	 */
 	static get magenta(): string {
 		return "#ff00ff";
@@ -801,7 +705,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumaquamarine
-	 * @type {string}
 	 */
 	static get mediumaquamarine(): string {
 		return "#66cdaa";
@@ -809,7 +712,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumblue
-	 * @type {string}
 	 */
 	static get mediumblue(): string {
 		return "#0000cd";
@@ -817,7 +719,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumorchid
-	 * @type {string}
 	 */
 	static get mediumorchid(): string {
 		return "#ba55d3";
@@ -825,7 +726,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumpurple
-	 * @type {string}
 	 */
 	static get mediumpurple(): string {
 		return "#9370db";
@@ -833,7 +733,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumseagreen
-	 * @type {string}
 	 */
 	static get mediumseagreen(): string {
 		return "#3cb371";
@@ -841,7 +740,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumslateblue
-	 * @type {string}
 	 */
 	static get mediumslateblue(): string {
 		return "#7b68ee";
@@ -849,7 +747,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumspringgreen
-	 * @type {string}
 	 */
 	static get mediumspringgreen(): string {
 		return "#00fa9a";
@@ -857,7 +754,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumturquoise
-	 * @type {string}
 	 */
 	static get mediumturquoise(): string {
 		return "#48d1cc";
@@ -865,7 +761,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mediumvioletred
-	 * @type {string}
 	 */
 	static get mediumvioletred(): string {
 		return "#c71585";
@@ -873,7 +768,6 @@ export class Color extends String {
 
 	/**
 	 * The css color midnightblue
-	 * @type {string}
 	 */
 	static get midnightblue(): string {
 		return "#191970";
@@ -881,7 +775,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mintcream
-	 * @type {string}
 	 */
 	static get mintcream(): string {
 		return "#f5fffa";
@@ -889,7 +782,6 @@ export class Color extends String {
 
 	/**
 	 * The css color mistyrose
-	 * @type {string}
 	 */
 	static get mistyrose(): string {
 		return "#ffe4e1";
@@ -897,7 +789,6 @@ export class Color extends String {
 
 	/**
 	 * The css color moccasin
-	 * @type {string}
 	 */
 	static get moccasin(): string {
 		return "#ffe4b5";
@@ -905,7 +796,6 @@ export class Color extends String {
 
 	/**
 	 * The css color navajowhite
-	 * @type {string}
 	 */
 	static get navajowhite(): string {
 		return "#ffdead";
@@ -913,7 +803,6 @@ export class Color extends String {
 
 	/**
 	 * The css color oldlace
-	 * @type {string}
 	 */
 	static get oldlace(): string {
 		return "#fdf5e6";
@@ -921,7 +810,6 @@ export class Color extends String {
 
 	/**
 	 * The css color olivedrab
-	 * @type {string}
 	 */
 	static get olivedrab(): string {
 		return "#6b8e23";
@@ -929,7 +817,6 @@ export class Color extends String {
 
 	/**
 	 * The css color orangered
-	 * @type {string}
 	 */
 	static get orangered(): string {
 		return "#ff4500";
@@ -937,7 +824,6 @@ export class Color extends String {
 
 	/**
 	 * The css color orchid
-	 * @type {string}
 	 */
 	static get orchid(): string {
 		return "#da70d6";
@@ -945,7 +831,6 @@ export class Color extends String {
 
 	/**
 	 * The css color palegoldenrod
-	 * @type {string}
 	 */
 	static get palegoldenrod(): string {
 		return "#eee8aa";
@@ -953,7 +838,6 @@ export class Color extends String {
 
 	/**
 	 * The css color palegreen
-	 * @type {string}
 	 */
 	static get palegreen(): string {
 		return "#98fb98";
@@ -961,7 +845,6 @@ export class Color extends String {
 
 	/**
 	 * The css color paleturquoise
-	 * @type {string}
 	 */
 	static get paleturquoise(): string {
 		return "#afeeee";
@@ -969,7 +852,6 @@ export class Color extends String {
 
 	/**
 	 * The css color palevioletred
-	 * @type {string}
 	 */
 	static get palevioletred(): string {
 		return "#db7093";
@@ -977,7 +859,6 @@ export class Color extends String {
 
 	/**
 	 * The css color papayawhip
-	 * @type {string}
 	 */
 	static get papayawhip(): string {
 		return "#ffefd5";
@@ -985,7 +866,6 @@ export class Color extends String {
 
 	/**
 	 * The css color peachpuff
-	 * @type {string}
 	 */
 	static get peachpuff(): string {
 		return "#ffdab9";
@@ -993,7 +873,6 @@ export class Color extends String {
 
 	/**
 	 * The css color peru
-	 * @type {string}
 	 */
 	static get peru(): string {
 		return "#cd853f";
@@ -1001,7 +880,6 @@ export class Color extends String {
 
 	/**
 	 * The css color pink
-	 * @type {string}
 	 */
 	static get pink(): string {
 		return "#ffc0cb";
@@ -1009,7 +887,6 @@ export class Color extends String {
 
 	/**
 	 * The css color plum
-	 * @type {string}
 	 */
 	static get plum(): string {
 		return "#dda0dd";
@@ -1017,7 +894,6 @@ export class Color extends String {
 
 	/**
 	 * The css color powderblue
-	 * @type {string}
 	 */
 	static get powderblue(): string {
 		return "#b0e0e6";
@@ -1025,7 +901,6 @@ export class Color extends String {
 
 	/**
 	 * The css color rosybrown
-	 * @type {string}
 	 */
 	static get rosybrown(): string {
 		return "#bc8f8f";
@@ -1033,7 +908,6 @@ export class Color extends String {
 
 	/**
 	 * The css color royalblue
-	 * @type {string}
 	 */
 	static get royalblue(): string {
 		return "#4169e1";
@@ -1041,7 +915,6 @@ export class Color extends String {
 
 	/**
 	 * The css color saddlebrown
-	 * @type {string}
 	 */
 	static get saddlebrown(): string {
 		return "#8b4513";
@@ -1049,7 +922,6 @@ export class Color extends String {
 
 	/**
 	 * The css color salmon
-	 * @type {string}
 	 */
 	static get salmon(): string {
 		return "#fa8072";
@@ -1057,7 +929,6 @@ export class Color extends String {
 
 	/**
 	 * The css color sandybrown
-	 * @type {string}
 	 */
 	static get sandybrown(): string {
 		return "#f4a460";
@@ -1065,7 +936,6 @@ export class Color extends String {
 
 	/**
 	 * The css color seagreen
-	 * @type {string}
 	 */
 	static get seagreen(): string {
 		return "#2e8b57";
@@ -1073,7 +943,6 @@ export class Color extends String {
 
 	/**
 	 * The css color seashell
-	 * @type {string}
 	 */
 	static get seashell(): string {
 		return "#fff5ee";
@@ -1081,7 +950,6 @@ export class Color extends String {
 
 	/**
 	 * The css color sienna
-	 * @type {string}
 	 */
 	static get sienna(): string {
 		return "#a0522d";
@@ -1089,7 +957,6 @@ export class Color extends String {
 
 	/**
 	 * The css color skyblue
-	 * @type {string}
 	 */
 	static get skyblue(): string {
 		return "#87ceeb";
@@ -1097,7 +964,6 @@ export class Color extends String {
 
 	/**
 	 * The css color slateblue
-	 * @type {string}
 	 */
 	static get slateblue(): string {
 		return "#6a5acd";
@@ -1105,7 +971,6 @@ export class Color extends String {
 
 	/**
 	 * The css color slategray
-	 * @type {string}
 	 */
 	static get slategray(): string {
 		return "#708090";
@@ -1113,7 +978,6 @@ export class Color extends String {
 
 	/**
 	 * The css color slategrey
-	 * @type {string}
 	 */
 	static get slategrey(): string {
 		return "#708090";
@@ -1121,7 +985,6 @@ export class Color extends String {
 
 	/**
 	 * The css color snow
-	 * @type {string}
 	 */
 	static get snow(): string {
 		return "#fffafa";
@@ -1129,7 +992,6 @@ export class Color extends String {
 
 	/**
 	 * The css color springgreen
-	 * @type {string}
 	 */
 	static get springgreen(): string {
 		return "#00ff7f";
@@ -1137,7 +999,6 @@ export class Color extends String {
 
 	/**
 	 * The css color steelblue
-	 * @type {string}
 	 */
 	static get steelblue(): string {
 		return "#4682b4";
@@ -1145,7 +1006,6 @@ export class Color extends String {
 
 	/**
 	 * The css color tan
-	 * @type {string}
 	 */
 	static get tan(): string {
 		return "#d2b48c";
@@ -1153,7 +1013,6 @@ export class Color extends String {
 
 	/**
 	 * The css color thistle
-	 * @type {string}
 	 */
 	static get thistle(): string {
 		return "#d8bfd8";
@@ -1161,7 +1020,6 @@ export class Color extends String {
 
 	/**
 	 * The css color tomato
-	 * @type {string}
 	 */
 	static get tomato(): string {
 		return "#ff6347";
@@ -1169,7 +1027,6 @@ export class Color extends String {
 
 	/**
 	 * The css color turquoise
-	 * @type {string}
 	 */
 	static get turquoise(): string {
 		return "#40e0d0";
@@ -1177,7 +1034,6 @@ export class Color extends String {
 
 	/**
 	 * The css color violet
-	 * @type {string}
 	 */
 	static get violet(): string {
 		return "#ee82ee";
@@ -1185,7 +1041,6 @@ export class Color extends String {
 
 	/**
 	 * The css color wheat
-	 * @type {string}
 	 */
 	static get wheat(): string {
 		return "#f5deb3";
@@ -1193,7 +1048,6 @@ export class Color extends String {
 
 	/**
 	 * The css color whitesmoke
-	 * @type {string}
 	 */
 	static get whitesmoke(): string {
 		return "#f5f5f5";
@@ -1201,7 +1055,6 @@ export class Color extends String {
 
 	/**
 	 * The css color yellowgreen
-	 * @type {string}
 	 */
 	static get yellowgreen(): string {
 		return "#9acd32";
@@ -1209,7 +1062,6 @@ export class Color extends String {
 
 	/**
 	 * The css color rebeccapurple
-	 * @type {string}
 	 */
 	static get rebeccapurple(): string {
 		return "#663399";
@@ -1217,7 +1069,6 @@ export class Color extends String {
 
 	/**
 	 * Returns a random shade of Red
-	 * @returns {string}
 	 */
 	static randomRed(): string {
 		return `#${Randomizer.randomHex(32, 255)}1010`;
@@ -1225,7 +1076,6 @@ export class Color extends String {
 
 	/**
 	 * Returns a random shade of Green
-	 * @returns {string}
 	 */
 	static randomGreen(): string {
 		return `#10${Randomizer.randomHex(32, 255)}10`;
@@ -1233,7 +1083,6 @@ export class Color extends String {
 
 	/**
 	 * Returns a random shade of Blue
-	 * @returns {string}
 	 */
 	static randomBlue(): string {
 		return `#1010${Randomizer.randomHex(32, 255)}`;
@@ -1242,19 +1091,18 @@ export class Color extends String {
 
 /**
  * Checks if a string is a color
- * @param {string} color color to check
- * @returns {boolean}
- * @function
+ * @param color color to check
  */
-export const checkColor = (color: string): boolean => {
+export const checkColor = (color: string | CanvasGradient): boolean => {
 	const hexColor = /^#([a-fA-F0-9]{3}|[a-fA-F0-9]{6}|[a-fA-F0-9]{8})$/;
 	const rgbColor = /^rgb(\((([01]?\d?\d|2([0-4]\d|5[0-5])), ?){2}([01]?\d?\d|2([0-4]\d|5[0-5]))|a\((([01]?\d?\d|2([0-4]\d|5[0-5])), ?){3}(1|0?(.\d+)?))\)$/;
 	const hslColor = /^hsl(\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}|a\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}, ?(1|0(.\d+)?))\)$/;
 
 	return (
-		hexColor.test(color) ||
-		rgbColor.test(color) ||
-		hslColor.test(color) ||
-		Color.hasOwnProperty(color)
+		hexColor.test(color as string) ||
+		rgbColor.test(color as string) ||
+		hslColor.test(color as string) ||
+		Color.hasOwnProperty(color as string) ||
+		color instanceof CanvasGradient
 	);
 };

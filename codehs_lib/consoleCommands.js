@@ -19,7 +19,6 @@ const addSeparator = (pre) => {
 };
 /**
  * Clears the output console
- * @returns {void}
  */
 export const clearConsole = () => {
     while (output.lastChild) {
@@ -28,9 +27,7 @@ export const clearConsole = () => {
 };
 /**
  * logs any argument passed to the console
- * @param {...*} args arguments to print
- * @returns {void}
- * @function
+ * @param args arguments to print
  */
 export const println = (...args) => {
     addSeparator(output);
@@ -73,18 +70,14 @@ export const println = (...args) => {
 };
 /**
  * Returns the user's answer to the prompt as a string
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {string}
+ * @param message the prompt to ask the user
  */
 export const readLine = (message) => {
     return String(prompt(message));
 };
 /**
  * Returns the user's answer to the prompt as an integer
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {number}
+ * @param message the prompt to ask the user
  */
 export const readInt = (message) => {
     let ans;
@@ -100,9 +93,7 @@ export const readInt = (message) => {
 };
 /**
  * Returns the user's answer to the prompt as a float
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {number}
+ * @param message the prompt to ask the user
  */
 export const readFloat = (message) => {
     let ans;
@@ -118,11 +109,9 @@ export const readFloat = (message) => {
 };
 /**
  * Returns the user's answer to the prompt as a boolean
- * @param {string} message the prompt to ask the user
- * @param {string} y the yes string
- * @param {string} n the no string
- * @function
- * @returns {boolean}
+ * @param message the prompt to ask the user
+ * @param y the yes string
+ * @param n the no string
  */
 export const readBoolean = (message, y = "y", n = "n") => {
     let ans;
@@ -139,11 +128,10 @@ export const readBoolean = (message, y = "y", n = "n") => {
 };
 /**
  * Use this function to create your own console inputs if they are not supported by the library
- * @param {string} message the message to display
- * @param {function} submitHandler function to handle the submit
- * @param {string} inputType the type of the input
- * @param {boolean | undefined} submitButton whether to show a submit button or not
- * @function
+ * @param message the message to display
+ * @param submitHandler function to handle the submit
+ * @param inputType the type of the input
+ * @param submitButton whether to show a submit button or not
  * @async
  */
 export const consoleInput = async (message, submitHandler, inputType, submitButton) => {
@@ -199,9 +187,7 @@ export const consoleInput = async (message, submitHandler, inputType, submitButt
 };
 /**
  * Ask a question in the console and return a string
- * @param {string} message question to ask
- * @function
- * @returns {Promise<string>}
+ * @param message question to ask
  * @async
  */
 export const readLineConsole = async (message) => {
@@ -240,9 +226,7 @@ const readNumberConsole = async (message, validation, checks) => {
 };
 /**
  * Ask a question in the console and return an integer
- * @param {string} message question to ask
- * @function
- * @returns {Promise<number>}
+ * @param message question to ask
  * @async
  */
 export const readIntConsole = async (message) => {
@@ -250,9 +234,7 @@ export const readIntConsole = async (message) => {
 };
 /**
  * Ask a question in the console and return a float
- * @param {string} message question to ask
- * @function
- * @returns {Promise<number>}
+ * @param message question to ask
  * @async
  */
 export const readFloatConsole = async (message) => {
@@ -260,9 +242,7 @@ export const readFloatConsole = async (message) => {
 };
 /**
  * Ask a question in the console and return a boolean value
- * @param {string} message question to ask
- * @returns {Promise<boolean>}
- * @function
+ * @param message question to ask
  * @async
  */
 export const readBooleanConsole = async (message) => {
@@ -272,10 +252,8 @@ export const readBooleanConsole = async (message) => {
 };
 /**
  * Asks the user to enter a color in the console
- * @param {string} message the message to ask
- * @function
+ * @param message the message to ask
  * @async
- * @returns {Promise<string>}
  */
 export const readColorConsole = async (message) => {
     return await consoleInput(message, function (input) {

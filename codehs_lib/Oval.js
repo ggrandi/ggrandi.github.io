@@ -3,14 +3,6 @@ import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
  * The oval shape
  */
 export class Oval extends baseObj {
-    /**
-     * @constructor
-     * @param {number} width the width of the oval
-     * @param {number} height the height of the oval
-     * @param {number | undefined} x the x-position
-     * @param {number | undefined} y the y-position
-     * @param {string | undefined} color the color of the oval
-     */
     constructor(width, height, x, y, color) {
         super();
         this._width = width;
@@ -25,7 +17,6 @@ export class Oval extends baseObj {
     }
     /**
      * The width of the oval
-     * @type {number}
      */
     set width(v) {
         this._width = v;
@@ -34,9 +25,8 @@ export class Oval extends baseObj {
         return this._width;
     }
     /**
-     * Set the width of the oval
-     * @param {number} width the new width
-     * @returns {this}
+     * set the width of the oval
+     * @param width the new width
      */
     setWidth(width) {
         this._width = width;
@@ -44,7 +34,6 @@ export class Oval extends baseObj {
     }
     /**
      * The height of the oval
-     * @type {number}
      */
     set height(v) {
         this._height = v;
@@ -53,19 +42,17 @@ export class Oval extends baseObj {
         return this._height;
     }
     /**
-     * Set the height of the oval
-     * @param {number} height the new height
-     * @returns {this}
+     * set the height of the oval
+     * @param height the new height
      */
     setHeight(height) {
         this._height = height;
         return this;
     }
     /**
-     * Set the width and height of the oval
-     * @param {number} width the new width of the oval
-     * @param {number} height the new height of the oval
-     * @returns {this}
+     * set the width and height of the oval
+     * @param width the new width of the oval
+     * @param height the new height of the oval
      */
     setSize(width, height) {
         this._width = width;

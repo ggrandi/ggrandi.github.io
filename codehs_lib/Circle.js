@@ -3,15 +3,6 @@ import { baseObj, ctx, lineDistance, checkColor } from "./index.js";
  * The Circle shape
  */
 export class Circle extends baseObj {
-    /**
-     * @constructor
-     * @param {number} radius The radius of the circle
-     * @param {number | undefined} x The x-position of the Circle
-     * @param {number | undefined} y The y-position of the Circle
-     * @param {string | undefined} color The color of the circle
-     * @param {boolean | undefined} outline whether to draw the outline
-     * @param {string | undefined} outlineColor The color of the outline
-     */
     constructor(radius, x, y, color, outline, outlineColor) {
         super();
         this.x = x !== null && x !== void 0 ? x : -1000;
@@ -32,7 +23,6 @@ export class Circle extends baseObj {
     }
     /**
      * The circle's radius
-     * @type {number}
      */
     set radius(v) {
         this._radius = Math.abs(v);
@@ -42,7 +32,6 @@ export class Circle extends baseObj {
     }
     /**
      * The circle's diameter
-     * @type {number}
      */
     set diameter(v) {
         this._radius = Math.abs(2 * v);
@@ -52,15 +41,13 @@ export class Circle extends baseObj {
     }
     /**
      * Returns the Circle's diameter
-     * @returns {number}
      */
     getDiameter() {
         return 2 * this._radius;
     }
     /**
-     * Sets the Circle's diameter to `diameter`
-     * @param {number} diameter the new diameter
-     * @returns {this}
+     * sets the Circle's diameter to `diameter`
+     * @param diameter the new diameter
      */
     setDiameter(diameter) {
         this._radius = Math.abs(2 * diameter);
@@ -68,15 +55,13 @@ export class Circle extends baseObj {
     }
     /**
      * Returns the Circle's radius
-     * @returns {number}
      */
     getRadius() {
         return this._radius;
     }
     /**
-     * Sets the Circle's radius to `radius`
-     * @param {number} radius the new radius
-     * @returns {this}
+     * sets the Circle's radius to `radius`
+     * @param radius the new radius
      */
     setRadius(radius) {
         this._radius = Math.abs(radius);

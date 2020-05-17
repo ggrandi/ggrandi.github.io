@@ -22,7 +22,6 @@ const addSeparator = (pre: HTMLPreElement): void => {
 
 /**
  * Clears the output console
- * @returns {void}
  */
 export const clearConsole = (): void => {
 	while (output.lastChild) {
@@ -32,9 +31,7 @@ export const clearConsole = (): void => {
 
 /**
  * logs any argument passed to the console
- * @param {...*} args arguments to print
- * @returns {void}
- * @function
+ * @param args arguments to print
  */
 export const println = (...args: Array<any>): void => {
 	addSeparator(output);
@@ -85,9 +82,7 @@ export const println = (...args: Array<any>): void => {
 
 /**
  * Returns the user's answer to the prompt as a string
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {string}
+ * @param message the prompt to ask the user
  */
 export const readLine = (message: string): string => {
 	return String(prompt(message));
@@ -95,9 +90,7 @@ export const readLine = (message: string): string => {
 
 /**
  * Returns the user's answer to the prompt as an integer
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {number}
+ * @param message the prompt to ask the user
  */
 export const readInt = (message: string): number => {
 	let ans: number;
@@ -121,9 +114,7 @@ export const readInt = (message: string): number => {
 
 /**
  * Returns the user's answer to the prompt as a float
- * @param {string} message the prompt to ask the user
- * @function
- * @returns {number}
+ * @param message the prompt to ask the user
  */
 export const readFloat = (message: string): number => {
 	let ans: number;
@@ -144,11 +135,9 @@ export const readFloat = (message: string): number => {
 
 /**
  * Returns the user's answer to the prompt as a boolean
- * @param {string} message the prompt to ask the user
- * @param {string} y the yes string
- * @param {string} n the no string
- * @function
- * @returns {boolean}
+ * @param message the prompt to ask the user
+ * @param y the yes string
+ * @param n the no string
  */
 export const readBoolean = (message: string, y = "y", n = "n"): boolean => {
 	let ans: string | null;
@@ -168,11 +157,10 @@ export const readBoolean = (message: string, y = "y", n = "n"): boolean => {
 
 /**
  * Use this function to create your own console inputs if they are not supported by the library
- * @param {string} message the message to display
- * @param {function} submitHandler function to handle the submit
- * @param {string} inputType the type of the input
- * @param {boolean | undefined} submitButton whether to show a submit button or not
- * @function
+ * @param message the message to display
+ * @param submitHandler function to handle the submit
+ * @param inputType the type of the input
+ * @param submitButton whether to show a submit button or not
  * @async
  */
 export const consoleInput = async <
@@ -255,9 +243,7 @@ export const consoleInput = async <
 
 /**
  * Ask a question in the console and return a string
- * @param {string} message question to ask
- * @function
- * @returns {Promise<string>}
+ * @param message question to ask
  * @async
  */
 export const readLineConsole = async (message: string): Promise<string> => {
@@ -315,9 +301,7 @@ const readNumberConsole = async (
 
 /**
  * Ask a question in the console and return an integer
- * @param {string} message question to ask
- * @function
- * @returns {Promise<number>}
+ * @param message question to ask
  * @async
  */
 export const readIntConsole = async (message: string): Promise<number> => {
@@ -326,9 +310,7 @@ export const readIntConsole = async (message: string): Promise<number> => {
 
 /**
  * Ask a question in the console and return a float
- * @param {string} message question to ask
- * @function
- * @returns {Promise<number>}
+ * @param message question to ask
  * @async
  */
 export const readFloatConsole = async (message: string): Promise<number> => {
@@ -341,9 +323,7 @@ export const readFloatConsole = async (message: string): Promise<number> => {
 
 /**
  * Ask a question in the console and return a boolean value
- * @param {string} message question to ask
- * @returns {Promise<boolean>}
- * @function
+ * @param message question to ask
  * @async
  */
 export const readBooleanConsole = async (message: string): Promise<boolean> => {
@@ -359,10 +339,8 @@ export const readBooleanConsole = async (message: string): Promise<boolean> => {
 
 /**
  * Asks the user to enter a color in the console
- * @param {string} message the message to ask
- * @function
+ * @param message the message to ask
  * @async
- * @returns {Promise<string>}
  */
 export const readColorConsole = async (message: string): Promise<string> => {
 	return await consoleInput<string, MouseEvent>(
