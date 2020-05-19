@@ -140,4 +140,3 @@ export class Arc extends baseObj {
                 : A > this._sa || A < this._ea));
     }
 }
-//# sourceMappingURL=Arc.js.map

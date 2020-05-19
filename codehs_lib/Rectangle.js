@@ -109,4 +109,3 @@ export class Rectangle extends baseObj {
             y < this._height / 2 + oW);
     }
 }
-//# sourceMappingURL=Rectangle.js.map

@@ -81,4 +81,3 @@ const main = () => {
     requestAnimationFrame(main);
 };
 main();
-//# sourceMappingURL=shapes.js.map

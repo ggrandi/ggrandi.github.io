@@ -127,4 +127,3 @@ export class Line extends baseObj {
             y < length + oW);
     }
 }
-//# sourceMappingURL=Line.js.map

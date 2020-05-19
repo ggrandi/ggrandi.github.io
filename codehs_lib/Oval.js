@@ -84,4 +84,3 @@ export class Oval extends baseObj {
             1);
     }
 }
-//# sourceMappingURL=Oval.js.map

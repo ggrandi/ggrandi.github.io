@@ -946,4 +946,3 @@ export const checkColor = (color) => {
         Color.hasOwnProperty(color) ||
         color instanceof CanvasGradient);
 };
-//# sourceMappingURL=Color.js.map

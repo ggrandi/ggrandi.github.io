@@ -126,4 +126,3 @@ export class Keyboard {
         return "ArrowUp";
     }
 }
-//# sourceMappingURL=Keyboard.js.map

@@ -103,4 +103,3 @@ export class WebImage extends Rectangle {
         }
     }
 }
-//# sourceMappingURL=WebImage.js.map

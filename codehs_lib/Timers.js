@@ -42,4 +42,3 @@ export const stopAllTimers = () => {
     timers.forEach((t) => clearInterval(t.id));
     timers.splice(0, timers.length);
 };
-//# sourceMappingURL=Timers.js.map

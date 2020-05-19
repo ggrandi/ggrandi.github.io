@@ -260,4 +260,3 @@ export const readColorConsole = async (message) => {
         return { done: true, color: input.value, value: input.value };
     }, "color", true);
 };
-//# sourceMappingURL=consoleCommands.js.map

@@ -83,4 +83,3 @@ export class Circle extends baseObj {
         return lineDistance(this.x, this.y, x, y) < this.radius + oW;
     }
 }
-//# sourceMappingURL=Circle.js.map

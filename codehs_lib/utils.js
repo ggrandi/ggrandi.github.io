@@ -70,4 +70,3 @@ export const toRadians = (degrees) => {
 export const toDegrees = (radians) => {
     return (radians * 2) / Math.PI;
 };
-//# sourceMappingURL=utils.js.map

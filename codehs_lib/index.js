@@ -27,4 +27,3 @@ console.log(`%c
  read the docs: %chttps://pythonkiwi123.github.io/documentation/
 `, "font-family: monospace; color: lightgreen; background-color: black;", "background-color: black");
 export { canvas, ctx, output, setUpdate, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, add, remove, removeAll, getElementAt, getElementsAt, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, baseObj, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, mouseClickMethod, mouseMoveMethod, keyUpMethod, keyDownMethod, gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians, shapes, timers, };
-//# sourceMappingURL=index.js.map

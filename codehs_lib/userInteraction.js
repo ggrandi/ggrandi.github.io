@@ -27,4 +27,3 @@ export const keyDownMethod = (func) => {
 export const keyUpMethod = (func) => {
     window.addEventListener("keyup", func);
 };
-//# sourceMappingURL=userInteraction.js.map

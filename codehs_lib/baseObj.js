@@ -291,4 +291,3 @@ export class baseObj {
      */
     draw() { }
 }
-//# sourceMappingURL=baseObj.js.map

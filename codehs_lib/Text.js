@@ -145,4 +145,3 @@ export class Text extends baseObj {
         return (-this._w / 2 < x && x < this._w / 2 && -this._h / 2 < y && y < this._h / 2);
     }
 }
-//# sourceMappingURL=Text.js.map

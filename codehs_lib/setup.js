@@ -73,4 +73,3 @@ export const showCursor = (cursor) => {
 export const hideCursor = () => {
     canvas.style.cursor = "none";
 };
-//# sourceMappingURL=setup.js.map
