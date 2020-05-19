@@ -38,6 +38,12 @@ export class Line extends baseObj {
         return this._x1;
     }
     /**
+     * Returns the starting x of the line
+     */
+    getStartX() {
+        return this._x1;
+    }
+    /**
      * X-coordinate for the ending point
      */
     set x2(v) {
@@ -45,6 +51,12 @@ export class Line extends baseObj {
     }
     get x2() {
         return this._x2;
+    }
+    /**
+     * Returns the ending x of the line
+     */
+    getEndX() {
+        return this._x1;
     }
     /**
      * Y-coordinate for the starting point
@@ -56,6 +68,12 @@ export class Line extends baseObj {
         return this._y1;
     }
     /**
+     * Returns the starting y of the line
+     */
+    getStartY() {
+        return this._x1;
+    }
+    /**
      * Y-coordinate for the ending point
      */
     set y2(v) {
@@ -63,6 +81,12 @@ export class Line extends baseObj {
     }
     get y2() {
         return this._y2;
+    }
+    /**
+     * Returns the starting y of the line
+     */
+    getEndY() {
+        return this._x1;
     }
     /**
      * set the starting point
