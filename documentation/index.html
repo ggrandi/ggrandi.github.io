@@ -77,12 +77,14 @@
 				</a>
 				<p>import in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type"><code>&lt;script type=&quot;module&quot;&gt;</code></a> html file</p>
 				<p>for a sample html file download sampleFile.html from the <a href="https://github.com/pythonKiwi123/codehs_lib.git">repository</a></p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-comment">/* imports */</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
 
 <span class="hljs-comment">/* code */</span></code></pre>
 				<p>Or use a dynamic import</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> { <span class="hljs-comment">/* imports */</span> } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>);
+  <span class="hljs-keyword">const</span> {
+    <span class="hljs-comment">/* imports */</span>
+  } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>);
 
   <span class="hljs-comment">/* code with the imports */</span>
 }
@@ -94,7 +96,7 @@ yarn add https://github.com/pythonKiwi123/codehs_lib.git
 <span class="hljs-comment"># or</span>
 npm install https://github.com/pythonKiwi123/codehs_lib.git</code></pre>
 				<p>Then in a js file:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"codehs_lib"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-comment">/* imports */</span> <span class="hljs-string">"codehs_lib"</span>;
 
 <span class="hljs-comment">/* code */</span></code></pre>
 				<a href="#use-in-code" id="use-in-code" style="color: inherit; text-decoration: none;">
@@ -112,7 +114,8 @@ println(<span class="hljs-string">"Hello World!"</span>);</code></pre>
 					<h2>Differences between this and the library on CodeHS</h2>
 				</a>
 				<ul>
-					<li><strong>removed MouseEvent.getX() and MouseEvent.getY() in favor of getPosition(MouseEvent)</strong> to avoid extending already existing javascript types<ul>
+					<li><strong>removed MouseEvent.getX() and MouseEvent.getY() in favor of getPosition(MouseEvent)</strong> to avoid extending already existing
+						javascript types<ul>
 							<li>getPosition(MouseEvent) returns the object {x: number, y: number}</li>
 						</ul>
 					</li>
@@ -143,7 +146,8 @@ println(<span class="hljs-string">"Hello World!"</span>);</code></pre>
 					<li>Added functions for common Math expressions like getting a line distance and converting degrees to radians</li>
 					<li>Changed the arc mode to an enum in order to make it easier to tell what the value is</li>
 					<li>Changed every operation that asks for degrees or radians to default to radians<ul>
-							<li>using getters and setters you can set the degrees (<a href="https://pythonkiwi123.github.io/documentation/classes/_baseobj_.baseobj.html#rotationdegrees">baseObj.rotationDegrees</a>)</li>
+							<li>using getters and setters you can set the degrees
+							(<a href="https://pythonkiwi123.github.io/documentation/classes/_baseobj_.baseobj.html#rotationdegrees">baseObj.rotationDegrees</a>)</li>
 						</ul>
 					</li>
 					<li>Written in typescript for better code predictions and more code checking</li>
