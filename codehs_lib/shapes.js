@@ -78,6 +78,13 @@ export function getElementsAt(x, y) {
 	});
 	return elems.reverse();
 }
+/**
+ * Check if an element has been added to the screen
+ * @param e The element to check
+ */
+export function isElementAdded(e) {
+	return shapes.includes(e);
+}
 const main = () => {
 	if (up) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);

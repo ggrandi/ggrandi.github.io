@@ -943,10 +943,10 @@ export const checkColor = (color) => {
 	// eslint-disable-next-line max-len
 	const hslColor = /^hsl(\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}|a\((3([0-5]\d|60)|[0-2]?(\d)?\d)(, ?((100|\d?\d)%)){2}, ?(1|0(.\d+)?))\)$/;
 	return (
+		color instanceof CanvasGradient ||
 		hexColor.test(color) ||
 		rgbColor.test(color) ||
 		hslColor.test(color) ||
-		Object.prototype.hasOwnProperty.call(Color, color) ||
-		color instanceof CanvasGradient
+		Object.prototype.hasOwnProperty.call(Color, color.toLowerCase())
 	);
 };

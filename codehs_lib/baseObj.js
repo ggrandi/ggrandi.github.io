@@ -1,4 +1,5 @@
 import { add, remove, checkColor } from "./index.js";
+import { isElementAdded } from "./shapes.js";
 /**
  * The base shape that all other shapes inherit from
  */
@@ -277,6 +278,12 @@ export class baseObj {
 	remove() {
 		remove(this);
 		return this;
+	}
+	/**
+	 * Checks if this element has been added
+	 */
+	isAdded() {
+		return isElementAdded(this);
 	}
 	/**
 	 * Returns a boolean to check if the shape contains the point (`x`, `y`)

@@ -1,5 +1,5 @@
 import { canvas, ctx, output, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor } from "./setup.js";
-import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes } from "./shapes.js";
+import { add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes, isElementAdded } from "./shapes.js";
 import { baseObj } from "./baseObj.js";
 import {
 	clearConsole,
@@ -59,6 +59,7 @@ export {
 	removeAll,
 	getElementAt,
 	getElementsAt,
+	isElementAdded,
 	clearConsole,
 	println,
 	readBoolean,
