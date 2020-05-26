@@ -1,0 +1,169 @@
+body {
+	background-color: rgb(30, 30, 30);
+	display: grid;
+	height: 100vh;
+	margin: 0px;
+	overflow: hidden;
+}
+
+#popup {
+	padding: 20px;
+	position: absolute;
+	width: 40%;
+	height: max(40vh, 100px);
+	left: 30%;
+	top: calc(50vh - max(20vh, 50px));
+	background-color: lightgray;
+	border: 1px solid black;
+	z-index: 1000;
+	font-size: 11pt;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.about pre {
+	font-size: min(1.5vh, 0.9vw);
+	padding: 5px;
+	overflow: scroll;
+	background-color: black;
+	color: #33ff33;
+}
+
+#shareLinkDisplay {
+	width: 100%;
+	overflow: scroll;
+	background-color: white;
+	border-radius: 10px;
+	padding: 5px;
+	border: 1px solid darkgray;
+}
+
+.splitLeft,
+.splitRight,
+.splitSeparator {
+	grid-row: 1;
+}
+
+.splitLeft {
+	width: calc(65vh - 1px);
+	z-index: 50;
+}
+
+.splitSeparator {
+	border: 1px solid #555;
+	cursor: ew-resize;
+	margin-left: 0px;
+	max-width: 0px;
+	z-index: 100;
+}
+
+.splitSeparator:hover {
+	border: 1px solid lightgrey;
+}
+
+.splitRight {
+	width: calc(35vh - 1px);
+}
+
+.right {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding-top: 20px;
+	width: 100%;
+}
+
+.buttons {
+	width: min(400px, 100%);
+	display: grid;
+	margin-bottom: 20px;
+	grid-gap: 5%;
+}
+
+.buttons button {
+	height: 40px;
+	width: 100%;
+}
+
+#stopButton {
+	font-size: medium;
+	grid-row: 1;
+	grid-column: 1;
+	background-color: tomato;
+	color: black;
+}
+
+#stopButton:hover {
+	background-color: #fd7a63;
+}
+
+#runButton {
+	font-size: medium;
+	grid-row: 1;
+	grid-column: 2;
+	background-color: lime;
+	color: black;
+}
+
+#runButton:hover {
+	background-color: #33ff33;
+}
+
+#moreButton {
+	font-size: medium;
+	grid-row: 1;
+	grid-column: 3;
+	background-color: lightgray;
+	color: black;
+	width: 100%;
+}
+
+#moreActions {
+	z-index: 999;
+	width: min(200px, 50%);
+	top: 23px;
+	position: absolute;
+}
+
+#moreActions button {
+	background-color: lightgrey;
+}
+
+#moreActions button:hover {
+	background-color: #eee;
+	border: 1px solid black;
+}
+
+#game {
+	background-color: white;
+	border: 1px solid black;
+}
+
+#console {
+	padding: 10px;
+	background-color: lightgrey;
+	border: 1px solid black;
+	height: 200px;
+	width: 380px;
+	overflow: scroll;
+}
+
+.gone {
+	display: none;
+}
+
+.loadCodeButtons {
+	margin-top: 5vh;
+	display: flex;
+	flex-direction: row;
+}
+
+.loadCodeButtons div {
+	flex: 1;
+}
+
+.loadCodeButtons button {
+	background-color: white;
+	flex: 3;
+	height: 10vh;
+	border: 1px solid darkgrey;
+}
