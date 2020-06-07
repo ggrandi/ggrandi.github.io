@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
 /**
  * The rectangle shape

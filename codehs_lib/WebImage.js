@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Rectangle, ctx, gcf } from "./index.js";
 /**
  * The Image from the web shape

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { output } from "./index.js";
 const createColoredSpan = (inner, color) => {
 	const s = document.createElement("span");

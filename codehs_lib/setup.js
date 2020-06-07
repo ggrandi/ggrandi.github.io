@@ -1,3 +1,4 @@
+/* eslint-disable */
 const outputDiv = "output";
 /**
  * The canvas everything is drawn to

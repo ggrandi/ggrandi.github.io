@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Returns point (`x`, `y`) if it where rotated around (0, 0) by `radians` radians
  * @param x A numeric expression for the x coordinate.

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { baseObj, ctx, rotatePoint } from "./index.js";
 // eslint-disable-next-line max-len
 const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;

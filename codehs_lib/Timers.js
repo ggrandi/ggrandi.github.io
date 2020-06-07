@@ -1,7 +1,8 @@
+/* eslint-disable */
 /**
  * The array of active timers
  */
-export const timers = new Array();
+export const timers = [];
 /**
  * Sets a timer with the callback `callback`
  * @param callback function for the timer to call
@@ -16,7 +17,7 @@ export const setTimer = (callback, delay, params, name) => {
 		);
 		delay = 50 / 3;
 	}
-	const id = setInterval(callback, delay, params);
+	const id = window.setInterval(callback, delay, params);
 	timers.push({
 		callback,
 		delay,

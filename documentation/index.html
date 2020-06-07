@@ -77,16 +77,14 @@
 				</a>
 				<p>import in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type"><code>&lt;script type=&quot;module&quot;&gt;</code></a> html file</p>
 				<p>for a sample html file download sampleFile.html from the <a href="https://github.com/pythonKiwi123/codehs_lib.git">repository</a></p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-comment">/* imports */</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span>  { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
 
 <span class="hljs-comment">/* code */</span></code></pre>
 				<p>Or use a dynamic import</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> {
-    <span class="hljs-comment">/* imports */</span>
-  } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>);
+  <span class="hljs-keyword">const</span> { <span class="hljs-comment">/* imports */</span> } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>);
 
-  <span class="hljs-comment">/* code with the imports */</span>
+  <span class="hljs-comment">/* code */</span>
 }
 
 main();</code></pre>
@@ -96,7 +94,7 @@ yarn add https://github.com/pythonKiwi123/codehs_lib.git
 <span class="hljs-comment"># or</span>
 npm install https://github.com/pythonKiwi123/codehs_lib.git</code></pre>
 				<p>Then in a js file:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-comment">/* imports */</span> <span class="hljs-string">"codehs_lib"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"codehs_lib"</span>;
 
 <span class="hljs-comment">/* code */</span></code></pre>
 				<a href="#use-in-code" id="use-in-code" style="color: inherit; text-decoration: none;">
@@ -104,7 +102,7 @@ npm install https://github.com/pythonKiwi123/codehs_lib.git</code></pre>
 				</a>
 				<p>This module requires you to have a <code>&lt;div id=&quot;output&quot;&gt;</code> in your HTML</p>
 				<p>The hello world looks like this:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { println };
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { println } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
 
 println(<span class="hljs-string">"Hello World!"</span>);</code></pre>
 				<blockquote>

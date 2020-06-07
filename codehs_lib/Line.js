@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { baseObj, ctx, rotatePoint, lineDistance, checkColor } from "./index.js";
 /**
  * The Line shape

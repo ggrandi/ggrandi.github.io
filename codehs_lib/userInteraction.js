@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { canvas } from "./index.js";
 /**
  * Set the canvas onclick method, use canvas.onclick instead (included for compatibility with CodeHS)

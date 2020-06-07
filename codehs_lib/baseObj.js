@@ -1,5 +1,5 @@
-import { add, remove, checkColor } from "./index.js";
-import { isElementAdded } from "./shapes.js";
+/* eslint-disable */
+import { add, remove, checkColor, isElementAdded } from "./index.js";
 /**
  * The base shape that all other shapes inherit from
  */
@@ -278,6 +278,12 @@ export class baseObj {
 	remove() {
 		remove(this);
 		return this;
+	}
+	/**
+	 * The shape's y-position
+	 */
+	get added() {
+		return isElementAdded(this);
 	}
 	/**
 	 * Checks if this element has been added

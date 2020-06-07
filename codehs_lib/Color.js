@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Randomizer } from "./index.js";
 /**
  * The object that contains all the colors

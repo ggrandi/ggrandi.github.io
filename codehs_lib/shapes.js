@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { canvas, ctx } from "./index.js";
 /**
  * All the shapes that have been added to the screen

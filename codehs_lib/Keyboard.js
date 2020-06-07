@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * CodeHS's Keyboard object. If possible use the built-in javascript
  * KeyboardEvent.key or KeyboardEvent.code in your handler

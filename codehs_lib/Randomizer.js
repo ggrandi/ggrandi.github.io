@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * The object that returns random values
  */

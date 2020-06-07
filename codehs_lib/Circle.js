@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { baseObj, ctx, lineDistance, checkColor } from "./index.js";
 /**
  * The Circle shape

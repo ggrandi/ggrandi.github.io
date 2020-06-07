@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { baseObj, ctx, rotatePoint, lineDistance } from "./index.js";
 /**
  * The enum to set the arc's mode
