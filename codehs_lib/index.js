@@ -29,6 +29,7 @@ export { Oval } from "./Oval.js";
 export { setTimer, stopTimer, stopAllTimers, timers } from "./Timers.js";
 export { keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod } from "./userInteraction.js";
 export { gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians } from "./utils.js";
+// eslint-disable-next-line no-console
 console.log(
 	`%c
    OIIIII              II        II    II   OIIIII    II         II      

@@ -2209,7 +2209,6 @@ class WebImage extends _index__WEBPACK_IMPORTED_MODULE_0__["Rectangle"] {
      */
     get aspectRatio() {
         const { naturalWidth, naturalHeight } = this._img;
-        console.log(naturalWidth, naturalHeight);
         const f = Object(_index__WEBPACK_IMPORTED_MODULE_0__["gcf"])(naturalWidth, naturalHeight);
         return {
             w: naturalWidth / f,
@@ -2643,6 +2642,7 @@ const println = (...args) => {
                     break;
                 case "object":
                     {
+                        // eslint-disable-next-line no-console
                         console.log(args[i]);
                         _index__WEBPACK_IMPORTED_MODULE_0__["output"].append(createColoredSpan(`${args[i].toString()} => browser console`, "blue"));
                     }
@@ -3018,6 +3018,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// eslint-disable-next-line no-console
 console.log(`%c
    OIIIII              II        II    II   OIIIII    II         II      
   OI                   II        II    II  OI         II      () II      

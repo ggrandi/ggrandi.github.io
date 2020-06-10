@@ -44,6 +44,7 @@ export const println = (...args) => {
 					break;
 				case "object":
 					{
+						// eslint-disable-next-line no-console
 						console.log(args[i]);
 						output.append(createColoredSpan(`${args[i].toString()} => browser console`, "blue"));
 					}

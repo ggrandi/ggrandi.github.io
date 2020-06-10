@@ -64,6 +64,7 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<!-- markdownlint-disable-file MD036 -->
 				<a href="#introduction" id="introduction" style="color: inherit; text-decoration: none;">
 					<h1>Introduction</h1>
 				</a>
@@ -75,12 +76,25 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
+				<p><a href="https://pythonkiwi123.github.io/codehs_lib/sampleFile.html.txt">Use the sample html file</a></p>
+				<p><strong>Or</strong></p>
+				<p>include via script tag</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/codehs_lib.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">const</span> { <span class="hljs-comment">/* imports */</span> } = codehs_lib;
+
+  <span class="hljs-comment">/* code */</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<p><strong>Or</strong></p>
 				<p>import in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type"><code>&lt;script type=&quot;module&quot;&gt;</code></a> html file</p>
-				<p>for a sample html file download sampleFile.html from the <a href="https://github.com/pythonKiwi123/codehs_lib.git">repository</a></p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span>  { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { <span class="hljs-comment">/* imports */</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
 
 <span class="hljs-comment">/* code */</span></code></pre>
-				<p>Or use a dynamic import</p>
+				<blockquote>
+					<p>(the HTML script.module does not work from file:// so you have to open the file in localhost or on a server)</p>
+				</blockquote>
+				<p><strong>Or</strong></p>
+				<p>Use a dynamic import</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> { <span class="hljs-comment">/* imports */</span> } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>);
 
@@ -88,7 +102,8 @@
 }
 
 main();</code></pre>
-				<p>Or install it as a node module</p>
+				<p><strong>Or</strong></p>
+				<p>install it as a node module</p>
 				<pre><code class="language-bash"><span class="hljs-comment"># install dependencies</span>
 yarn add https://github.com/pythonKiwi123/codehs_lib.git
 <span class="hljs-comment"># or</span>
@@ -105,9 +120,6 @@ npm install https://github.com/pythonKiwi123/codehs_lib.git</code></pre>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { println } <span class="hljs-keyword">from</span> <span class="hljs-string">"pythonkiwi123.github.io/codehs_lib/index.js"</span>;
 
 println(<span class="hljs-string">"Hello World!"</span>);</code></pre>
-				<blockquote>
-					<p>(the HTML script.module does not work from file:// so you have to open the file in localhost)</p>
-				</blockquote>
 				<a href="#differences-between-this-and-the-library-on-codehs" id="differences-between-this-and-the-library-on-codehs" style="color: inherit; text-decoration: none;">
 					<h2>Differences between this and the library on CodeHS</h2>
 				</a>

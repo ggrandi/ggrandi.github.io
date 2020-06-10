@@ -64,7 +64,6 @@ export class WebImage extends Rectangle {
 	 */
 	get aspectRatio() {
 		const { naturalWidth, naturalHeight } = this._img;
-		console.log(naturalWidth, naturalHeight);
 		const f = gcf(naturalWidth, naturalHeight);
 		return {
 			w: naturalWidth / f,
