@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint } from "./index.js";
+import { baseObj, ctx, rotatePoint, camera } from "./index.js";
 // eslint-disable-next-line max-len
 const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
 /**
@@ -125,7 +125,7 @@ export class Text extends baseObj {
 	draw() {
 		ctx.save();
 		ctx.beginPath();
-		ctx.translate(this.x + this._w / 2, this.y - this._h / 2);
+		ctx.translate(this.x + this._w / 2 - camera.x, this.y - this._h / 2 - camera.y);
 		ctx.rotate(this.rotation);
 		ctx.font = this._font;
 		if (this.outline) {

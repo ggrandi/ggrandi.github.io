@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, lineDistance, checkColor } from "./index.js";
+import { baseObj, ctx, rotatePoint, lineDistance, checkColor, camera } from "./index.js";
 /**
  * The Line shape
  */
@@ -118,15 +118,16 @@ export class Line extends baseObj {
 		return this.setStartpoint(x1, y1);
 	}
 	draw() {
+		const x1 = this._x1 - camera.x;
+		const y1 = this._y1 - camera.y;
+		const x2 = this._x2 - camera.x;
+		const y2 = this._y2 - camera.y;
 		if (this.outline) {
 			ctx.save();
 			ctx.beginPath();
 			const w = this._width + 2 * this.outlineWidth;
 			const h = lineDistance(this.x1, this.y1, this.x2, this.y2) + 2 * this.outlineWidth;
-			ctx.translate(
-				Math.min(this._x1, this._x2) + Math.abs(this._x1 - this._x2) / 2,
-				Math.min(this._y1, this._y2) + Math.abs(this._y1 - this._y2) / 2
-			);
+			ctx.translate(Math.min(x1, x2) + Math.abs(x1 - x2) / 2, Math.min(y1, y2) + Math.abs(y1 - y2) / 2);
 			ctx.rotate(Math.atan2(-(this.x2 - this.x1), this.y2 - this.y1));
 			ctx.fillStyle = this.outlineColor;
 			ctx.rect(-w / 2, -h / 2, w, h);
@@ -136,8 +137,8 @@ export class Line extends baseObj {
 		ctx.beginPath();
 		ctx.lineWidth = this._width;
 		ctx.strokeStyle = this.color;
-		ctx.moveTo(this._x1, this._y1);
-		ctx.lineTo(this._x2, this._y2);
+		ctx.moveTo(x1, y1);
+		ctx.lineTo(x2, y2);
 		ctx.stroke();
 		ctx.closePath();
 	}

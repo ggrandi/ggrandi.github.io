@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor, camera } from "./index.js";
 /**
  * The oval shape
  */
@@ -62,7 +62,7 @@ export class Oval extends baseObj {
 	}
 	draw() {
 		ctx.beginPath();
-		ctx.ellipse(this.x, this.y, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
+		ctx.ellipse(this.x - camera.x, this.y - camera.y, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
 		ctx.fillStyle = this.color;
 		if (this.outline) {
 			ctx.strokeStyle = this.outlineColor;

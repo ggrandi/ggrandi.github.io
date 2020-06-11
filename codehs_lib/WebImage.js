@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Rectangle, ctx, gcf } from "./index.js";
+import { Rectangle, ctx, gcf, camera } from "./index.js";
 /**
  * The Image from the web shape
  */
@@ -96,7 +96,7 @@ export class WebImage extends Rectangle {
 		if (this._hasLoaded) {
 			ctx.save();
 			ctx.beginPath();
-			ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+			ctx.translate(this.x + this.width / 2 - camera.x, this.y + this.height / 2 - camera.y);
 			ctx.rotate(this.rotation);
 			ctx.drawImage(
 				this._img,

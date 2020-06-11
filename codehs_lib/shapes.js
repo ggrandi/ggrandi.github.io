@@ -86,6 +86,19 @@ export function getElementsAt(x, y) {
 export function isElementAdded(e) {
 	return shapes.includes(e);
 }
+/** The location of the screen, useful for screen scrolling */
+export const camera = {
+	x: 0,
+	y: 0,
+};
+/** Moves the camera horizontally */
+export function moveHorizontal(dx) {
+	camera.x += dx;
+}
+/** Moves the camera vertically */
+export function moveVertical(dx) {
+	camera.x += dx;
+}
 const main = () => {
 	if (up) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);

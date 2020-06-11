@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { camera } from "./index.js";
 const outputDiv = "output";
 /**
  * The canvas everything is drawn to
@@ -73,4 +74,15 @@ export const showCursor = (cursor) => {
  */
 export const hideCursor = () => {
 	canvas.style.cursor = "none";
+};
+/**
+ * Returns the mouse's position on the canvas
+ * @param e the event to get the position from
+ */
+export const getPosition = (e) => {
+	const { left, top } = canvas.getBoundingClientRect();
+	return {
+		x: e.clientX - left + camera.x,
+		y: e.clientY - top + camera.y,
+	};
 };

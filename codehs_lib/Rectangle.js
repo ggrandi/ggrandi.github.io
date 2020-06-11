@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, checkColor } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor, camera } from "./index.js";
 /**
  * The rectangle shape
  */
@@ -83,7 +83,7 @@ export class Rectangle extends baseObj {
 	draw() {
 		ctx.save();
 		ctx.beginPath();
-		ctx.translate(this.x + this._width / 2, this.y + this._height / 2);
+		ctx.translate(this.x + this._width / 2 - camera.x, this.y + this._height / 2 - camera.y);
 		ctx.rotate(this.rotation);
 		ctx.rect(-this._width / 2, -this._height / 2, this._width, this._height);
 		if (this.outline) {

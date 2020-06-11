@@ -202,7 +202,7 @@ class Arc extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
     draw() {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].save();
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x, this.y);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rotate(this.rotation);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].arc(0, 0, this._radius, this._sa, this._ea, this._cc);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].lineTo(0, 0);
@@ -322,7 +322,7 @@ class Circle extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
     }
     draw() {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].arc(this.x, this.y, this._radius, 0, Math.PI * 2);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].arc(this.x - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y, this._radius, 0, Math.PI * 2);
         if (this.outline) {
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = this.outlineColor;
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].lineWidth = this.outlineWidth;
@@ -1578,12 +1578,16 @@ class Line extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
         return this.setStartpoint(x1, y1);
     }
     draw() {
+        const x1 = this._x1 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x;
+        const y1 = this._y1 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y;
+        const x2 = this._x2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x;
+        const y2 = this._y2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y;
         if (this.outline) {
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].save();
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
             const w = this._width + 2 * this.outlineWidth;
             const h = Object(_index__WEBPACK_IMPORTED_MODULE_0__["lineDistance"])(this.x1, this.y1, this.x2, this.y2) + 2 * this.outlineWidth;
-            _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(Math.min(this._x1, this._x2) + Math.abs(this._x1 - this._x2) / 2, Math.min(this._y1, this._y2) + Math.abs(this._y1 - this._y2) / 2);
+            _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(Math.min(x1, x2) + Math.abs(x1 - x2) / 2, Math.min(y1, y2) + Math.abs(y1 - y2) / 2);
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rotate(Math.atan2(-(this.x2 - this.x1), this.y2 - this.y1));
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillStyle = this.outlineColor;
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rect(-w / 2, -h / 2, w, h);
@@ -1593,8 +1597,8 @@ class Line extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].lineWidth = this._width;
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = this.color;
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].moveTo(this._x1, this._y1);
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].lineTo(this._x2, this._y2);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].moveTo(x1, y1);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].lineTo(x2, y2);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].stroke();
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].closePath();
     }
@@ -1686,7 +1690,7 @@ class Oval extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
     }
     draw() {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].ellipse(this.x, this.y, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].ellipse(this.x - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillStyle = this.color;
         if (this.outline) {
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = this.outlineColor;
@@ -1880,7 +1884,7 @@ class Rectangle extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
     draw() {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].save();
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this._width / 2, this.y + this._height / 2);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this._width / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y + this._height / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rotate(this.rotation);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rect(-this._width / 2, -this._height / 2, this._width, this._height);
         if (this.outline) {
@@ -2046,7 +2050,7 @@ class Text extends _index__WEBPACK_IMPORTED_MODULE_0__["baseObj"] {
     draw() {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].save();
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this._w / 2, this.y - this._h / 2);
+        _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this._w / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y - this._h / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rotate(this.rotation);
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].font = this._font;
         if (this.outline) {
@@ -2241,7 +2245,7 @@ class WebImage extends _index__WEBPACK_IMPORTED_MODULE_0__["Rectangle"] {
         if (this._hasLoaded) {
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].save();
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
-            _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this.width / 2, this.y + this.height / 2);
+            _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].translate(this.x + this.width / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x, this.y + this.height / 2 - _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y);
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].rotate(this.rotation);
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].drawImage(this._img, this._sx, this._sy, this._sw, this._sh, -this.width / 2, -this.height / 2, this.width, this.height);
             _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].restore();
@@ -2865,7 +2869,7 @@ const readColorConsole = async (message) => {
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: canvas, ctx, output, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes, isElementAdded, baseObj, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, timers, keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod, gcf, getPosition, lineDistance, rotatePoint, toDegrees, toRadians */
+/*! exports provided: canvas, ctx, output, getWidth, getHeight, hideCursor, setBackgroundColor, setSize, showCursor, getPosition, add, remove, removeAll, setUpdate, getElementAt, getElementsAt, shapes, isElementAdded, camera, moveHorizontal, moveVertical, baseObj, clearConsole, println, readBoolean, readFloat, readInt, readLine, consoleInput, readLineConsole, readIntConsole, readFloatConsole, readBooleanConsole, readColorConsole, Randomizer, Color, checkColor, Keyboard, Circle, Rectangle, Line, WebImage, Text, checkFont, Arc, ArcMode, Oval, setTimer, stopTimer, stopAllTimers, timers, keyDownMethod, mouseClickMethod, mouseMoveMethod, keyUpMethod, gcf, lineDistance, rotatePoint, toDegrees, toRadians */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2889,6 +2893,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showCursor", function() { return _setup__WEBPACK_IMPORTED_MODULE_0__["showCursor"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getPosition", function() { return _setup__WEBPACK_IMPORTED_MODULE_0__["getPosition"]; });
+
 /* harmony import */ var _shapes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shapes */ "./src/shapes.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "add", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["add"]; });
 
@@ -2905,6 +2911,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "shapes", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["shapes"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isElementAdded", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["isElementAdded"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "camera", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["camera"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveHorizontal", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["moveHorizontal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "moveVertical", function() { return _shapes__WEBPACK_IMPORTED_MODULE_1__["moveVertical"]; });
 
 /* harmony import */ var _baseObj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./baseObj */ "./src/baseObj.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "baseObj", function() { return _baseObj__WEBPACK_IMPORTED_MODULE_2__["baseObj"]; });
@@ -2991,8 +3003,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gcf", function() { return _utils__WEBPACK_IMPORTED_MODULE_16__["gcf"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getPosition", function() { return _utils__WEBPACK_IMPORTED_MODULE_16__["getPosition"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lineDistance", function() { return _utils__WEBPACK_IMPORTED_MODULE_16__["lineDistance"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rotatePoint", function() { return _utils__WEBPACK_IMPORTED_MODULE_16__["rotatePoint"]; });
@@ -3038,7 +3048,7 @@ console.log(`%c
 /*!**********************!*\
   !*** ./src/setup.ts ***!
   \**********************/
-/*! exports provided: canvas, output, ctx, getWidth, getHeight, setSize, setBackgroundColor, showCursor, hideCursor */
+/*! exports provided: canvas, output, ctx, getWidth, getHeight, setSize, setBackgroundColor, showCursor, hideCursor, getPosition */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3052,6 +3062,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setBackgroundColor", function() { return setBackgroundColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showCursor", function() { return showCursor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hideCursor", function() { return hideCursor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosition", function() { return getPosition; });
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index */ "./src/index.ts");
+
 const outputDiv = "output";
 /**
  * The canvas everything is drawn to
@@ -3127,6 +3140,17 @@ const showCursor = (cursor) => {
 const hideCursor = () => {
     canvas.style.cursor = "none";
 };
+/**
+ * Returns the mouse's position on the canvas
+ * @param e the event to get the position from
+ */
+const getPosition = (e) => {
+    const { left, top } = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - left + _index__WEBPACK_IMPORTED_MODULE_0__["camera"].x,
+        y: e.clientY - top + _index__WEBPACK_IMPORTED_MODULE_0__["camera"].y,
+    };
+};
 
 
 /***/ }),
@@ -3135,7 +3159,7 @@ const hideCursor = () => {
 /*!***********************!*\
   !*** ./src/shapes.ts ***!
   \***********************/
-/*! exports provided: shapes, setUpdate, removeAll, add, remove, getElementAt, getElementsAt, isElementAdded */
+/*! exports provided: shapes, setUpdate, removeAll, add, remove, getElementAt, getElementsAt, isElementAdded, camera, moveHorizontal, moveVertical */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3148,6 +3172,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getElementAt", function() { return getElementAt; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getElementsAt", function() { return getElementsAt; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isElementAdded", function() { return isElementAdded; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "camera", function() { return camera; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveHorizontal", function() { return moveHorizontal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "moveVertical", function() { return moveVertical; });
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index */ "./src/index.ts");
 
 /**
@@ -3236,6 +3263,19 @@ function getElementsAt(x, y) {
 function isElementAdded(e) {
     return shapes.includes(e);
 }
+/** The location of the screen, useful for screen scrolling */
+const camera = {
+    x: 0,
+    y: 0,
+};
+/** Moves the camera horizontally */
+function moveHorizontal(dx) {
+    camera.x += dx;
+}
+/** Moves the camera vertically */
+function moveVertical(dx) {
+    camera.x += dx;
+}
 const main = () => {
     if (up) {
         _index__WEBPACK_IMPORTED_MODULE_0__["ctx"].clearRect(0, 0, _index__WEBPACK_IMPORTED_MODULE_0__["canvas"].width, _index__WEBPACK_IMPORTED_MODULE_0__["canvas"].height);
@@ -3299,7 +3339,7 @@ const keyUpMethod = (func) => {
 /*!**********************!*\
   !*** ./src/utils.ts ***!
   \**********************/
-/*! exports provided: rotatePoint, lineDistance, gcf, getPosition, toRadians, toDegrees */
+/*! exports provided: rotatePoint, lineDistance, gcf, toRadians, toDegrees */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3307,7 +3347,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rotatePoint", function() { return rotatePoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lineDistance", function() { return lineDistance; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gcf", function() { return gcf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosition", function() { return getPosition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toRadians", function() { return toRadians; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toDegrees", function() { return toDegrees; });
 /**
@@ -3352,24 +3391,6 @@ const gcf = (a, b) => {
         }
         b %= a;
     }
-};
-/**
- * Returns the mouse's position on the canvas
- * @param e the event to get the position from
- */
-const getPosition = (e) => {
-    let p = e.target;
-    let offsetLeft = 0;
-    let offsetTop = 0;
-    while (p.offsetParent) {
-        offsetLeft += p.offsetLeft;
-        offsetTop += p.offsetTop;
-        p = p.offsetParent;
-    }
-    return {
-        x: e.pageX - offsetLeft,
-        y: e.pageY - offsetTop,
-    };
 };
 /**
  * Convert a number of degrees to radians

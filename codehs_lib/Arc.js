@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, lineDistance } from "./index.js";
+import { baseObj, ctx, rotatePoint, lineDistance, camera } from "./index.js";
 /**
  * The enum to set the arc's mode
  * @enum {number}
@@ -100,7 +100,7 @@ export class Arc extends baseObj {
 	draw() {
 		ctx.save();
 		ctx.beginPath();
-		ctx.translate(this.x, this.y);
+		ctx.translate(this.x - camera.x, this.y - camera.y);
 		ctx.rotate(this.rotation);
 		ctx.arc(0, 0, this._radius, this._sa, this._ea, this._cc);
 		ctx.lineTo(0, 0);

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, lineDistance, checkColor } from "./index.js";
+import { baseObj, ctx, lineDistance, checkColor, camera } from "./index.js";
 /**
  * The Circle shape
  */
@@ -70,7 +70,7 @@ export class Circle extends baseObj {
 	}
 	draw() {
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this._radius, 0, Math.PI * 2);
+		ctx.arc(this.x - camera.x, this.y - camera.y, this._radius, 0, Math.PI * 2);
 		if (this.outline) {
 			ctx.strokeStyle = this.outlineColor;
 			ctx.lineWidth = this.outlineWidth;

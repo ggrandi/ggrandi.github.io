@@ -43,24 +43,6 @@ export const gcf = (a, b) => {
 	}
 };
 /**
- * Returns the mouse's position on the canvas
- * @param e the event to get the position from
- */
-export const getPosition = (e) => {
-	let p = e.target;
-	let offsetLeft = 0;
-	let offsetTop = 0;
-	while (p.offsetParent) {
-		offsetLeft += p.offsetLeft;
-		offsetTop += p.offsetTop;
-		p = p.offsetParent;
-	}
-	return {
-		x: e.pageX - offsetLeft,
-		y: e.pageY - offsetTop,
-	};
-};
-/**
  * Convert a number of degrees to radians
  * @param degrees the degrees to convert
  */
