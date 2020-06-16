@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, lineDistance, checkColor, camera } from "./index.js";
+import { baseObj, ctx, lineDistance, checkColor, camera, canvas } from "./index.js";
 /**
  * The Circle shape
  */
@@ -69,8 +69,10 @@ export class Circle extends baseObj {
 		return this;
 	}
 	draw() {
+		const cx = this.still ? 0 : camera.x;
+		const cy = this.still ? 0 : camera.y;
 		ctx.beginPath();
-		ctx.arc(this.x - camera.x, this.y - camera.y, this._radius, 0, Math.PI * 2);
+		ctx.arc(this.x - cx, this.y - cy, this._radius, 0, Math.PI * 2);
 		if (this.outline) {
 			ctx.strokeStyle = this.outlineColor;
 			ctx.lineWidth = this.outlineWidth;
@@ -78,6 +80,14 @@ export class Circle extends baseObj {
 		}
 		ctx.fillStyle = this.color;
 		ctx.fill();
+	}
+	onScreen() {
+		return (
+			this.x + this.radius >= camera.x &&
+			this.x - this.radius <= camera.x + canvas.width &&
+			this.y + this.radius >= camera.y &&
+			this.y - this.radius <= camera.y + canvas.height
+		);
 	}
 	containsPoint(x, y) {
 		const oW = this.outline ? this.outlineWidth / 2 : 0;

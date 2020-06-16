@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, camera } from "./index.js";
+import { baseObj, ctx, rotatePoint, camera, canvas } from "./index.js";
 // eslint-disable-next-line max-len
-const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)px [\w]+$/;
+const fontRegExp = /^((normal|italic|oblique) )?((normal|small-caps) )?((normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900) )?(\d+)(px|pt) [\w]+$/;
 /**
  * Checks if a font matches a canvas font
  * @param font the font to check
@@ -18,11 +18,11 @@ export class Text extends baseObj {
 		this.x = x !== null && x !== void 0 ? x : 0;
 		this.y = y !== null && y !== void 0 ? y : 0;
 		this._txt = txt;
-		font = font.replace(/pt/i, "px");
 		if (!checkFont(font)) {
-			console.warn(`Please pass a valid font to Text. Your font \`${font}\` should match \`\${size}px \${fontname}\``);
+			console.warn(`Please pass a valid font to Text. Your font "${font}" should match \`\${size}px \${fontname}\``);
+			font = "20px Arial";
 		}
-		this._font = checkFont(font) ? font : "20px Arial";
+		this._font = font.replace("pt", "px");
 		ctx.font = this._font;
 		this._w = ctx.measureText(txt).width;
 		this._h = Number(fontRegExp.exec(font)[7]);
@@ -123,9 +123,11 @@ export class Text extends baseObj {
 		return this;
 	}
 	draw() {
+		const cx = this.still ? 0 : camera.x;
+		const cy = this.still ? 0 : camera.y;
 		ctx.save();
 		ctx.beginPath();
-		ctx.translate(this.x + this._w / 2 - camera.x, this.y - this._h / 2 - camera.y);
+		ctx.translate(this.x + this._w / 2 - cx, this.y - this._h / 2 - cy);
 		ctx.rotate(this.rotation);
 		ctx.font = this._font;
 		if (this.outline) {
@@ -135,6 +137,14 @@ export class Text extends baseObj {
 		ctx.fillStyle = this.color;
 		ctx.fillText(this._txt, -this._w / 2, this._h / 2);
 		ctx.restore();
+	}
+	onScreen() {
+		return (
+			this.x + this.width >= camera.x &&
+			this.x <= camera.x + canvas.width &&
+			this.y + this.height >= camera.y &&
+			this.y <= camera.y + canvas.height
+		);
 	}
 	containsPoint(x, y) {
 		x -= this.x + this._w / 2;

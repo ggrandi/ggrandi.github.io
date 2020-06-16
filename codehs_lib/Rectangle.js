@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, checkColor, camera } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor, camera, canvas } from "./index.js";
 /**
  * The rectangle shape
  */
@@ -81,9 +81,11 @@ export class Rectangle extends baseObj {
 		return this;
 	}
 	draw() {
+		const cx = this.still ? 0 : camera.x;
+		const cy = this.still ? 0 : camera.y;
 		ctx.save();
 		ctx.beginPath();
-		ctx.translate(this.x + this._width / 2 - camera.x, this.y + this._height / 2 - camera.y);
+		ctx.translate(this.x + this._width / 2 - cx, this.y + this._height / 2 - cy);
 		ctx.rotate(this.rotation);
 		ctx.rect(-this._width / 2, -this._height / 2, this._width, this._height);
 		if (this.outline) {
@@ -94,6 +96,14 @@ export class Rectangle extends baseObj {
 		ctx.fillStyle = this.color;
 		ctx.fill();
 		ctx.restore();
+	}
+	onScreen() {
+		return (
+			this.x + this.width >= camera.x &&
+			this.x <= camera.x + canvas.width &&
+			this.y + this.height >= camera.y &&
+			this.y <= camera.y + canvas.height
+		);
 	}
 	containsPoint(x, y) {
 		x -= this.x + this._width / 2;

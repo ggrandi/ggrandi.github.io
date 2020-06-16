@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { baseObj, ctx, rotatePoint, checkColor, camera } from "./index.js";
+import { baseObj, ctx, rotatePoint, checkColor, camera, canvas } from "./index.js";
 /**
  * The oval shape
  */
@@ -61,8 +61,10 @@ export class Oval extends baseObj {
 		return this;
 	}
 	draw() {
+		const cx = this.still ? 0 : camera.x;
+		const cy = this.still ? 0 : camera.y;
 		ctx.beginPath();
-		ctx.ellipse(this.x - camera.x, this.y - camera.y, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
+		ctx.ellipse(this.x - cx, this.y - cy, this._width / 2, this._height / 2, this.rotation, 0, 2 * Math.PI);
 		ctx.fillStyle = this.color;
 		if (this.outline) {
 			ctx.strokeStyle = this.outlineColor;
@@ -70,6 +72,14 @@ export class Oval extends baseObj {
 			ctx.stroke();
 		}
 		ctx.fill();
+	}
+	onScreen() {
+		return (
+			this.x + this.width >= camera.x &&
+			this.x <= camera.x + canvas.width &&
+			this.y + this.height >= camera.y &&
+			this.y <= camera.y + canvas.height
+		);
 	}
 	containsPoint(x, y) {
 		x -= this.x;

@@ -4,6 +4,7 @@ import { canvas, ctx } from "./index.js";
  * All the shapes that have been added to the screen
  */
 export const shapes = [];
+/** @ignore */
 let up = true;
 /**
  * Set whether the canvas should update every frame
@@ -68,8 +69,13 @@ export const getElementAt = (x, y) => {
  * @param y the y-value to check
  */
 export function getElementsAt(x, y) {
+	var _a;
 	if (x === true) {
 		return shapes;
+	}
+	if ((_a = x) === null || _a === void 0 ? void 0 : _a.x) {
+		y = x.y;
+		x = x.x;
 	}
 	const elems = [];
 	shapes.forEach((i) => {
@@ -90,6 +96,15 @@ export function isElementAdded(e) {
 export const camera = {
 	x: 0,
 	y: 0,
+	setPosition(x, y) {
+		if (typeof x === "number") {
+			this.x = x;
+			this.y = y;
+		} else {
+			this.x = x.x;
+			this.y = x.y;
+		}
+	},
 };
 /** Moves the camera horizontally */
 export function moveHorizontal(dx) {
@@ -102,7 +117,10 @@ export function moveVertical(dx) {
 const main = () => {
 	if (up) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		shapes.forEach((s) => s.draw());
+		shapes
+			.filter((s) => s.still || s.onScreen())
+			.sort((s) => (s.still ? 1 : 0))
+			.forEach((s) => s.draw());
 	}
 	requestAnimationFrame(main);
 };

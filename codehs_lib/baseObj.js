@@ -8,6 +8,11 @@ export class baseObj {
 	 * @constructor
 	 */
 	constructor() {
+		/**
+		 * Whether or not the Shape moves with the camera.
+		 * Still shapes are drawn on top of other shapes.
+		 */
+		this.still = false;
 		this._x = 0;
 		this._y = 0;
 		this._color = "black";
@@ -35,14 +40,14 @@ export class baseObj {
 	getType() {
 		return this._type;
 	}
-	/**
-	 * Sets the shape to the position (`x`, `y`)
-	 * @param x new x-coordinate of the shape
-	 * @param y new y-coordinate of the shape
-	 */
 	setPosition(x, y) {
-		this._x = x;
-		this._y = y;
+		if (typeof x === "number") {
+			this._x = x;
+			this._y = y;
+		} else {
+			this._x = x.x;
+			this._y = x.y;
+		}
 		return this;
 	}
 	/**
@@ -292,6 +297,24 @@ export class baseObj {
 		return isElementAdded(this);
 	}
 	/**
+	 * Sets whether to move the shape with the camera.
+	 * Still shapes are drawn on top of other shapes
+	 * @param still whether to move the shape with the camera
+	 */
+	setStill(still) {
+		this.still = still;
+		return this;
+	}
+	/**
+	 * Method called to draw the shape on the screen
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	draw() {}
+	/** Returns whether a shape is on screen */
+	onScreen() {
+		return false;
+	}
+	/**
 	 * Returns a boolean to check if the shape contains the point (`x`, `y`)
 	 * @param x x-position of point
 	 * @param y y-position of point
@@ -300,9 +323,4 @@ export class baseObj {
 	containsPoint(x, y) {
 		return false;
 	}
-	/**
-	 * Method called to draw the shape on the screen
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	draw() {}
 }

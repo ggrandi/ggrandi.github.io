@@ -92,11 +92,13 @@ export class WebImage extends Rectangle {
 		return { sx: this._sx, sy: this._sy, swidth: this._sw, sheight: this._sh };
 	}
 	draw() {
+		const cx = this.still ? 0 : camera.x;
+		const cy = this.still ? 0 : camera.y;
 		super.draw();
 		if (this._hasLoaded) {
 			ctx.save();
 			ctx.beginPath();
-			ctx.translate(this.x + this.width / 2 - camera.x, this.y + this.height / 2 - camera.y);
+			ctx.translate(this.x + this.width / 2 - cx, this.y + this.height / 2 - cy);
 			ctx.rotate(this.rotation);
 			ctx.drawImage(
 				this._img,
